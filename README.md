@@ -10,6 +10,7 @@ You can download the app on for your device here
 
 APK Download: [Latest releases](https://github.com/vleeuwenmenno/Anno1800_FanApp/releases)
 
+[![Build Status](https://travis-ci.com/vleeuwenmenno/Anno1800-FanApp.svg?branch=master)](https://travis-ci.com/vleeuwenmenno/Anno1800-FanApp)
 
 ## Contribute
 
