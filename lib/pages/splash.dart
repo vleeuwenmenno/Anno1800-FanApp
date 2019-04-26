@@ -10,6 +10,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
+	double loadingProgress = 0.9;
+
 	Widget build(BuildContext context){
 
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
@@ -91,12 +93,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
 												Container
 												(													
-													width: 300,
+													width: ScreenUtil().setWidth(800),
 													child: LinearProgressIndicator
 													(
 														backgroundColor: Color(0xffFFE4AD).withOpacity(0.2),
-														valueColor: AlwaysStoppedAnimation<Color>(Color(0xff714F28),),
-														value: 0.3,
+														valueColor: AlwaysStoppedAnimation<Color>(Color(0xff714F28)),
+														value: loadingProgress,
 													),
 												),
 										  	],
