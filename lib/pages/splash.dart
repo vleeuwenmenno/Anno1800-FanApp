@@ -37,33 +37,34 @@ class _SplashScreenState extends State<SplashScreen> {
 							children: <Widget>
 							[
 								Padding(
-								  padding: const EdgeInsets.only(top: 128.0),
+								  padding: const EdgeInsets.only(top: 64.0),
 								  child: Column
-								  (
-								  	children: <Widget>
-								  	[
-								  		Image
-								  		(
-								  			image: AssetImage("assets/logo.png"),
-								  		),
-								    
-								  		Text.rich
-								  		(
-								  			TextSpan
-								  			(
-								  				text: 'FAN APP', 
-								  				style: TextStyle
-								  				(
-								  					fontSize: ScreenUtil(allowFontScaling: true).setSp(48),
-								  					fontFamily: 'Angsana New', //TODO: change font
-								  				)
-								  			)
-								  		),
-								  	],
-								  ),
+									(
+										children: <Widget>
+										[
+											Image
+											(
+												image: AssetImage("assets/logo.png"),
+											),
+										
+											Text.rich
+											(
+												TextSpan
+												(
+													text: 'FAN APP', 
+													style: TextStyle
+													(
+														fontSize: ScreenUtil(allowFontScaling: true).setSp(48),
+														fontFamily: 'Angsana New', //TODO: change font
+													)
+												)
+											),
+										],
+									),
 								),
 								
-								Row(
+								Row
+								(
 									mainAxisAlignment: MainAxisAlignment.end,
 									children: <Widget>
 									[
@@ -74,18 +75,18 @@ class _SplashScreenState extends State<SplashScreen> {
 										  	children: <Widget>
 										  	[
 										  		Padding(
-										  		  padding: const EdgeInsets.all(8.0),
-										  		  child: Text.rich
-										  		  (
-										  		  	TextSpan
-										  		  	(
-										  		  		text: 'Loading Assets...',
-														style: TextStyle
+													padding: const EdgeInsets.all(8.0),
+													child: Text.rich
+													(
+														TextSpan
 														(
-															color: Color(0xffFFE4AD)
+															text: 'Loading Assets...',
+															style: TextStyle
+															(
+																color: Color(0xffFFE4AD)
+															)
 														)
-										  		  	)
-										  		  ),
+										  		  	),
 										  		),
 
 												Container
@@ -96,7 +97,6 @@ class _SplashScreenState extends State<SplashScreen> {
 														backgroundColor: Color(0xffFFE4AD).withOpacity(0.2),
 														valueColor: AlwaysStoppedAnimation<Color>(Color(0xff714F28),),
 														value: 0.3,
-														
 													),
 												),
 										  	],
