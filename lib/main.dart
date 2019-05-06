@@ -1,6 +1,8 @@
+import 'package:anno1800_fanapp/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/pages/splash.dart';
 import 'package:anno1800_fanapp/pages/newsFeed.dart';
+import 'package:anno1800_fanapp/pages/globals.dart' as globals;
 
 void main() => runApp(MyApp());
 
@@ -43,6 +45,8 @@ class MyApp extends StatelessWidget
 				900 : const Color(0xffFFE4AD)
 			}
 		);
+
+		globals.sideMenu = SideMenu();
 
 		return MaterialApp(
 			title: 'Flutter Demo',
