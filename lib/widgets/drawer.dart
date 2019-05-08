@@ -11,39 +11,83 @@ class SideMenuState extends State<SideMenu> with SingleTickerProviderStateMixin
 	Widget build(BuildContext context)
 	{
 		return Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the Drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header Appels'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      );
+			child: ListView(
+			// Important: Remove any padding from the ListView.
+				padding: EdgeInsets.zero,
+				children: <Widget>
+				[
+					DrawerHeader(
+						child: Text('Anno 1800 Fan App'),
+						decoration: BoxDecoration(
+							color: Colors.blue,
+						),
+					),
+
+					ListTile(
+						title: Text('News'),
+						onTap: () 
+						{
+							Navigator.pop(context);
+						},
+					),
+
+					ListTile(
+						title: Text('Population needs'),
+						onTap: () 
+						{
+							Navigator.pop(context);
+						},
+					),
+
+					ListTile(
+						title: Text('Goods'),
+						onTap: () 
+						{
+							Navigator.pop(context);
+						},
+					),
+
+					ListTile(
+						title: Text('Inter-dependencies'),
+						onTap: () 
+						{
+							Navigator.pop(context);
+						},
+					),
+
+					ListTile(
+						title: Text('Production-layouts'),
+						onTap: () 
+						{
+							Navigator.pop(context);
+						},
+					),
+
+					ListTile(
+						title: Text('City-layouts'),
+						onTap: () 
+						{
+							Navigator.pop(context);
+						},
+					),
+
+					ListTile(
+						title: Text('Donate'),
+						onTap: () 
+						{
+							Navigator.pop(context);
+						},
+					),
+
+					ListTile(
+						title: Text('About'),
+						onTap: () 
+						{
+							Navigator.pop(context);
+						},
+					),
+				],
+			),
+      	);
 	}
 }
