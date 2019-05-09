@@ -42,7 +42,8 @@ class _NewsFeedState extends State<NewsFeed>
 					)
 				],
 			),
-			drawer: globals.sideMenu,
+			// drawer: globals.sideMenu,
+			drawer: SideMenu(activePageId: 0),
 			// body: ListView.builder(),
 			// body: Container(
 			// 	child: Text('data'),
