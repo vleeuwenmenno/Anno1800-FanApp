@@ -37,8 +37,8 @@ class _SplashScreenState extends State<SplashScreen>
 		{
 			if (once)
 			{
-				widget.nfd.loadData();
 				widget.am.precacheImages(context);
+				widget.nfd.loadData();
 
 				once = false;
 			}
@@ -66,11 +66,13 @@ class _SplashScreenState extends State<SplashScreen>
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 
-		if (widget.am.imageAssets.length > 0)
+		if (widget.am.imageAssets != null && widget.am.imageAssets.length > 0)
 			loadingProgress = (widget.nfd.itemsLoaded + widget.am.cachedImages) / (widget.nfd.itemsExpected + widget.am.imageAssets.length);
 			
 		operations = widget.nfd.itemsLoaded + widget.am.cachedImages;
-		totalOperations = widget.nfd.itemsExpected + widget.am.imageAssets.length;
+
+		if (widget.am.imageAssets != null)
+			totalOperations = widget.nfd.itemsExpected + widget.am.imageAssets.length;
 
 		return Scaffold
 		(

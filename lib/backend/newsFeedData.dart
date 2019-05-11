@@ -12,30 +12,40 @@ class NewsFeedData
 	bool finished = false;
 
 	int itemsLoaded = 0;
-	int itemsExpected = 1;
+	int itemsExpected = 20;
 
 	void loadData() async
 	{
 		finished = false;
 		itemsLoaded = 0;
-		itemsExpected = 1;
+		itemsExpected = 20;
 
 		/// Load data from RSS Feed
 		Client client = new Client();
-		Response response = await client.get("https://www.anno-union.com/en/category/devblog-en/feed");
+		Response response = await client.get("https://www.anno-union.com/en/category/annnouncement/feed");
+		Response responseDev = await client.get("https://www.anno-union.com/en/category/devblog-en/feed");
+
+		RssFeed channelDev = new RssFeed.parse(responseDev.body);
 		RssFeed channel = new RssFeed.parse(response.body);
-		
-		itemsExpected = channel.items.length;
-		
-		/// Empty the list and init it
+
+		itemsExpected = channel.items.length + channelDev.items.length;
+
+		/// make sure its clean before we add new data
 		newsWidgets = Map<String, News>();
 
+		await _processData(channel);
+		await _processData(channelDev);
+	
+		finished = true;
+	}
+
+	Future<void> _processData(RssFeed channel) async
+	{
 		/// Loop all items and parse into News widgets
 		var futures = <Future>[];
 		for (var index = 0; index < channel.items.length; index++) 
 		{
 			RssItem i = channel.items[index];
-			var name = new String.fromCharCode(65 + index);
 			var thread = new Future(() async 
 			{
 				News n = News(
@@ -64,6 +74,5 @@ class NewsFeedData
 		}
 
 		await Future.wait(futures);
-		finished = true;
 	}
 }

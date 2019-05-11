@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
@@ -143,7 +145,7 @@ class AssetsManagement
 	List<String> imageAssets = [];
 	int cachedImages = 0;
 
-	void precacheImages(BuildContext context) async
+	void precacheImages(BuildContext context)
 	{
 		imageAssets = [];
 		cachedImages = 0;
@@ -156,11 +158,17 @@ class AssetsManagement
 			}
 		}
 
-		for (String s in imageAssets)
+		var futures = <Future>[];
+		for (var index = 0; index < imageAssets.length; index++) 
 		{
-			ImageProvider i = AssetImage(s);
-			precacheImage(i, context);
-			cachedImages++;
+			String s = imageAssets[index];
+			var thread = new Future(() async 
+			{
+				precacheImage(AssetImage(s), context);
+				cachedImages++;
+			});
+
+			futures.add(thread);
 		}
 	}
 }
