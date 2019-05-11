@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SplashScreen extends StatefulWidget {
-  
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
-
+class SplashScreen extends StatefulWidget 
+{
+	@override
+	_SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> 
 {
-
 	double loadingProgress = 0.9;
 
-	Widget build(BuildContext context){
-
+	Widget build(BuildContext context)
+	{		
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 
 		return Scaffold

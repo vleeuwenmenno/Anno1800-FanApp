@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/pages/newsFeedPage.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/pages/splash.dart';
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget
 				'/': (context) => SplashScreen(),
 
 				'/newsFeed': (context) => NewsFeed(),
+				'/newsFeed/page': (context) => NewsFeedPage()
 			},
 		);
 	}
