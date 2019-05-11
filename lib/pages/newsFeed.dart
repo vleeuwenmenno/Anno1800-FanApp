@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:http/http.dart' as http;
+import 'package:anno1800_fanapp/widgets/drawer.dart';
+import 'package:anno1800_fanapp/pages/globals.dart' as globals;
 
 class NewsFeed extends StatefulWidget 
 {
@@ -40,6 +42,8 @@ class _NewsFeedState extends State<NewsFeed>
 					)
 				],
 			),
+			// drawer: globals.sideMenu,
+			drawer: SideMenu(activePageId: 0),
 			// body: ListView.builder(),
 			// body: Container(
 			// 	child: Text('data'),
