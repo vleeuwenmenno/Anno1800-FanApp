@@ -13,104 +13,67 @@ class SideMenu extends StatefulWidget
 
 class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 {
+	Map<String, String> items;
+	List<Widget> itemWidgets;
+
 	Widget build(BuildContext context)
 	{
+		items = Map<String, String>();
+		itemWidgets = [];
+		
+		items = 
+		{
+			"News": "assets/Letter.png",
+			"Population needs": "assets/tiers/investor.png",
+			"Goods": "assets/buildings/Warehouse.png",
+			"Inter-dependencies": "assets/buildings/Depot.png",
+			"Production-layouts": "assets/icons/Tile.png",
+			"City-layouts": "assets/buildings/Residence.png",
+			"Donate": "assets/resources/Beer.png",
+			"About": "assets/buildings/Warehouse.png"
+		};
+
+		itemWidgets.add(DrawerHeader(
+			child: Text('Anno 1800 Fan App',
+				style: TextStyle(
+					fontSize: 20, 
+					color: Color(0xffFFE4AD)
+				),
+			),
+			decoration: BoxDecoration(
+				color: Color(0xff714F28),
+			),
+		));
+
+		int i = 0;
+		items.forEach((String key, String value)
+		{
+			Widget item =
+				Container(
+					color: widget.activePageId == i ? Color(0xff714F28).withOpacity(0.1) : Colors.transparent,
+					child:Opacity(
+						opacity: widget.activePageId == i ? 1.0 : 0.5,
+						child:  ListTile(
+							leading: Image.asset(value, width: 32),
+							title: Text(key),
+							onTap: () 
+							{
+								print("Going to /drawer/${key.trim().toLowerCase()}");
+								Navigator.pushNamed(context, "/drawer/${key.trim().toLowerCase()}");
+							},
+						),
+					)
+				);
+
+			i++;
+			itemWidgets.add(item);
+		});
+
 		return Drawer(
 			child: ListView(
 			// Important: Remove any padding from the ListView.
 				padding: EdgeInsets.zero,
-				children: <Widget>
-				[
-					DrawerHeader(
-						child: Text('Anno 1800 Fan App',
-            				style: TextStyle(
-								fontSize: 20, 
-								color: Color(0xffFFE4AD)
-							),
-						),
-						decoration: BoxDecoration(
-							color: Color(0xff714F28),
-						),
-					),
-
-					Container(
-						color: widget.activePageId == 0 ? Color(0xff714F28).withOpacity(0.1) : Colors.transparent,
-						child: ListTile(
-							leading: Image.asset('assets/icons/Letter.png'),
-							title: Text('News'),
-							onTap: () 
-							{
-								Navigator.pop(context);
-							},
-						),
-					),
-
-					Container(
-						color: widget.activePageId == 1 ? Color(0xff714F28).withOpacity(0.1) : Colors.transparent,
-						child: ListTile(
-							leading: Image.asset('assets/icons/investor.png'),
-							title: Text('Population needs'),
-							onTap: () 
-							{	
-								Navigator.pop(context);
-							},
-						),
-					),
-
-					ListTile(
-            			leading: Image.asset('assets/icons/Warehouse.png'),
-						title: Text('Goods'),
-						onTap: () 
-						{
-							Navigator.pop(context);
-						},
-					),
-
-					ListTile(
-            			leading: Image.asset('assets/icons/Depot.png'),
-						title: Text('Inter-dependencies'),
-						onTap: () 
-						{
-							Navigator.pop(context);
-						},
-					),
-
-					ListTile(
-           				leading: Image.asset('assets/icons/Tile.png'),
-						title: Text('Production-layouts'),
-						onTap: () 
-						{
-							Navigator.pop(context);
-						},
-					),
-
-					ListTile(
-           				leading: Image.asset('assets/icons/Residence.png'),
-						title: Text('City-layouts'),
-						onTap: () 
-						{
-							Navigator.pop(context);
-						},
-					),
-
-					ListTile(
-            			leading: Image.asset('assets/icons/Beer.png'),
-						title: Text('Donate'),
-						onTap: () 
-						{
-							Navigator.pop(context);
-						},
-					),
-
-					ListTile(
-            			leading: Image.asset('assets/icons/Warehouse.png'),
-						title: Text('About'),
-						onTap: () 
-						{
-							Navigator.pop(context);
-						},
-					),
-				],
+				children: itemWidgets,
 			),
       	);
 	}

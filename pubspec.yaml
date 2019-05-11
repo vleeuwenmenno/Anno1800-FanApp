@@ -1,6 +1,6 @@
 name: anno1800_fanapp
-description: A new Flutter project.
-version: 1.0.0+1
+description: A fan made app to display all the news, layouts, production chains and other useful things while playing Anno 1800
+version: 0.1.0+1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -28,6 +28,10 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/background.png
-   - assets/logo.png
+   - assets/
+   - assets/buildings/
+   - assets/tiers/
    - assets/icons/
+   - assets/icons/other/
+   - assets/ships/
+   - assets/resources/

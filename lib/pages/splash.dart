@@ -1,19 +1,76 @@
+import 'dart:async';
+import 'package:anno1800_fanapp/backend/assets.dart';
+import 'package:anno1800_fanapp/backend/newsFeedData.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatefulWidget 
 {
+	NewsFeedData nfd;
+	AssetsManagement am;
+
 	@override
 	_SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> 
 {
-	double loadingProgress = 0.9;
+	Timer progressChecker;
+
+	double loadingProgress = 0.0;
+
+	int operations = 0;
+	int totalOperations = 0;
+
+	bool once = true;
+
+	@override
+	void initState()
+	{
+		super.initState();
+
+		widget.nfd = new NewsFeedData();
+		widget.am = new AssetsManagement();
+
+		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
+		{
+			if (once)
+			{
+				widget.nfd.loadData();
+				widget.am.precacheImages(context);
+
+				once = false;
+			}
+
+			setState(() { });
+
+			if (loadingProgress == 1)
+			{
+				Navigator.pushNamed(context, "/drawer/news", arguments: { "newsFeedData": widget.nfd });
+				t.cancel();
+			}
+		});
+	}
+
+	@override
+	void dispose()
+	{
+		if (progressChecker != null)
+			progressChecker.cancel();
+
+		super.dispose();
+	}
 
 	Widget build(BuildContext context)
-	{		
+	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+
+		if (widget.am.imageAssets.length > 0)
+			loadingProgress = (widget.nfd.itemsLoaded + widget.am.cachedImages) / (widget.nfd.itemsExpected + widget.am.imageAssets.length);
+			
+		operations = widget.nfd.itemsLoaded + widget.am.cachedImages;
+		totalOperations = widget.nfd.itemsExpected + widget.am.imageAssets.length;
 
 		return Scaffold
 		(
@@ -56,7 +113,7 @@ class _SplashScreenState extends State<SplashScreen>
 													style: TextStyle
 													(
 														fontSize: ScreenUtil(allowFontScaling: true).setSp(48),
-														fontFamily: 'Angsana New', //TODO: change font
+														fontFamily: 'Angsana New',
 													)
 												)
 											),
@@ -81,7 +138,7 @@ class _SplashScreenState extends State<SplashScreen>
 													(
 														TextSpan
 														(
-															text: 'Loading Assets...',
+															text: 'Loading Assets... ($operations/$totalOperations)',
 															style: TextStyle
 															(
 																color: Color(0xffFFE4AD)

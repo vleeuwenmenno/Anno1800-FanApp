@@ -63,7 +63,7 @@ class NewsState extends State<News>
 		return GestureDetector(
 			onTap: ()
 			{
-				Navigator.pushNamed(context, "/newsFeed/page", arguments: { "newsItem": widget });
+				Navigator.pushNamed(context, "/newsFeedPage", arguments: { "newsItem": widget });
 			},
 			child: Padding(
 				padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),

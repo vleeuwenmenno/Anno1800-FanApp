@@ -66,13 +66,15 @@ class MyApp extends StatelessWidget
 
 				)
 			),
-			initialRoute: '/newsFeed',
+			initialRoute: '/',
 			routes: 
 			{
 				'/': (context) => SplashScreen(),
 
-				'/newsFeed': (context) => NewsFeed(),
-				'/newsFeed/page': (context) => NewsFeedPage()
+				'/drawer/news': (context) => NewsFeed(),
+				"/drawer/population needs": (context) => NewsFeedPage(),
+
+				'/newsFeedPage': (context) => NewsFeedPage(),
 			},
 		);
 	}

@@ -39,6 +39,7 @@ class _NewsFeedPageState extends State<NewsFeedPage>
 				title: Text('Anno Union - News feed'),
 				actions: <Widget>
 				[
+					
 					IconButton(
 						onPressed: () 
 						{ },
