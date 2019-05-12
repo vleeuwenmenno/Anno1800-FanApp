@@ -101,7 +101,7 @@ class MenuEntryRowState extends State<MenuEntryRow>
 		return GestureDetector(
 			onTap: widget.enabled ? widget.onTap : null,
 			child: Container(
-				height: 75,
+				height: 84,
 				decoration: BoxDecoration(
 					color: (widget.dark ? const Color(0xff714F28) : const Color(0xffFFE4AD))
 				),

@@ -115,15 +115,12 @@ class LicensesState extends State<Licenses>
 				title: Text('Licenses'),
 			),
 			drawer: SideMenu(activePageId: 7),
-			body: Stack(
-				children: <Widget>
-				[
-					Column(
-						mainAxisAlignment: MainAxisAlignment.start,
-						crossAxisAlignment: CrossAxisAlignment.start,
-						children: licenseWidgets
-					)
-				]
+			body: SingleChildScrollView(
+				child: Column(
+					mainAxisAlignment: MainAxisAlignment.start,
+					crossAxisAlignment: CrossAxisAlignment.start,
+					children: licenseWidgets
+				)
 			)
 		);
 	}

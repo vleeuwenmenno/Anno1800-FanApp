@@ -1,6 +1,7 @@
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -81,15 +82,12 @@ class ChangelogState extends State<Changelog>
 				title: Text('Changelog'),
 			),
 			drawer: SideMenu(activePageId: 7),
-			body: Stack(
-				children: <Widget>
-				[
-					Column(
-						mainAxisAlignment: MainAxisAlignment.start,
-						crossAxisAlignment: CrossAxisAlignment.start,
-						children: versionWidgets
-					)
-				]
+			body: SingleChildScrollView(
+				child: Column(
+					mainAxisAlignment: MainAxisAlignment.start,
+					crossAxisAlignment: CrossAxisAlignment.start,
+					children: versionWidgets
+				)
 			)
 		);
 	}

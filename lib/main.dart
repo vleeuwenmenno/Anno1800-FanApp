@@ -4,6 +4,7 @@ import 'package:anno1800_fanapp/pages/about/licenses.dart';
 import 'package:anno1800_fanapp/pages/newsFeed/newsDetails.dart';
 import 'package:anno1800_fanapp/pages/newsFeed/newsFeed.dart';
 import 'package:anno1800_fanapp/pages/popNeeds/popNeeds.dart';
+import 'package:anno1800_fanapp/pages/popNeeds/popNeedsResult.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/pages/splash.dart';
@@ -79,7 +80,8 @@ class MyApp extends StatelessWidget
 				'/drawer/news': (context) => NewsFeed(),
 				'/drawer/news/details': (context) => NewsDetails(),
 
-				"/drawer/population needs": (context) => PopNeeds(),
+				'/drawer/population needs': (context) => PopNeeds(),
+				'/drawer/population needs/result': (context) => PopNeedsResult(),
 
 				'/drawer/about': (context) => About(),
 				'/drawer/about/changelog': (context) => Changelog(),
