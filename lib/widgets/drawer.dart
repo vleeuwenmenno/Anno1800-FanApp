@@ -33,17 +33,33 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 			"About": "assets/buildings/Warehouse.png"
 		};
 
-		itemWidgets.add(DrawerHeader(
-			child: Text('Anno 1800 Fan App',
-				style: TextStyle(
-					fontSize: 20, 
-					color: Color(0xffFFE4AD)
+		itemWidgets.add(
+			DrawerHeader(
+				child: Column(
+					mainAxisAlignment: MainAxisAlignment.start,
+					crossAxisAlignment: CrossAxisAlignment.start,
+					children: <Widget>
+					[
+						Text('Anno 1800 Fan App',
+							style: TextStyle(
+								fontSize: 24, 
+								color: Color(0xffFFE4AD)
+							),
+						),
+
+						Text('Select a topic to start with',
+							style: TextStyle(
+								fontSize: 12, 
+								color: Color(0x99FFE4AD)
+							),
+						)
+					]
 				),
-			),
-			decoration: BoxDecoration(
-				color: Color(0xff714F28),
-			),
-		));
+				decoration: BoxDecoration(
+					color: Color(0xff714F28),
+				),
+			)
+		);
 
 		int i = 0;
 		items.forEach((String key, String value)
@@ -59,7 +75,7 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 							onTap: () 
 							{
 								print("Going to /drawer/${key.trim().toLowerCase()}");
-								Navigator.pushNamed(context, "/drawer/${key.trim().toLowerCase()}");
+								Navigator.pushReplacementNamed(context, "/drawer/${key.trim().toLowerCase()}");
 							},
 						),
 					)

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:anno1800_fanapp/backend/assets.dart';
+import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/backend/newsFeedData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatefulWidget 
 {
-	NewsFeedData nfd;
 	AssetsManagement am;
 
 	@override
@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
 	{
 		super.initState();
 
-		widget.nfd = new NewsFeedData();
+		nfd = new NewsFeedData();
 		widget.am = new AssetsManagement();
 
 		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen>
 			if (once)
 			{
 				widget.am.precacheImages(context);
-				widget.nfd.loadData();
+				nfd.loadData();
 
 				once = false;
 			}
@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen>
 
 			if (loadingProgress == 1)
 			{
-				Navigator.pushNamed(context, "/drawer/news", arguments: { "newsFeedData": widget.nfd });
+				Navigator.pushReplacementNamed(context, "/drawer/news");
 				t.cancel();
 			}
 		});
@@ -67,12 +67,12 @@ class _SplashScreenState extends State<SplashScreen>
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 
 		if (widget.am.imageAssets != null && widget.am.imageAssets.length > 0)
-			loadingProgress = (widget.nfd.itemsLoaded + widget.am.cachedImages) / (widget.nfd.itemsExpected + widget.am.imageAssets.length);
+			loadingProgress = (nfd.itemsLoaded + widget.am.cachedImages) / (nfd.itemsExpected + widget.am.imageAssets.length);
 			
-		operations = widget.nfd.itemsLoaded + widget.am.cachedImages;
+		operations = nfd.itemsLoaded + widget.am.cachedImages;
 
 		if (widget.am.imageAssets != null)
-			totalOperations = widget.nfd.itemsExpected + widget.am.imageAssets.length;
+			totalOperations = nfd.itemsExpected + widget.am.imageAssets.length;
 
 		return Scaffold
 		(

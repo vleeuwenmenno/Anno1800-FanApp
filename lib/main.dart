@@ -1,4 +1,8 @@
+import 'package:anno1800_fanapp/pages/about.dart';
+import 'package:anno1800_fanapp/pages/changelog.dart';
+import 'package:anno1800_fanapp/pages/licenses.dart';
 import 'package:anno1800_fanapp/pages/newsFeedPage.dart';
+import 'package:anno1800_fanapp/pages/popNeeds.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/pages/splash.dart';
@@ -72,9 +76,12 @@ class MyApp extends StatelessWidget
 				'/': (context) => SplashScreen(),
 
 				'/drawer/news': (context) => NewsFeed(),
-				"/drawer/population needs": (context) => NewsFeedPage(),
+				"/drawer/population needs": (context) => PopNeeds(),
+				'/drawer/about': (context) => About(),
 
 				'/newsFeedPage': (context) => NewsFeedPage(),
+				'/changelog': (context) => Changelog(),
+				'/licenses': (context) => Licenses()
 			},
 		);
 	}
