@@ -36,7 +36,7 @@ class AboutState extends State<About>
 									type: MenuEntryRowType.None,
 									onTap: ()
 									{
-										Navigator.pushNamed(context, "/changelog");
+										Navigator.pushNamed(context, "/drawer/about/changelog");
 									},
 								),
 
@@ -45,7 +45,7 @@ class AboutState extends State<About>
 									type: MenuEntryRowType.None,
 									onTap: ()
 									{
-										Navigator.pushNamed(context, "/licenses");
+										Navigator.pushNamed(context, "/drawer/about/licenses");
 									},
 								)
 							]

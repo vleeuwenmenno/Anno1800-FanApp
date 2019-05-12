@@ -112,7 +112,7 @@ class LicensesState extends State<Licenses>
 
 		return Scaffold(
 			appBar: AppBar(
-				title: Text('Changelog'),
+				title: Text('Licenses'),
 			),
 			drawer: SideMenu(activePageId: 7),
 			body: Stack(

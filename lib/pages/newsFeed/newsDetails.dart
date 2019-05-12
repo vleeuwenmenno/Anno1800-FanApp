@@ -7,15 +7,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class NewsFeedPage extends StatefulWidget 
+class NewsDetails extends StatefulWidget 
 {
 	News news;
 
 	@override
-	_NewsFeedPageState createState() => _NewsFeedPageState();
+	NewsDetailsState createState() => NewsDetailsState();
 }
 
-class _NewsFeedPageState extends State<NewsFeedPage> 
+class NewsDetailsState extends State<NewsDetails> 
 {
 	launchURL(String url) async 
 	{

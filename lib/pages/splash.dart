@@ -32,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
 
 		nfd = new NewsFeedData();
 		widget.am = new AssetsManagement();
+		widget.am.imageAssets = [];
 
 		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
 		{

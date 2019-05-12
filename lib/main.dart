@@ -1,13 +1,14 @@
-import 'package:anno1800_fanapp/pages/about.dart';
-import 'package:anno1800_fanapp/pages/changelog.dart';
-import 'package:anno1800_fanapp/pages/licenses.dart';
-import 'package:anno1800_fanapp/pages/newsFeedPage.dart';
-import 'package:anno1800_fanapp/pages/popNeeds.dart';
+import 'package:anno1800_fanapp/pages/about/about.dart';
+import 'package:anno1800_fanapp/pages/about/changelog.dart';
+import 'package:anno1800_fanapp/pages/about/licenses.dart';
+import 'package:anno1800_fanapp/pages/newsFeed/newsDetails.dart';
+import 'package:anno1800_fanapp/pages/newsFeed/newsFeed.dart';
+import 'package:anno1800_fanapp/pages/popNeeds/popNeeds.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/pages/splash.dart';
-import 'package:anno1800_fanapp/pages/newsFeed.dart';
-import 'package:anno1800_fanapp/pages/globals.dart' as globals;
+
+import 'backend/globals.dart';
 
 void main() => runApp(MyApp());
 
@@ -51,10 +52,10 @@ class MyApp extends StatelessWidget
 			}
 		);
 
-		globals.sideMenu = SideMenu();
+		sideMenu = SideMenu();
 
 		return MaterialApp(
-			title: 'Flutter Demo',
+			title: 'Anno 1800 FanApp',
 			theme: ThemeData(
 				primarySwatch: darkBrown,
 				canvasColor: sand,
@@ -76,12 +77,13 @@ class MyApp extends StatelessWidget
 				'/': (context) => SplashScreen(),
 
 				'/drawer/news': (context) => NewsFeed(),
-				"/drawer/population needs": (context) => PopNeeds(),
-				'/drawer/about': (context) => About(),
+				'/drawer/news/details': (context) => NewsDetails(),
 
-				'/newsFeedPage': (context) => NewsFeedPage(),
-				'/changelog': (context) => Changelog(),
-				'/licenses': (context) => Licenses()
+				"/drawer/population needs": (context) => PopNeeds(),
+
+				'/drawer/about': (context) => About(),
+				'/drawer/about/changelog': (context) => Changelog(),
+				'/drawer/about/licenses': (context) => Licenses()
 			},
 		);
 	}
