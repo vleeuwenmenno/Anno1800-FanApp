@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:webfeed/domain/rss_category.dart';
@@ -9,6 +10,8 @@ class News extends StatefulWidget
 	final String title;
 	final String desc;
 	final String link;
+
+	final Globals globals;
 
 	String get img => _img;
 
@@ -41,6 +44,9 @@ class News extends StatefulWidget
 			this.desc,
 			this.link,
 
+			@required
+			this.globals,
+
 			this.content,
 			this.images,
 			
@@ -63,7 +69,7 @@ class NewsState extends State<News>
 		return GestureDetector(
 			onTap: ()
 			{
-				Navigator.pushNamed(context, "/drawer/news/details", arguments: { "newsItem": widget });
+				Navigator.pushNamed(context, "/drawer/news/details", arguments: { "globals": widget.globals, "newsItem": widget });
 			},
 			child: Padding(
 				padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),

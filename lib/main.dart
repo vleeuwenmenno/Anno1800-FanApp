@@ -53,8 +53,6 @@ class MyApp extends StatelessWidget
 			}
 		);
 
-		sideMenu = SideMenu();
-
 		return MaterialApp(
 			title: 'Anno 1800 FanApp',
 			theme: ThemeData(

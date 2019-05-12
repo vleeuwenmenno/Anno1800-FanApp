@@ -1,12 +1,16 @@
 import 'dart:async';
 
 import 'package:anno1800_fanapp/backend/globals.dart';
+import 'package:anno1800_fanapp/backend/newsFeedData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class NewsFeed extends StatefulWidget 
 {
+	Globals globals;
+
 	@override
 	_NewsFeedState createState() => _NewsFeedState();
 }
@@ -14,22 +18,9 @@ class NewsFeed extends StatefulWidget
 class _NewsFeedState extends State<NewsFeed> 
 {
 	Timer progressChecker;
-	
-	@override
-	void initState()
-	{
-		super.initState();
-
-		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
-		{
-			setState(() { });
-
-			if (nfd.newsWidgets != null)
-			{
-				t.cancel();
-			}
-		});
-	}
+	RefreshController _refreshController;	
+	double loadingProgress = 0.0;
+	bool once = true;
 
 	@override
 	void dispose()
@@ -37,12 +28,33 @@ class _NewsFeedState extends State<NewsFeed>
 		if (progressChecker != null)
 			progressChecker.cancel();
 
+		_refreshController.dispose();
 		super.dispose();
+	}
+
+	@override
+	void initState()
+	{
+		super.initState();
+
+    	_refreshController = RefreshController();
+		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
+		{
+			setState(() { });
+
+			if (widget.globals.nfd.newsWidgets != null)
+			{
+				t.cancel();
+			}
+		});
 	}
 
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
+
+		loadingProgress = (widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages) / (widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length);
 
 		return WillPopScope(
 			onWillPop: () async => false,
@@ -61,14 +73,51 @@ class _NewsFeedState extends State<NewsFeed>
 					],
 				),
 				drawer: SideMenu(activePageId: 0),
-				body: ListView.builder(
-					itemCount: nfd.newsWidgets != null ? nfd.newsWidgets.length : 0,
-					itemBuilder: (BuildContext ctxt, int index) 
-					{
-						return nfd.newsWidgets.values.elementAt(index);
-					}
+				body: SmartRefresher(
+					enablePullDown: true,
+					header: ClassicHeader(),
+					controller: _refreshController,
+					onRefresh: _onRefresh,
+					child: ListView.builder(
+						itemCount: widget.globals.nfd.newsWidgets != null ? widget.globals.nfd.newsWidgets.length : 0,
+						itemBuilder: (BuildContext ctxt, int index) 
+						{
+							return widget.globals.nfd.newsWidgets.values.elementAt(index);
+						}
+					),
 				)
 			)
 		);
+	}
+
+	void _onRefresh()
+	{
+		if (DateTime.now().millisecondsSinceEpoch - widget.globals.lastReload > ((1000 * 60) * 5)) /// 5 minutes delay for refreshing again
+		{
+			once = true;
+			loadingProgress = 0;
+			widget.globals.lastReload = DateTime.now().millisecondsSinceEpoch;
+			widget.globals.nfd = NewsFeedData();
+			progressChecker = Timer.periodic(Duration(milliseconds: 500), (Timer t) 
+			{
+				if (once)
+				{
+					widget.globals.am.precacheImages(context);
+					widget.globals.nfd.loadData();
+
+					once = false;
+				}
+
+				setState(() { });
+
+				if (loadingProgress == 1)
+				{
+					_refreshController.refreshCompleted();
+					t.cancel();
+				}
+			});
+		}
+		else
+			_refreshController.refreshCompleted();
 	}
 }

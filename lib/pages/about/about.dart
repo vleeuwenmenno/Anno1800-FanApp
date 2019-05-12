@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 
 class About extends StatefulWidget 
-{
+{	
+	Globals globals;
+
 	@override
 	AboutState createState() => AboutState();
 }
@@ -15,6 +18,7 @@ class AboutState extends State<About>
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
 		return WillPopScope(
 			onWillPop: () async => false,
@@ -36,7 +40,7 @@ class AboutState extends State<About>
 									type: MenuEntryRowType.None,
 									onTap: ()
 									{
-										Navigator.pushNamed(context, "/drawer/about/changelog");
+										Navigator.pushNamed(context, "/drawer/about/changelog", arguments: { "globals": widget.globals });
 									},
 								),
 
@@ -45,9 +49,9 @@ class AboutState extends State<About>
 									type: MenuEntryRowType.None,
 									onTap: ()
 									{
-										Navigator.pushNamed(context, "/drawer/about/licenses");
+										Navigator.pushNamed(context, "/drawer/about/licenses", arguments: { "globals": widget.globals });
 									},
-								)
+								),
 							]
 						),
 

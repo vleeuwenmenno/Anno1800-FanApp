@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,9 @@ import 'package:anno1800_fanapp/widgets/drawer.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class Changelog extends StatefulWidget 
-{
+{	
+	Globals globals;
+
 	@override
 	ChangelogState createState() => ChangelogState();
 }
@@ -44,6 +47,7 @@ class ChangelogState extends State<Changelog>
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
 		versionWidgets = [];
 		versionHistory.forEach((k, v)

@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:anno1800_fanapp/widgets/detailedTextfield.dart';
@@ -6,7 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 
 class PopNeeds extends StatefulWidget 
-{
+{	
+	Globals globals;
+
 	@override
 	PopNeedsState createState() => PopNeedsState();
 }
@@ -42,6 +45,7 @@ class PopNeedsState extends State<PopNeeds>
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
 		return WillPopScope(
 			onWillPop: () async => false,
@@ -169,7 +173,17 @@ class PopNeedsState extends State<PopNeeds>
 										controller: DetailedButtonController(enabled: true, forceEnabled: true),
 										onPressed: ()
 										{
-											Navigator.pushNamed(context, "/drawer/population needs/result", arguments: {});
+											Navigator.pushNamed(context, "/drawer/population needs/result", arguments: { "globals": widget.globals, "tiers": 
+											{
+												"farmer": int.tryParse(farmersCtrl.value),
+												"worker": int.tryParse(workerCtrl.value),
+												"artisian": int.tryParse(artisianCtrl.value),
+												"engineer": int.tryParse(engineerCtrl.value),
+												"investor": int.tryParse(investorCtrl.value),
+
+												"jornalero": int.tryParse(jornalerosCtrl.value),
+												"obrero": int.tryParse(obrerosCtrl.value)
+											}, "newWorld": newWorld });
 										},
 										child: Row(
 											mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/newsWidget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -93,6 +94,31 @@ class NewsDetailsState extends State<NewsDetails>
 									launchURL(url);
 								}
 							)
+						),
+
+						RichText(
+							textAlign: TextAlign.center,
+							text: TextSpan(
+								style: TextStyle(
+										color: Color(0xff714F28),
+										fontSize: ScreenUtil(allowFontScaling: true).setSp(32)
+									),
+								text: 
+								"""
+							DISCLAIMER\n
+							RSS Feed is from Anno Union. We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Anno/Ubisoft\n
+							© Ubisoft Entertainment. All Rights Reserved.\n
+							ANNO, Ubisoft and the Ubisoft logo are trademarks of Ubisoft Entertainment in the US and/or other countries.
+								"""
+							),
+						),
+
+						MenuEntryRow(
+							subText: "Open source in browser",
+							onTap: ()
+							{
+								launchURL(widget.news.link);
+							},
 						),
 					]
 				)

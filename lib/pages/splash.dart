@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatefulWidget 
 {
-	AssetsManagement am;
+	Globals globals;
 
 	@override
 	_SplashScreenState createState() => _SplashScreenState();
@@ -29,17 +29,19 @@ class _SplashScreenState extends State<SplashScreen>
 	void initState()
 	{
 		super.initState();
-
-		nfd = new NewsFeedData();
-		widget.am = new AssetsManagement();
-		widget.am.imageAssets = [];
+		
+		widget.globals = Globals();
+		widget.globals.nfd = new NewsFeedData();
+		widget.globals.am = new AssetsManagement();
+		widget.globals.am.imageAssets = [];
+		widget.globals.lastReload = DateTime.now().millisecondsSinceEpoch;
 
 		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
 		{
 			if (once)
 			{
-				widget.am.precacheImages(context);
-				nfd.loadData();
+				widget.globals.am.precacheImages(context);
+				widget.globals.nfd.loadData();
 
 				once = false;
 			}
@@ -48,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
 
 			if (loadingProgress == 1)
 			{
-				Navigator.pushReplacementNamed(context, "/drawer/news");
+				Navigator.pushReplacementNamed(context, "/drawer/news", arguments: { "globals": widget.globals });
 				t.cancel();
 			}
 		});
@@ -67,13 +69,25 @@ class _SplashScreenState extends State<SplashScreen>
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 
-		if (widget.am.imageAssets != null && widget.am.imageAssets.length > 0)
-			loadingProgress = (nfd.itemsLoaded + widget.am.cachedImages) / (nfd.itemsExpected + widget.am.imageAssets.length);
-			
-		operations = nfd.itemsLoaded + widget.am.cachedImages;
+		try
+		{
+			if (widget.globals.am.imageAssets != null && widget.globals.am.imageAssets.length > 0)
+				loadingProgress = (widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages) / (widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length);
+		} 
+		catch (e) 
+		{ 
+			widget.globals.messageBox(context, "Error!", e);
+		}
 
-		if (widget.am.imageAssets != null)
-			totalOperations = nfd.itemsExpected + widget.am.imageAssets.length;
+		try
+		{
+			totalOperations = widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length;
+			operations = widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages;
+		} 
+		catch (e) 
+		{ 
+			widget.globals.messageBox(context, "Error!", e);
+		}
 
 		return Scaffold
 		(

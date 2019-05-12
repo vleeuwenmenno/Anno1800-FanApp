@@ -1,7 +1,9 @@
+import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:flutter/material.dart';
 
 class SideMenu extends StatefulWidget
 {
+	Globals globals;
 	final int activePageId;
 	SideMenu({
 		this.activePageId
@@ -18,6 +20,7 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 
 	Widget build(BuildContext context)
 	{
+		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 		items = Map<String, String>();
 		itemWidgets = [];
 		
@@ -75,7 +78,7 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 							onTap: () 
 							{
 								print("Going to /drawer/${key.trim().toLowerCase()}");
-								Navigator.pushReplacementNamed(context, "/drawer/${key.trim().toLowerCase()}");
+								Navigator.pushReplacementNamed(context, "/drawer/${key.trim().toLowerCase()}", arguments: { "globals": widget.globals });
 							},
 						),
 					)

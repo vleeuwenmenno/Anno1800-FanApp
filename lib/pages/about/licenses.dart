@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +7,9 @@ import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';
 
 class Licenses extends StatefulWidget 
-{
+{	
+	Globals globals;
+
 	@override
 	LicensesState createState() => LicensesState();
 }
@@ -68,6 +71,12 @@ class LicensesState extends State<Licenses>
 			"author": "Andres Araujo",
 			"license": "MIT"
 		},
+		"pull_to_refresh": 
+		{
+			"versionNo": "v1.3.3",
+			"author": "Jpeng",
+			"license": "MIT"
+		},
 	};
 
 	List<Widget> licenseWidgets = [];
@@ -87,6 +96,7 @@ class LicensesState extends State<Licenses>
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
 		licenseWidgets = [];
 		licenses.forEach((k, v)

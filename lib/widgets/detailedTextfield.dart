@@ -12,7 +12,7 @@ class DetailedTextfieldController
 	bool forceEnabled;
 
 	/// Mirrors the value from the internal text editing controller
-	String value;
+	String value = "";
 
 	/// This event gets fired when the value changes
 	ValueSetter<String> onValueChanged;
