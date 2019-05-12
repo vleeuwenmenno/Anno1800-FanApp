@@ -46,9 +46,19 @@ class PopNeedsResultState extends State<PopNeedsResult>
 						ResultIndicator(
 							width: (MediaQuery.of(context).size.width / 100) * 85,
 							icon: AssetImage("assets/resources/Fish.png"),
-							text: "Fishery",
+							text: "Fishery (87%)",
 							count: 2,
-							percentage: 50,
+							percentage: 0.87,
+						),
+
+						Padding(padding: EdgeInsets.all(8)),
+
+						ResultIndicator(
+							width: (MediaQuery.of(context).size.width / 100) * 85,
+							icon: AssetImage("assets/resources/Work_clothes.png"),
+							text: "Work Clothes (94%)",
+							count: 4,
+							percentage: 0.94,
 						)
 					]
 				)
