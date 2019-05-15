@@ -9,6 +9,31 @@ class PopulationCalculator
 			"Fish":         0.0025,
 			"Work_clothes": 0.00307692,
 			"Schnapps":     0.00333334
+		},
+		
+		"worker":
+		{
+			"Residence":    0.05,
+			"Fish":         0.0025,
+			"Work_clothes": 0.00307692,
+			"Schnapps":     0.00333334,
+			"Sausages":     0.001000002,
+			"Bread":        0.00090909,
+			"Soap":         0.000416667,
+			"Beer":         0.00076923
+		},
+
+		"artisan":
+		{
+			"Residence":       0.0333333333,
+			"Sausages":        0.001333334,
+			"Bread":           0.001212122,
+			"Soap":            0.000555556,
+			"Beer":            0.001025642,
+			"Canned_food":     0.00034188,
+			"Sewing_machines": 0.00095238,
+			"Rum":             0.001904762,
+			"Fur_Coats":       0.000888888,  
 		}
 	};
 
@@ -19,12 +44,26 @@ class PopulationCalculator
 		"Work_clothes": 2,
 		"Schnapps": 2,
 		/// Farmers ^^^^
+		
+		/// Workers
+		"Sausages": 1,
+		"Bread": 1,
+		"Soap": 2,
+		"Beer": 1,
+		/// Workers ^^^^
+		
+		/// Artisans
+		"Canned_food": 1,
+		"Sewing_machines": 2,
+		"Rum": 2,
+		"Fur_Coats": 2,
+		/// Artisans ^^^^
 
 
 		/// Residences
 		"farmer_Residence": 10,
 		"worker_Residence": 20,
-		"artisian_Residence": 30,
+		"artisan_Residence": 30,
 		"engineer_Residence": 40,
 		"investor_Residence": 50,
 
@@ -46,9 +85,6 @@ class PopulationCalculator
 					double residency = value * population; /// Total needs
 					int houses = 1;
 					
-					while (residency / (produce['${tier}_Residence'] * houses) > 1) /// While the efficiency is above 100%
-						houses++;
-					
 					returnData["Residence"] = 
 					{
 						"buildings": residency.ceil(),
@@ -57,25 +93,18 @@ class PopulationCalculator
 				}
 				else
 				{
-					double tons = value * population; /// Total needs
-					int building = 1;
-					
-					while (tons / (produce[key] * building) > 1) /// While the efficiency is above 100%
-						building++;
-
+					double tons = value * population; /// Total needs (tons = consumption * population)
 					returnData[key] = 
 					{
 						"tonsNeeded": tons,
-						"efficiency": tons / (produce[key] * building),
-						"buildings": building
+						"efficiency": tons / ((tons / produce[key]).ceil() * produce[key]),
+						"buildings": (tons / produce[key]).ceil()
 					};
 				}
 			});
 		}
 		catch (e)
-		{
-
-		}
+		{ }
 
 		return returnData;
 	}

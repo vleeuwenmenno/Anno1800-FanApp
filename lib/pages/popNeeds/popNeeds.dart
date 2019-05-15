@@ -18,7 +18,7 @@ class PopNeedsState extends State<PopNeeds>
 {
 	DetailedTextfieldController farmersCtrl;
 	DetailedTextfieldController workerCtrl;
-	DetailedTextfieldController artisianCtrl;
+	DetailedTextfieldController artisanCtrl;
 	DetailedTextfieldController engineerCtrl;
 	DetailedTextfieldController investorCtrl;
 
@@ -34,7 +34,7 @@ class PopNeedsState extends State<PopNeeds>
 
 		farmersCtrl = new DetailedTextfieldController(enabled: true);
 		workerCtrl = new DetailedTextfieldController(enabled: true);
-		artisianCtrl = new DetailedTextfieldController(enabled: true);
+		artisanCtrl = new DetailedTextfieldController(enabled: true);
 		engineerCtrl = new DetailedTextfieldController(enabled: true);
 		investorCtrl = new DetailedTextfieldController(enabled: true);
 
@@ -105,9 +105,9 @@ class PopNeedsState extends State<PopNeeds>
 
 									DetailedTextfield(
 										width: (MediaQuery.of(context).size.width / 100) * 85,
-										hintText: "Artisians",
-										icon: AssetImage("assets/tiers/artisian.png"),
-										controller: artisianCtrl,
+										hintText: "Artisans",
+										icon: AssetImage("assets/tiers/artisan.png"),
+										controller: artisanCtrl,
 									),
 
 									Padding(padding: EdgeInsets.all(8)),
@@ -177,7 +177,7 @@ class PopNeedsState extends State<PopNeeds>
 											{
 												"farmer": int.tryParse(farmersCtrl.value),
 												"worker": int.tryParse(workerCtrl.value),
-												"artisian": int.tryParse(artisianCtrl.value),
+												"artisan": int.tryParse(artisanCtrl.value),
 												"engineer": int.tryParse(engineerCtrl.value),
 												"investor": int.tryParse(investorCtrl.value),
 

@@ -8,6 +8,16 @@ class AssetsManagement
 {
 	List<String> assets =
 	[
+		/*
+		Use this command to list all the files in assets/ (run inside root of project)
+		Then copy that output and paste it below here
+		
+		ls -R assets | awk '
+		/:$/&&f{s=$0;f=0}
+		/:$/&&!f{sub(/:$/,"");s=$0;f=1;next}
+		NF&&f{ print "\""s"/"$0"\"," }'
+
+		*/
 		"assets/background.png",
 		"assets/buildings/",
 		"assets/calculator.svg",
@@ -126,8 +136,8 @@ class AssetsManagement
 		"assets/ships/Royal_ship-of-the-line.png",
 		"assets/ships/Schooner.png",
 		"assets/ships/Ship-of-the-line.png",
+		"assets/tiers/artisan.png",
 		"assets/tiers/artisanBanner.jpg",
-		"assets/tiers/artisian.png",
 		"assets/tiers/engineer.png",
 		"assets/tiers/engineerBanner.jpg",
 		"assets/tiers/farmer.png",
