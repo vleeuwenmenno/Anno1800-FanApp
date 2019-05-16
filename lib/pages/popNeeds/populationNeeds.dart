@@ -56,13 +56,17 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 								floating: false,
 								pinned: false,
 								flexibleSpace: FlexibleSpaceBar(
-									centerTitle: true,
-									title: Text(
-										"Collapsing Toolbar",
-										style: TextStyle(
-										color: Colors.white,
-										fontSize: 16.0,
-										)
+									centerTitle: false,
+									title: Align(
+										alignment: Alignment(0.2, 1),
+										child: Container(
+											height: 32,
+											width: 32,
+											child: GestureDetector(
+												child: Image.asset('assets/icons/other/calculator.png'),
+												onTap: (){print('object');},
+											)
+										),
 									),
 									background: Image.asset(
 									'assets/tiers/farmerBanner.jpg',

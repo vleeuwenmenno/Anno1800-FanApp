@@ -44,6 +44,7 @@ class AssetsManagement
 		"assets/buildings/Variety_theatre.png",
 		"assets/buildings/Warehouse.png",
 		"assets/icons/other/",
+		"assets/icons/other/calculator.png",
 		"assets/icons/Tile.png",
 		"assets/icons/other/Attractiveness.png",
 		"assets/icons/other/Balance.png",
