@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 
-class PopNeeds extends StatefulWidget 
+class PopulationNeedsCalc extends StatefulWidget 
 {	
 	Globals globals;
 
 	@override
-	PopNeedsState createState() => PopNeedsState();
+	PopulationNeedsCalcState createState() => PopulationNeedsCalcState();
 }
 
-class PopNeedsState extends State<PopNeeds> 
+class PopulationNeedsCalcState extends State<PopulationNeedsCalc> 
 {
 	DetailedTextfieldController farmersCtrl;
 	DetailedTextfieldController workerCtrl;
@@ -173,7 +173,7 @@ class PopNeedsState extends State<PopNeeds>
 										controller: DetailedButtonController(enabled: true, forceEnabled: true),
 										onPressed: ()
 										{
-											Navigator.pushNamed(context, "/drawer/population needs/result", arguments: { "globals": widget.globals, "tiers": 
+											Navigator.pushNamed(context, "/drawer/population needs/calc/result", arguments: { "globals": widget.globals, "tiers": 
 											{
 												"farmer": int.tryParse(farmersCtrl.value),
 												"worker": int.tryParse(workerCtrl.value),

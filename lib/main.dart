@@ -4,13 +4,10 @@ import 'package:anno1800_fanapp/pages/about/licenses.dart';
 import 'package:anno1800_fanapp/pages/newsFeed/newsDetails.dart';
 import 'package:anno1800_fanapp/pages/newsFeed/newsFeed.dart';
 import 'package:anno1800_fanapp/pages/popNeeds/populationNeeds.dart';
-import 'package:anno1800_fanapp/pages/popNeeds/popNeeds.dart';
-import 'package:anno1800_fanapp/pages/popNeeds/popNeedsResult.dart';
-import 'package:anno1800_fanapp/widgets/drawer.dart';
+import 'package:anno1800_fanapp/pages/popNeeds/populationNeedsCalc.dart';
+import 'package:anno1800_fanapp/pages/popNeeds/populationNeedsCalcResult.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/pages/splash.dart';
-
-import 'backend/globals.dart';
 
 void main() => runApp(MyApp());
 
@@ -79,7 +76,8 @@ class MyApp extends StatelessWidget
 				'/drawer/news/details': (context) => NewsDetails(),
 
 				'/drawer/population needs': (context) => PopulationNeeds(),
-				'/drawer/population needs/result': (context) => PopNeedsResult(),
+				'/drawer/population needs/calc': (context) => PopulationNeedsCalc(),
+				'/drawer/population needs/calc/result': (context) => PopNCalcResults(),
 
 				'/drawer/about': (context) => About(),
 				'/drawer/about/changelog': (context) => Changelog(),

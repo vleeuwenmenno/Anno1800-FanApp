@@ -6,17 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 
-class PopNeedsResult extends StatefulWidget 
+class PopNCalcResults extends StatefulWidget 
 {
 	Globals globals;
 	Map<String, int> tiers;
 	bool newWorld;
 
 	@override
-	PopNeedsResultState createState() => PopNeedsResultState();
+	PopNCalcResultsState createState() => PopNCalcResultsState();
 }
 
-class PopNeedsResultState extends State<PopNeedsResult> 
+class PopNCalcResultsState extends State<PopNCalcResults> 
 {
 	Widget build(BuildContext context)
 	{

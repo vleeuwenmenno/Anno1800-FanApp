@@ -5,14 +5,20 @@ class PopulationCalculator
 	{
 		"farmer": 
 		{
+			"Market":       0.0,
 			"Residence":    0.1,
 			"Fish":         0.0025,
 			"Work_clothes": 0.00307692,
-			"Schnapps":     0.00333334
+			"luxury": 
+			{
+				"Schnapps":  0.00333334,
+				"Pub":       0.0
+			}
 		},
 		
 		"worker":
 		{
+			"Market":       0.0,
 			"Residence":    0.05,
 			"Fish":         0.0025,
 			"Work_clothes": 0.00307692,
@@ -20,7 +26,13 @@ class PopulationCalculator
 			"Sausages":     0.001000002,
 			"Bread":        0.00090909,
 			"Soap":         0.000416667,
-			"Beer":         0.00076923
+			"luxury": 
+			{
+				"Schnapps":  0.00333334,
+				"Beer":      0.00076923,
+				"Pub":       0.0,
+				"Church":    0.0,
+			}
 		},
 
 		"artisan":
@@ -29,11 +41,16 @@ class PopulationCalculator
 			"Sausages":        0.001333334,
 			"Bread":           0.001212122,
 			"Soap":            0.000555556,
-			"Beer":            0.001025642,
 			"Canned_food":     0.00034188,
 			"Sewing_machines": 0.00095238,
-			"Rum":             0.001904762,
 			"Fur_Coats":       0.000888888,  
+			"luxury": 
+			{
+				"Church":          0.0,
+				"Beer":            0.001025642,
+				"Variety_theatre": 0.0,
+				"Rum":             0.001904762,
+			}
 		}
 	};
 
@@ -75,12 +92,21 @@ class PopulationCalculator
 	Map calculate(int population, String tier)
 	{
 		Map returnData = {};
+
+		if (population == null || population == 0)
+			return {};
 		
 		try
 		{
-			needs[tier].forEach((String key, double value)
+			for (int i = 0; i < needs[tier].length; i++)
 			{
-				if (key == "Residence")
+				String key = needs[tier].keys.elementAt(i);
+				dynamic value = needs[tier].values.elementAt(i);
+
+				if (value == 0.0)
+					continue;
+
+				if (key == "Residence" && value is double)
 				{
 					double residency = value * population; /// Total needs
 					int houses = 1;
@@ -90,6 +116,25 @@ class PopulationCalculator
 						"buildings": residency.ceil(),
 						"efficiency": residency / (produce['${tier}_Residence'] * houses),
 					};
+				}
+				else if (key == "luxury" && value is Map)
+				{
+					for (int i = 0; i < value.length; i++)
+					{
+						String luxKey = value.keys.elementAt(i);
+						double luxValue = value.values.elementAt(i);
+						
+						if (luxValue == 0.0)
+							continue;
+
+						double tons = luxValue * population; /// Total needs (tons = consumption * population)
+						returnData[luxKey] = 
+						{
+							"tonsNeeded": tons,
+							"efficiency": tons / ((tons / produce[luxKey]).ceil() * produce[luxKey]),
+							"buildings": (tons / produce[luxKey]).ceil()
+						};
+					}
 				}
 				else
 				{
@@ -101,7 +146,7 @@ class PopulationCalculator
 						"buildings": (tons / produce[key]).ceil()
 					};
 				}
-			});
+			}
 		}
 		catch (e)
 		{ }
