@@ -17,16 +17,6 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-		// return Scaffold(
-		
-		// 	// drawer: globals.sideMenu,
-		// 	drawer: SideMenu(activePageId: 1),
-		// 	// body: ListView.builder(),
-		// 	// body: Container(
-		// 	// 	child: Text('data'),
-		// 	// ),
-		// );
-		
 		return Scaffold(
 			appBar: AppBar(
 				title: Text('Old world needs'),
@@ -44,6 +34,7 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 					)
 				],
 			),
+			drawer: SideMenu(activePageId: 1),
 			body: DefaultTabController(
 				length: 2,
 				child: NestedScrollView(
@@ -52,23 +43,31 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 						return <Widget>
 						[
 							SliverAppBar(
+								automaticallyImplyLeading: false,
 								expandedHeight: 200.0,
 								floating: false,
 								pinned: false,
 								flexibleSpace: FlexibleSpaceBar(
-									centerTitle: true,
-									title: Text(
-										"Collapsing Toolbar",
-										style: TextStyle(
-										color: Colors.white,
-										fontSize: 16.0,
-										)
+									centerTitle: false,
+									title: Align(
+										alignment: Alignment(0.2, 1),
+										child: Container(
+											height: 32,
+											width: 32,
+											child: GestureDetector(
+												child: Image.asset('assets/icons/other/calculator.png'),
+												onTap: ()
+												{
+													print('object');
+												},
+											)
+										),
 									),
 									background: Image.asset(
 									'assets/tiers/farmerBanner.jpg',
 									fit: BoxFit.cover,
 									)
-								),
+								), 
 							),
 							SliverPersistentHeader(
 								delegate: _SliverAppBarDelegate(
@@ -76,7 +75,7 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 										indicatorColor: Color(0xffFFE4AD),
 										labelColor: Color(0xffFFE4AD),
 										tabs: [
-										Tab(icon: Icon(Icons.info), text: "Tab 1"),
+										Tab(child: Stack(children: <Widget>[Image.asset('assets/tiers/farmer.png'), Align(alignment: Alignment(0, 1), child: Text('Farmer'))])),
 										Tab(icon: Icon(Icons.lightbulb_outline), text: "Tab 2"),
 										],
 									),
