@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:http/http.dart' as http;
 import 'package:anno1800_fanapp/widgets/drawer.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:anno1800_fanapp/backend/populationCalculator.dart';
 
 class PopulationNeeds extends StatefulWidget 
 {
@@ -14,19 +13,69 @@ class PopulationNeeds extends StatefulWidget
 
 class _PopulationNeedsState extends State<PopulationNeeds> 
 {
+	bool oldWorld;
+
+	void initState() 
+	{
+		super.initState();
+		oldWorld = true;
+  	}
+
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+
+		List<Widget> tabViews = new List<Widget>();
+		List<Chip> basicChips = new List<Chip>();
+
+		for(int i = 0; i < 5 ; i++)
+		{
+			
+		}
+
+    		for(int i = 0; i < 5; i++)
+			{
+       			tabViews.add(
+					Padding(
+					  padding: const EdgeInsets.all(16.0),
+					  child: Column(
+					  	children: <Widget>[
+					  		Row(
+					  		  	children: <Widget>
+					  			[
+					  		    	Text('Basic needs',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+					  		  	],
+					  		),
+					  		Divider(color: Color(0xff714F28)),
+
+							Wrap(
+								children: basicChips
+							),
+					  		Row(
+					  		  	children: <Widget>
+					  			[
+					  		    	Text('Luxury needs',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+					  			],
+					  		),
+					  		Divider(color: Color(0xff714F28)),
+					  	],
+					  ),
+					)
+				);
+    		}
+
 		return Scaffold(
 			appBar: AppBar(
-				title: Text('Old world needs'),
+				title: Text(oldWorld ? 'Old world needs' : 'New world needs'),
 				elevation: 0,
 				actions: <Widget>
 				[
 					IconButton(
 						onPressed: () 
 						{
-							print('object');
+							setState(() {
+								oldWorld = !oldWorld; 
+							});
 						},
 						icon: Icon(
 							Icons.swap_vert, color: Color(0xffFFE4AD)
@@ -36,7 +85,7 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 			),
 			drawer: SideMenu(activePageId: 1),
 			body: DefaultTabController(
-				length: 2,
+				length: 5,
 				child: NestedScrollView(
 					headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled)
 					{
@@ -72,11 +121,20 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 							SliverPersistentHeader(
 								delegate: _SliverAppBarDelegate(
 									TabBar(
+										isScrollable: true,
 										indicatorColor: Color(0xffFFE4AD),
 										labelColor: Color(0xffFFE4AD),
+										labelPadding: EdgeInsets.only(
+											left:((MediaQuery.of(context).size.width /3) -42)/2,
+											right: ((MediaQuery.of(context).size.width /3) -42)/2
+										),
+										labelStyle: TextStyle(fontWeight: FontWeight.w500),
 										tabs: [
-										Tab(child: Stack(children: <Widget>[Image.asset('assets/tiers/farmer.png'), Align(alignment: Alignment(0, 1), child: Text('Farmer'))])),
-										Tab(icon: Icon(Icons.lightbulb_outline), text: "Tab 2"),
+											Tab(icon: Image.asset('assets/tiers/farmer.png', height: 42,), text: 'Farmers'),
+											Tab(icon: Image.asset('assets/tiers/worker.png', height: 42,), text: 'Workers'),
+											Tab(icon: Image.asset('assets/tiers/artisan.png', height: 42,), text: 'Artisans'),
+											Tab(icon: Image.asset('assets/tiers/engineer.png', height: 42,), text: 'Engineers'),
+											Tab(icon: Image.asset('assets/tiers/investor.png', height: 42,), text: 'Investors'),
 										],
 									),
 								),
@@ -84,9 +142,9 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 							),
 						];
 					},
-					body: Center(
-						child: Text("Sample text"),
-					),
+					body: TabBarView(
+						children: tabViews
+					)
 				),
 			),
 		);
