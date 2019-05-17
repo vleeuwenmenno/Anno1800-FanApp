@@ -5,7 +5,7 @@ class PopulationCalculator
 	{
 		"farmer": 
 		{
-			"Market":       0.0,
+			"Marketplace":  0.0,
 			"Residence":    0.1,
 			"Fish":         0.0025,
 			"Work_clothes": 0.00307692,
@@ -18,7 +18,7 @@ class PopulationCalculator
 		
 		"worker":
 		{
-			"Market":       0.0,
+			"Marketplace":  0.0,
 			"Residence":    0.05,
 			"Fish":         0.0025,
 			"Work_clothes": 0.00307692,
@@ -43,7 +43,7 @@ class PopulationCalculator
 			"Soap":            0.000555556,
 			"Canned_food":     0.00034188,
 			"Sewing_machines": 0.00095238,
-			"Fur_Coats":       0.000888888,  
+			"Fur_Coats":       0.000888888,
 			"luxury": 
 			{
 				"Church":          0.0,
@@ -51,6 +51,16 @@ class PopulationCalculator
 				"Variety_theatre": 0.0,
 				"Rum":             0.001904762,
 			}
+		},
+
+		"engineer":
+		{
+
+		},
+
+		"investor":
+		{
+
 		}
 	};
 
