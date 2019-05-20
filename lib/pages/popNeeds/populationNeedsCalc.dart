@@ -41,12 +41,19 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 		obrerosCtrl = new DetailedTextfieldController(enabled: true);
 	}
 
+	bool once = true;
+
 	Widget build(BuildContext context)
 	{
 	
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
-		widget.newWorld = (ModalRoute.of(context).settings.arguments as Map)["newWorld"];
+
+		if (once)
+		{
+			widget.newWorld = (ModalRoute.of(context).settings.arguments as Map)["newWorld"];
+			once = false;
+		}
 
 		return WillPopScope(
 			onWillPop: () async => false,
