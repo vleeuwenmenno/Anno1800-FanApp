@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 import 'package:anno1800_fanapp/backend/populationCalculator.dart';
 
 class PopulationNeeds extends StatefulWidget 
 {
+  Globals globals;
+
   
   @override
   _PopulationNeedsState createState() => _PopulationNeedsState();
@@ -100,6 +103,19 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 					elevation: 0,
 					actions: <Widget>
 					[
+						// Calculator button
+						IconButton(
+							onPressed: () 
+							{
+								Navigator.pushReplacementNamed(context, '/drawer/population needs/calc', arguments: { "globals": widget.globals, "newWorld": oldWorld ? false:true});
+							},
+							icon: Image.asset(
+								'assets/icons/other/calculator.png',
+								height: 24,
+							),
+						),
+
+						// Swap button
 						IconButton(
 							onPressed: () 
 							{
@@ -107,9 +123,7 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 									oldWorld = !oldWorld; 
 								});
 							},
-							icon: Icon(
-								Icons.swap_vert, color: Color(0xffFFE4AD)
-							)
+							icon: Icon(Icons.swap_vert),
 						)
 					],
 				),
@@ -128,20 +142,6 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 									pinned: false,
 									flexibleSpace: FlexibleSpaceBar(
 										centerTitle: false,
-										title: Align(
-											alignment: Alignment(0.2, 1),
-											child: Container(
-												height: 32,
-												width: 32,
-												child: GestureDetector(
-													child: Image.asset('assets/icons/other/calculator.png'),
-													onTap: ()
-													{
-														print('object');
-													},
-												)
-											),
-										),
 										background: Image.asset(
 											'assets/tiers/farmerBanner.jpg',
 										fit: BoxFit.cover,

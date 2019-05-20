@@ -9,6 +9,7 @@ import 'package:anno1800_fanapp/widgets/drawer.dart';
 class PopulationNeedsCalc extends StatefulWidget 
 {	
 	Globals globals;
+	bool newWorld;
 
 	@override
 	PopulationNeedsCalcState createState() => PopulationNeedsCalcState();
@@ -24,8 +25,6 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 	DetailedTextfieldController jornalerosCtrl;
 	DetailedTextfieldController obrerosCtrl;
-
-	bool newWorld = false;
 
 	@override
 	void initState()
@@ -44,8 +43,10 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 	Widget build(BuildContext context)
 	{
+	
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
+		widget.newWorld = (ModalRoute.of(context).settings.arguments as Map)["newWorld"];
 
 		return WillPopScope(
 			onWillPop: () async => false,
@@ -57,7 +58,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 						IconButton(
 							onPressed: () 
 							{ 
-								newWorld = !newWorld;
+								widget.newWorld = !widget.newWorld;
 								setState(() { });
 							},
 							icon: Icon(
@@ -71,7 +72,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 					child: Column(
 						children: <Widget>
 						[
-							!newWorld ?
+							!widget.newWorld ?
 							Column(
 								mainAxisAlignment: MainAxisAlignment.start,
 								crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,7 +184,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 												"jornalero": int.tryParse(jornalerosCtrl.value),
 												"obrero": int.tryParse(obrerosCtrl.value)
-											}, "newWorld": newWorld });
+											}, "newWorld": widget.newWorld });
 										},
 										child: Row(
 											mainAxisAlignment: MainAxisAlignment.center,
