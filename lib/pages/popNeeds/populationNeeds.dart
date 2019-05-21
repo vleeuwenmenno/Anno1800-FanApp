@@ -14,19 +14,34 @@ class PopulationNeeds extends StatefulWidget
 
 }
 
-class _PopulationNeedsState extends State<PopulationNeeds> 
+class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProviderStateMixin
 {
 	bool oldWorld;
+	TabController _tabController;
 
 	void initState() 
 	{
 		super.initState();
 		oldWorld = true;
+		_tabController  = TabController(vsync: this, length: oldWorld ? 5:2);
   	}
 
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+
+		List<Tab> tabs = oldWorld ? 
+		[	
+			Tab(icon: Image.asset('assets/tiers/farmer.png', height: 42,), text: 'Farmers'),
+			Tab(icon: Image.asset('assets/tiers/worker.png', height: 42,), text: 'Workers'),
+			Tab(icon: Image.asset('assets/tiers/artisan.png', height: 42,), text: 'Artisans'),
+			Tab(icon: Image.asset('assets/tiers/engineer.png', height: 42,), text: 'Engineers'),
+			Tab(icon: Image.asset('assets/tiers/investor.png', height: 42,), text: 'Investors'),
+		] :
+		[
+			Tab(icon: Image.asset('assets/tiers/jornaleros.png', height: 42,), text: 'Jornaleros'),
+			Tab(icon: Image.asset('assets/tiers/obreros.png', height: 42,), text: 'Obreros'),
+		];
 		List<Widget> tabViews = List<Widget>();
 
 		Map needs =  oldWorld ? PopulationCalculator().needs :  PopulationCalculator().needs;
@@ -128,54 +143,55 @@ class _PopulationNeedsState extends State<PopulationNeeds>
 					],
 				),
 				drawer: SideMenu(activePageId: 1),
-				body: DefaultTabController(
-					length: 5,
-					child: NestedScrollView(
-						headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled)
-						{
-							return <Widget>
-							[
-								SliverAppBar(
-									automaticallyImplyLeading: false,
-									expandedHeight: 200.0,
-									floating: false,
-									pinned: false,
-									flexibleSpace: FlexibleSpaceBar(
-										centerTitle: false,
-										background: Image.asset(
-											'assets/tiers/farmerBanner.jpg',
-										fit: BoxFit.cover,
-										)
-									), 
-								),
-								SliverPersistentHeader(
-									delegate: _SliverAppBarDelegate(
-										TabBar(
-											isScrollable: true,
-											indicatorColor: Color(0xffFFE4AD),
-											labelColor: Color(0xffFFE4AD),
-											labelPadding: EdgeInsets.only(
-												left:((MediaQuery.of(context).size.width /3) -42)/2,
-												right: ((MediaQuery.of(context).size.width /3) -42)/2
-											),
-											labelStyle: TextStyle(fontWeight: FontWeight.w500),
-											tabs: [
-												Tab(icon: Image.asset('assets/tiers/farmer.png', height: 42,), text: 'Farmers'),
-												Tab(icon: Image.asset('assets/tiers/worker.png', height: 42,), text: 'Workers'),
-												Tab(icon: Image.asset('assets/tiers/artisan.png', height: 42,), text: 'Artisans'),
-												Tab(icon: Image.asset('assets/tiers/engineer.png', height: 42,), text: 'Engineers'),
-												Tab(icon: Image.asset('assets/tiers/investor.png', height: 42,), text: 'Investors'),
-											],
+				body: NestedScrollView(
+					headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled)
+					{
+						return <Widget>
+						[
+							SliverAppBar(
+								automaticallyImplyLeading: false,
+								expandedHeight: 200.0,
+								floating: false,
+								pinned: false,
+								flexibleSpace: FlexibleSpaceBar(
+									centerTitle: false,
+									background: Image.asset(
+										oldWorld ?
+											_tabController.index == 0 ? 'assets/tiers/farmerBanner.jpg' :
+											_tabController.index == 1 ? 'assets/tiers/workerBanner.jpg' :
+											_tabController.index == 2 ? 'assets/tiers/artisanBanner.jpg' :
+											_tabController.index == 3 ? 'assets/tiers/engineerBanner.jpg' :
+											'assets/tiers/investorBanner.jpg'
+										:
+											_tabController.index == 0 ? 'assets/tiers/jornalerosBanner.jpg' :
+											'assets/tiers/obrerosBanner.jpg',
+									fit: BoxFit.cover,
+									)
+								), 
+							),
+							SliverPersistentHeader(
+								delegate: _SliverAppBarDelegate(
+									TabBar(
+										controller: _tabController,
+										isScrollable: true,
+										indicatorColor: Color(0xffFFE4AD),
+										labelColor: Color(0xffFFE4AD),
+										labelPadding: EdgeInsets.only(
+											left:((MediaQuery.of(context).size.width /3) -42)/2,
+											right: ((MediaQuery.of(context).size.width /3) -42)/2
 										),
+										labelStyle: TextStyle(fontWeight: FontWeight.w500),
+										tabs: tabs
 									),
-									pinned: true,
 								),
-							];
-						},
-						body: TabBarView(
-							children: tabViews
-						)
-					),
+								pinned: true,
+							),
+						];
+					},
+					body: TabBarView(
+						controller: _tabController,
+						children: tabViews
+					)
 				),
 			),
 		);
