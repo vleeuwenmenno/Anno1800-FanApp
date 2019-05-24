@@ -7,7 +7,7 @@ import 'package:anno1800_fanapp/backend/populationCalculator.dart';
 class PopulationNeeds extends StatefulWidget 
 {
 	Globals globals;
-	final bool oldWorld;
+	bool oldWorld;
 
 	PopulationNeeds({this.oldWorld = true});
 
@@ -34,6 +34,8 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+		widget.oldWorld = (ModalRoute.of(context).settings.arguments as Map)["oldWorld"];
+		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 		
 		List<Tab> tabs = widget.oldWorld ? 
 		[	
@@ -163,7 +165,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 							{
 								setState(() 
 								{
-									Navigator.push(context, MaterialPageRoute(builder: (context) => PopulationNeeds(oldWorld: !widget.oldWorld)));
+									Navigator.pushNamed(context, "/drawer/population needs", arguments: { "globals": widget.globals, "oldWorld": !widget.oldWorld});
 								});
 							},
 							icon: Icon(Icons.swap_vert),
