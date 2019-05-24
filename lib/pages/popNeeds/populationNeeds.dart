@@ -7,6 +7,9 @@ import 'package:anno1800_fanapp/backend/populationCalculator.dart';
 class PopulationNeeds extends StatefulWidget 
 {
 	Globals globals;
+	final bool oldWorld;
+
+	PopulationNeeds({this.oldWorld = true});
 
 	@override
 	_PopulationNeedsState createState() => _PopulationNeedsState();
@@ -14,21 +17,25 @@ class PopulationNeeds extends StatefulWidget
 
 class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProviderStateMixin
 {
-	bool oldWorld;
 	TabController _tabController;
 
 	void initState() 
 	{
 		super.initState();
-		_tabController  = TabController(vsync: this, length: oldWorld ? 5:2);
+		_tabController  = TabController(vsync: this, length: widget.oldWorld ? 5:2);
+		_tabController.addListener(onIndexChanged);
   	}
+
+	void onIndexChanged()
+	{
+		setState(() { });
+	}
 
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-		oldWorld = (ModalRoute.of(context).settings.arguments as Map).containsKey("newWorld") ? (ModalRoute.of(context).settings.arguments as Map)["newWorld"] : true;
-
-		List<Tab> tabs = oldWorld ? 
+		
+		List<Tab> tabs = widget.oldWorld ? 
 		[	
 			Tab(icon: Image.asset('assets/tiers/farmer.png', height: 42,), text: 'Farmers'),
 			Tab(icon: Image.asset('assets/tiers/worker.png', height: 42,), text: 'Workers'),
@@ -42,7 +49,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 		];
 		List<Widget> tabViews = List<Widget>();
 
-		Map needs =  oldWorld ? PopulationCalculator().needs :  PopulationCalculator().needs;
+		Map needs =  widget.oldWorld ? PopulationCalculator().needs : PopulationCalculator().newWorldNeeds;
 
 		needs.forEach((k, v)
 		{
@@ -57,8 +64,18 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 						value.forEach((luxKey, luxValue)
 						{
 							String path = "resources";
-							if (luxKey == "Marketplace" || luxKey == "Pub" || luxKey == "Church" || luxKey == "Residence" || luxKey == "Variety_theatre")
-								path = "buildings";
+							String k = luxKey;
+							if (k == "Marketplace" || 
+									k == "Pub" || 
+									k == "Church" || 
+									k == "Residence" || 
+									k == "Variety_theatre" || 
+									k == "University" || 
+									k == "Bank" ||
+									k == "Oil_Power_Plant" ||
+									k == "Members_club")
+
+							path = "buildings";
 
 							luxuryChips.add(createChip(path, luxKey, context));
 						});
@@ -66,7 +83,17 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 					else
 					{
 						String path = "resources";
-						if (key == "Marketplace" || key == "Pub" || key == "Church" || key == "Residence" || key == "Variety_theatre")
+						String k = key;
+						if (k == "Marketplace" || 
+							k == "Pub" || 
+							k == "Church" || 
+							k == "Residence" || 
+							k == "Variety_theatre" || 
+							k == "University" || 
+							k == "Bank" ||
+							k == "Oil_Power_Plant" ||
+							k == "Members_club")
+
 							path = "buildings";
 
 						basicChips.add(createChip(path, key, context));
@@ -114,7 +141,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 			onWillPop: () async => false,
 			child: Scaffold(
 				appBar: AppBar(
-					title: Text(oldWorld ? 'Old world needs' : 'New world needs'),
+					title: Text(widget.oldWorld ? 'Old world needs' : 'New world needs'),
 					elevation: 0,
 					actions: <Widget>
 					[
@@ -122,7 +149,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 						IconButton(
 							onPressed: () 
 							{
-								Navigator.pushReplacementNamed(context, '/drawer/population needs/calc', arguments: { "globals": widget.globals, "newWorld": oldWorld ? false:true});
+								Navigator.pushReplacementNamed(context, '/drawer/population needs/calc', arguments: { "globals": widget.globals, "newWorld": widget.oldWorld ? false:true});
 							},
 							icon: Image.asset(
 								'assets/icons/other/calculator.png',
@@ -134,9 +161,9 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 						IconButton(
 							onPressed: () 
 							{
-								setState(() {
-									oldWorld = !oldWorld;
-									Navigator.pushNamed(context, '/drawer/population needs', arguments: { "newWorld": oldWorld });
+								setState(() 
+								{
+									Navigator.push(context, MaterialPageRoute(builder: (context) => PopulationNeeds(oldWorld: !widget.oldWorld)));
 								});
 							},
 							icon: Icon(Icons.swap_vert),
@@ -157,7 +184,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 								flexibleSpace: FlexibleSpaceBar(
 									centerTitle: false,
 									background: Image.asset(
-										oldWorld ?
+										widget.oldWorld ?
 											_tabController.index == 0 ? 'assets/tiers/farmerBanner.jpg' :
 											_tabController.index == 1 ? 'assets/tiers/workerBanner.jpg' :
 											_tabController.index == 2 ? 'assets/tiers/artisanBanner.jpg' :
@@ -201,10 +228,6 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 
 Widget createChip(String path, String key, BuildContext context) 
 {
-	String path = "resources";
-	if (key == "Marketplace" || key == "Pub" || key == "Church" || key == "Residence" || key == "Variety_theatre")
-		path = "buildings";
-
 	return GestureDetector(
 		child: Padding(
 			padding: EdgeInsets.only(right: 8),
