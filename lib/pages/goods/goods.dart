@@ -26,6 +26,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
 		return Scaffold(
 				appBar: AppBar(
@@ -71,13 +72,13 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 									children: <Widget>
 									[
 										Image.asset('assets/resources/${PopulationCalculator().goods.keys.elementAt(index)}.png', height: 42),
-										Text('${PopulationCalculator().goods.keys.elementAt(index)}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)),)
+										Text('${PopulationCalculator().goods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)),)
 									],
 								),
 							),
 							onTap: ()
 							{
-								Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals});
+								Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals });
 							},
 						);
 					},

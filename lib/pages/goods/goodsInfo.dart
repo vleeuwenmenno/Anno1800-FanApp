@@ -17,6 +17,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 		
 		return Scaffold(
 				appBar: AppBar(
