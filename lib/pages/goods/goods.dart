@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/backend/populationCalculator.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,7 +58,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 
 				body: GridView.builder(
 					gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
-					itemCount: 30,
+					itemCount: PopulationCalculator().goods.keys.length,
 					itemBuilder: (BuildContext context, int index)
 					{
 						return GestureDetector(
@@ -69,8 +70,8 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 									mainAxisAlignment: MainAxisAlignment.center,
 									children: <Widget>
 									[
-										Image.asset('assets/resources/Wood.png', height: 42),
-										Text('Wood', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)),)
+										Image.asset('assets/resources/${PopulationCalculator().goods.keys.elementAt(index)}.png', height: 42),
+										Text('${PopulationCalculator().goods.keys.elementAt(index)}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)),)
 									],
 								),
 							),

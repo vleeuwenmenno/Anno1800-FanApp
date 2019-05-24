@@ -9,8 +9,11 @@ class Globals
 	AssetsManagement am;
 	SideMenu sideMenu = SideMenu();
 	NewsFeedData nfd = NewsFeedData();
+
 	int selectedPage = 0;
 	int lastReload = 0;
+	
+	bool oldWorld = true;
 
 	void messageBox(BuildContext context, String message, String title, [VoidCallback onClosed]) 
 	{

@@ -7,9 +7,6 @@ import 'package:anno1800_fanapp/backend/populationCalculator.dart';
 class PopulationNeeds extends StatefulWidget 
 {
 	Globals globals;
-	bool oldWorld;
-
-	PopulationNeeds({this.oldWorld = true});
 
 	@override
 	_PopulationNeedsState createState() => _PopulationNeedsState();
@@ -19,12 +16,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 {
 	TabController _tabController;
 
-	void initState() 
-	{
-		super.initState();
-		_tabController  = TabController(vsync: this, length: widget.oldWorld ? 5:2);
-		_tabController.addListener(onIndexChanged);
-  	}
+	bool once = true;
 
 	void onIndexChanged()
 	{
@@ -34,10 +26,18 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-		widget.oldWorld = (ModalRoute.of(context).settings.arguments as Map)["oldWorld"];
+
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
+
+		if (once)
+		{
+			once = false;
+
+			_tabController  = TabController(vsync: this, length: widget.globals.oldWorld ? 5:2);
+			_tabController.addListener(onIndexChanged);
+		}
 		
-		List<Tab> tabs = widget.oldWorld ? 
+		List<Tab> tabs = widget.globals.oldWorld ? 
 		[	
 			Tab(icon: Image.asset('assets/tiers/farmer.png', height: 42,), text: 'Farmers'),
 			Tab(icon: Image.asset('assets/tiers/worker.png', height: 42,), text: 'Workers'),
@@ -51,7 +51,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 		];
 		List<Widget> tabViews = List<Widget>();
 
-		Map needs =  widget.oldWorld ? PopulationCalculator().needs : PopulationCalculator().newWorldNeeds;
+		Map needs =  widget.globals.oldWorld ? PopulationCalculator().needs : PopulationCalculator().newWorldNeeds;
 
 		needs.forEach((k, v)
 		{
@@ -143,7 +143,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 			onWillPop: () async => false,
 			child: Scaffold(
 				appBar: AppBar(
-					title: Text(widget.oldWorld ? 'Old world needs' : 'New world needs'),
+					title: Text(widget.globals.oldWorld ? 'Old world needs' : 'New world needs'),
 					elevation: 0,
 					actions: <Widget>
 					[
@@ -151,7 +151,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 						IconButton(
 							onPressed: () 
 							{
-								Navigator.pushReplacementNamed(context, '/drawer/population needs/calc', arguments: { "globals": widget.globals, "newWorld": widget.oldWorld ? false:true});
+								Navigator.pushReplacementNamed(context, '/drawer/population needs/calc', arguments: { "globals": widget.globals, "newWorld": widget.globals.oldWorld ? false:true});
 							},
 							icon: Image.asset(
 								'assets/icons/other/calculator.png',
@@ -165,7 +165,8 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 							{
 								setState(() 
 								{
-									Navigator.pushNamed(context, "/drawer/population needs", arguments: { "globals": widget.globals, "oldWorld": !widget.oldWorld});
+									widget.globals.oldWorld = !widget.globals.oldWorld;
+									Navigator.pushReplacementNamed(context, "/drawer/population needs", arguments: { "globals": widget.globals });
 								});
 							},
 							icon: Icon(Icons.swap_vert),
@@ -186,7 +187,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 								flexibleSpace: FlexibleSpaceBar(
 									centerTitle: false,
 									background: Image.asset(
-										widget.oldWorld ?
+										widget.globals.oldWorld ?
 											_tabController.index == 0 ? 'assets/tiers/farmerBanner.jpg' :
 											_tabController.index == 1 ? 'assets/tiers/workerBanner.jpg' :
 											_tabController.index == 2 ? 'assets/tiers/artisanBanner.jpg' :
