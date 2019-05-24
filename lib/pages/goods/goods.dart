@@ -55,7 +55,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 						)
 					],
 				),
-				drawer: SideMenu(activePageId: 3,),
+				drawer: SideMenu(activePageId: 2,),
 
 				body: GridView.builder(
 					gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
@@ -78,7 +78,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 							),
 							onTap: ()
 							{
-								Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals });
+								Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "${PopulationCalculator().goods.keys.elementAt(index).toString()}"});
 							},
 						);
 					},

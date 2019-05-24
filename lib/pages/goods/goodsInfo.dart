@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
+import 'package:anno1800_fanapp/backend/populationCalculator.dart';
 
 class GoodsInfo extends StatefulWidget 
 {
-  Globals globals;
+  	Globals globals;
+	String selectedGoods;
   
   @override
   _GoodsInfoState createState() => _GoodsInfoState();
@@ -18,10 +20,25 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
-		
+		widget.selectedGoods = (ModalRoute.of(context).settings.arguments as Map)["selectedGoods"];
+
+		List<Widget> costs = List<Widget>();
+
+		print( PopulationCalculator().goods[widget.selectedGoods]);
+		// print( PopulationCalculator().goods[widget.selectedGoods]['costs']);
+		// print( PopulationCalculator().goods[widget.selectedGoods]['costs']['credits']);
+
+		for (int i = 0; i < PopulationCalculator().goods[widget.selectedGoods].length; i++) {
+			String info = PopulationCalculator().goods[widget.selectedGoods].keys.elementAt(i);
+			// print(info);
+			print(PopulationCalculator().goods[widget.selectedGoods][info]);
+			// for(int i2 = 0; i2 < PopulationCalculator().goods[widget.selectedGoods].keys.elementAt(i).length; i2++){
+				
+			// }
+		}
 		return Scaffold(
 				appBar: AppBar(
-					title: Text('insert selected goods name'),
+					title: Text('${widget.selectedGoods.replaceAll("_", " ")}'),
 					elevation: 0,
 					actions: <Widget>
 					[
@@ -35,7 +52,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 						)
 					],
 				),
-				drawer: SideMenu(activePageId: 3,),
+				drawer: SideMenu(activePageId: 2,),
 
 				body: SingleChildScrollView(
 					child: Padding(
