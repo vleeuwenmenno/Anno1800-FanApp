@@ -6,12 +6,10 @@ import 'package:anno1800_fanapp/backend/populationCalculator.dart';
 
 class PopulationNeeds extends StatefulWidget 
 {
-  Globals globals;
+	Globals globals;
 
-  
-  @override
-  _PopulationNeedsState createState() => _PopulationNeedsState();
-
+	@override
+	_PopulationNeedsState createState() => _PopulationNeedsState();
 }
 
 class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProviderStateMixin
@@ -22,13 +20,13 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 	void initState() 
 	{
 		super.initState();
-		oldWorld = true;
 		_tabController  = TabController(vsync: this, length: oldWorld ? 5:2);
   	}
 
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+		oldWorld = (ModalRoute.of(context).settings.arguments as Map).containsKey("newWorld") ? (ModalRoute.of(context).settings.arguments as Map)["newWorld"] : true;
 
 		List<Tab> tabs = oldWorld ? 
 		[	
@@ -51,28 +49,30 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 			List<Widget> basicChips = List<Widget>();
 			List<Widget> luxuryChips = List<Widget>();
 			
-			v.forEach((key, value)
-			{
-				if (value is Map)
+			v.forEach(
+				(key, value)
 				{
-					value.forEach((luxKey, luxValue)
+					if (value is Map)
+					{
+						value.forEach((luxKey, luxValue)
+						{
+							String path = "resources";
+							if (luxKey == "Marketplace" || luxKey == "Pub" || luxKey == "Church" || luxKey == "Residence" || luxKey == "Variety_theatre")
+								path = "buildings";
+
+							luxuryChips.add(createChip(path, luxKey, context));
+						});
+					}
+					else
 					{
 						String path = "resources";
-						if (luxKey == "Marketplace" || luxKey == "Pub" || luxKey == "Church" || luxKey == "Residence" || luxKey == "Variety_theatre")
+						if (key == "Marketplace" || key == "Pub" || key == "Church" || key == "Residence" || key == "Variety_theatre")
 							path = "buildings";
 
-						luxuryChips.add(createChip(path, luxKey, context));
-					});
+						basicChips.add(createChip(path, key, context));
+					}
 				}
-				else
-				{
-					String path = "resources";
-					if (key == "Marketplace" || key == "Pub" || key == "Church" || key == "Residence" || key == "Variety_theatre")
-						path = "buildings";
-
-					basicChips.add(createChip(path, key, context));
-				}
-			});
+			);
 
 			tabViews.add(
 				Padding(
@@ -135,7 +135,8 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 							onPressed: () 
 							{
 								setState(() {
-									oldWorld = !oldWorld; 
+									oldWorld = !oldWorld;
+									Navigator.pushNamed(context, '/drawer/population needs', arguments: { "newWorld": oldWorld });
 								});
 							},
 							icon: Icon(Icons.swap_vert),

@@ -18,6 +18,7 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 	Map<String, String> items;
 	List<Widget> itemWidgets;
 
+	@override
 	Widget build(BuildContext context)
 	{
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
@@ -28,7 +29,6 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 		{
 			"News": "assets/Letter.png",
 			"Population needs": "assets/tiers/investor.png",
-			"Population needs/calc": "assets/tiers/investor.png",
 			"Goods": "assets/buildings/Warehouse.png",
 			"Inter-dependencies": "assets/buildings/Depot.png",
 			"Production-layouts": "assets/icons/Tile.png",

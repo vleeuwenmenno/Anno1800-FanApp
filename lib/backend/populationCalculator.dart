@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 class PopulationCalculator
 {
 	Map needs = 
@@ -55,7 +57,7 @@ class PopulationCalculator
 
 		"engineer":
 		{
-
+			
 		},
 
 		"investor":
@@ -66,15 +68,7 @@ class PopulationCalculator
 
 	Map produce = 
 	{
-		/// Farmers
-		"Fish": 2,
-		"Work_clothes": 2,
-		"Schnapps": 2,
-		/// Farmers ^^^^
-		
 		/// Workers
-		"Sausages": 1,
-		"Bread": 1,
 		"Soap": 2,
 		"Beer": 1,
 		/// Workers ^^^^
@@ -97,6 +91,477 @@ class PopulationCalculator
 		"jornalero_Residence": 10,
 		"obrero_Residence": 20,
 		/// Residences ^^^^
+	};
+
+
+	Map goods = 
+	{
+		"Fish": 
+		{
+			"costs": 
+			{
+				"credits": 100,
+				"Timber": 2
+			},
+			"workforce":
+			{
+				"farmer": -25
+			},
+			"depends":
+			{ },
+			"upkeep": -40,
+			"output": 2.0
+		},
+
+		"Wool":
+		{
+			"costs": 
+			{
+				"credits": 100,
+				"Timber": 2
+			},
+			"workforce":
+			{
+				"farmer": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -20,
+			"output": 2.0
+		},
+
+		"Work_clothes":
+		{
+			"costs": 
+			{
+				"credits": 400,
+				"Timber": 2
+			},
+			"workforce":
+			{
+				"farmer": -50
+			},
+			"depends":
+			{
+				"Wool": 2
+			},
+			"upkeep": -50,			
+			"output": 2.0
+		},
+
+		"Sails":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 8,
+				"Bricks": 10
+			},
+			"workforce":
+			{
+				"worker": -50
+			},
+			"depends":
+			{
+				"Wool": 2
+			},
+			"upkeep": -75,			
+			"output": 2.0
+		},
+
+		"Potato":
+		{
+			"costs": 
+			{
+				"credits": 100,
+				"Timber": 2
+			},
+			"workforce":
+			{
+				"farmer": -20
+			},
+			"depends":
+			{ },
+			"upkeep": -20,
+			"output": 2.0
+		},
+
+		"Schnapps":
+		{
+			"costs": 
+			{
+				"credits": 100,
+				"Timber": 2
+			},
+			"workforce":
+			{
+				"farmer": -50
+			},
+			"depends":
+			{ 
+				"Potato": 2
+			},
+			"upkeep": -40,
+			"output": 2.0
+		},
+
+		"Clay":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4
+			},
+			"workforce":
+			{
+				"worker": -50
+			},
+			"depends":
+			{ },
+			"upkeep": -10,
+			"output": 2.0
+		},
+
+		"Bricks":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4
+			},
+			"workforce":
+			{
+				"worker": -50
+			},
+			"depends":
+			{ 
+				"Clay": 1
+			},
+			"upkeep": -10,
+			"output": 2.0
+		},
+
+		"Pigs":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4
+			},
+			"workforce":
+			{
+				"farmer": -30
+			},
+			"depends":
+			{ },
+			"attractiveness": -3,
+			"upkeep": -40,
+			"output": 1.0
+		},
+
+		"Sausages":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4,
+				"Bricks": 5
+			},
+			"workforce":
+			{
+				"worker": -50
+			},
+			"depends":
+			{
+				"Pigs": 1
+			},
+			"attractiveness": -5,
+			"upkeep": -80,
+			"output": 1.0
+		},
+
+		"Grain":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4
+			},
+			"workforce":
+			{
+				"farmer": -20
+			},
+			"depends":
+			{ },
+			"upkeep": -20,
+			"output": 1.0
+		},
+
+		"Flour":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4,
+				"Bricks": 5
+			},
+			"workforce":
+			{
+				"farmer": -10
+			},
+			"depends":
+			{
+				"Grain": 2
+			},
+			"upkeep": -50,
+			"output": 2.0
+		},
+
+		"Bread":
+		{
+			"costs": 
+			{
+				"credits": 1000,
+				"Timber": 4,
+				"Bricks": 5
+			},
+			"workforce":
+			{
+				"worker": -50
+			},
+			"depends":
+			{
+				"Flour": 1
+			},
+			"upkeep": -60,
+			"output": 1.0
+		},
+
+		"Malt":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4,
+				"Bricks": 5,
+				"Steel_beams": 4
+			},
+			"workforce":
+			{
+				"worker": -25
+			},
+			"depends":
+			{
+				"Grain": 2.0
+			},
+			"upkeep": -150,
+			"output": 2.0
+		},
+
+		"Hops":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4
+			},
+			"workforce":
+			{
+				"farmer": -20
+			},
+			"depends":
+			{ },
+			"upkeep": -20,
+			"output": 0.667
+		},
+
+		"Beer":
+		{
+			"costs": 
+			{
+				"credits": 1600,
+				"Timber": 4,
+				"Bricks": 5,
+				"Steel_beams": 4
+			},
+			"workforce":
+			{
+				"worker": -75
+			},
+			"depends":
+			{ 
+				"Malt": 1.0,
+				"Hops": 1.0
+			},
+			"upkeep": -200,
+			"output": 1.0
+		},
+
+		"Iron":
+		{
+			"costs": 
+			{
+				"credits": 800,
+				"Timber": 4,
+				"Bricks": 5
+			},
+			"workforce":
+			{
+				"worker": -50
+			},
+			"depends":
+			{ },
+			"upkeep": -50,
+			"output": 4
+		},
+
+		"Coal":
+		{
+			"Kiln":
+			{
+				"costs": 
+				{
+					"credits": 500,
+					"Timber": 4,
+					"Bricks": 5
+				},
+				"workforce":
+				{
+					"worker": -10
+				},
+				"depends":
+				{ },
+				"attractiveness": -5,
+				"upkeep": -20,
+				"output": 2.0
+			},
+			"Mine":
+			{
+				"costs": 
+				{
+					"credits": 600,
+					"Timber": 4,
+					"Bricks": 5
+				},
+				"workforce":
+				{
+					"worker": -50
+				},
+				"depends":
+				{ },
+				"upkeep": -50,
+				"output": 4
+			}
+		},
+
+		"Steel":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4,
+				"Bricks": 5
+			},
+			"workforce":
+			{
+				"worker": -100
+			},
+			"depends":
+			{ 
+				"Iron": 2,
+				"Coal": 2
+			},
+			"attractiveness": -5,
+			"upkeep": -100,
+			"output": 2.0
+		},
+
+		"Steel_beams":
+		{
+			"costs": 
+			{
+				"credits": 1000,
+				"Timber": 8,
+				"Bricks": 10
+			},
+			"workforce":
+			{
+				"worker": -200
+			},
+			"depends":
+			{ 
+				"Steel": 1.333
+			},
+			"attractiveness": -10,
+			"upkeep": -200,
+			"output": 1.333
+		},
+		
+		"Weapons":
+		{
+			"costs": 
+			{
+				"credits": 700,
+				"Timber": 8,
+				"Bricks": 10,
+				"Steel_beams": 8
+			},
+			"workforce":
+			{
+				"worker": -50
+			},
+			"depends":
+			{ 
+				"Steel": 0.667
+			},
+			"attractiveness": -5,
+			"upkeep": -150,
+			"output": 0.667
+		},
+
+		"Tallow":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4,
+				"Bricks": 5,
+				"Steel_beams": 4
+			},
+			"workforce":
+			{
+				"worker": -40
+			},
+			"depends":
+			{ 
+				"Pigs": 1.0
+			},
+			"attractiveness": -5,
+			"upkeep": -40,
+			"output": 1.0
+		},
+		
+		"Soap":
+		{
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4,
+				"Bricks": 5,
+				"Steel_beams": 4
+			},
+			"workforce":
+			{
+				"worker": -50
+			},
+			"depends":
+			{ 
+				"Tallow": 2.0
+			},
+			"attractiveness": -5,
+			"upkeep": -50,
+			"output": 2.0
+		},
 	};
 
 	Map calculate(int population, String tier)
@@ -141,8 +606,8 @@ class PopulationCalculator
 						returnData[luxKey] = 
 						{
 							"tonsNeeded": tons,
-							"efficiency": tons / ((tons / produce[luxKey]).ceil() * produce[luxKey]),
-							"buildings": (tons / produce[luxKey]).ceil()
+							"efficiency": tons / ((tons / goods[luxKey]["output"]).ceil() * goods[luxKey]["output"]),
+							"buildings": (tons / goods[luxKey]["output"]).ceil()
 						};
 					}
 				}
@@ -152,8 +617,8 @@ class PopulationCalculator
 					returnData[key] = 
 					{
 						"tonsNeeded": tons,
-						"efficiency": tons / ((tons / produce[key]).ceil() * produce[key]),
-						"buildings": (tons / produce[key]).ceil()
+						"efficiency": tons / ((tons / goods[key]["output"]).ceil() * goods[key]["output"]),
+						"buildings": (tons / goods[key]["output"]).ceil()
 					};
 				}
 			}
