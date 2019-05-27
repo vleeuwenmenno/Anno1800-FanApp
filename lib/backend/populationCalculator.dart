@@ -141,6 +141,64 @@ class PopulationCalculator
 
 	Map goods = 
 	{
+		"Wood":
+		{
+			"costs": 
+			{
+				"credits": 100
+			},
+			"workforce":
+			{
+				"farmer": -5
+			},
+			"depends":
+			{ },
+			"upkeep": -10,
+			"output": 4,
+			"building":
+			{
+				"requirement": "Trees in it's influence radius",
+				"name": "Lumberjack's Hut",
+				"size": Size(4, 4),
+				"range": 7,
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
+		},
+
+		"Timber":
+		{
+			"costs": 
+			{
+				"credits": 100
+			},
+			"workforce":
+			{
+				"farmer": -10
+			},
+			"depends":
+			{
+				"Wood": 4
+			},
+			"upkeep": -10,
+			"output": 4,
+			"building":
+			{
+				"name": "Sawmill",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
+		},
+
 		"Fish": 
 		{
 			"costs": 
@@ -655,69 +713,68 @@ class PopulationCalculator
 			}
 		},
 
-		"Coal":
+
+		"Coal_Kiln":
 		{
-			"Kiln":
+			"costs": 
 			{
-				"costs": 
-				{
-					"credits": 500,
-					"Timber": 4,
-					"Bricks": 5
-				},
-				"workforce":
-				{
-					"worker": -10
-				},
-				"depends":
-				{ },
-				"attractiveness": -5,
-				"upkeep": -20,
-				"output": 2.0,
-				"building":
-				{
-					"requirement": "Trees in influence radius",
-					"name": "Charcoal Kiln",
-					"range": 9,
-					"size": Size(5, 5),
-					"module":
-					{
-						"count": 0,
-						"size": Size(0, 0),
-						"cost": 0
-					}
-				}
+				"credits": 500,
+				"Timber": 4,
+				"Bricks": 5
 			},
-			"Mine":
+			"workforce":
 			{
-				"costs": 
+				"worker": -10
+			},
+			"depends":
+			{ },
+			"attractiveness": -5,
+			"upkeep": -20,
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Trees in influence radius",
+				"name": "Charcoal Kiln",
+				"range": 9,
+				"size": Size(5, 5),
+				"module":
 				{
-					"credits": 600,
-					"Timber": 4,
-					"Bricks": 5
-				},
-				"workforce":
-				{
-					"worker": -50
-				},
-				"depends":
-				{ },
-				"upkeep": -50,
-				"output": 4,
-				"building":
-				{
-					"requirement": "Coal Deposit",
-					"name": "Caol Mine",
-					"size": Size(3, 3),
-					"module":
-					{
-						"count": 0,
-						"size": Size(0, 0),
-						"cost": 0
-					}
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
 				}
 			}
 		},
+		"Coal_Mine":
+		{
+			"costs": 
+			{
+				"credits": 600,
+				"Timber": 4,
+				"Bricks": 5
+			},
+			"workforce":
+			{
+				"worker": -50
+			},
+			"depends":
+			{ },
+			"upkeep": -50,
+			"output": 4,
+			"building":
+			{
+				"requirement": "Coal Deposit",
+				"name": "Coal Mine",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
+		},
+		
 
 		"Steel":
 		{
@@ -880,6 +937,288 @@ class PopulationCalculator
 					"size": Size(0, 0),
 					"cost": 0
 				}
+			}
+		},
+
+		"Quartz_sand":
+		{
+			"costs": 
+			{
+				"credits": 2000,
+				"Timber": 6,
+				"Bricks": 5
+			},
+			"workforce":
+			{
+				"worker": -25
+			},
+			"depends":
+			{ },
+			"upkeep": -120,
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Free coastline",
+				"name": "Sand Mine",
+				"size": Size(6, 7),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
+		},
+
+		"Glass":
+		{
+			"costs": 
+			{
+				"credits": 5400,
+				"Timber": 6,
+				"Bricks": 10,
+				"Steel_beams": 8
+			},
+			"workforce":
+			{
+				"artisan": -100
+			},
+			"depends":
+			{ 
+				"Quartz_sand": 2
+			},
+			"upkeep": -100,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Glassmakers",
+				"size": Size(4, 6),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
+		},
+
+		"Windows":
+		{
+			"costs": 
+			{
+				"credits": 6500,
+				"Timber": 12,
+				"Bricks": 20,
+				"Steel_beams": 16
+			},
+			"workforce":
+			{
+				"artisan": -100
+			},
+			"depends":
+			{ 
+				"Glass": 1,
+				"Wood": 1
+			},
+			"upkeep": -200,
+			"output": 1,
+			"building":
+			{
+				"name": "Window Makers",
+				"size": Size(5, 5)
+			}
+		},
+
+		"Beef":
+		{
+			"costs": 
+			{
+				"credits": 2000,
+				"Timber": 6
+			},
+			"workforce":
+			{
+				"farmer": -20
+			},
+			"depends":
+			{ },
+			"upkeep": -50,
+			"output": 0.5,
+			"building":
+			{
+				"name": "Cattle Farm",
+				"size": Size(4, 5),
+				"module":
+				{
+					"count": 4,
+					"size": Size(3, 4),
+					"cost": 50
+				}
+			}
+		},
+
+		"Red_peppers":
+		{
+			"costs": 
+			{
+				"credits": 2000,
+				"Timber": 6
+			},
+			"workforce":
+			{
+				"farmer": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -100,
+			"output": 0.5,
+			"building":
+			{
+				"requirement": "Red peppers fertility",
+				"name": "Red Pepper Farm",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 108,
+					"size": Size(1, 1),
+					"cost": 10
+				}
+			}
+		},
+
+		"Goulash":
+		{
+			"costs": 
+			{
+				"credits": 7000,
+				"Timber": 6,
+				"Bricks": 10,
+				"Steel_beams": 8,
+				"Windows": 8
+			},
+			"workforce":
+			{
+				"artisan": -75
+			},
+			"depends":
+			{ 
+				"Beef": 0.5,
+				"Red_peppers": 0.5
+			},
+			"upkeep": -100,
+			"output": 0.5,
+			"building":
+			{
+				"name": "Artisanal Kitchen",
+				"size": Size(5, 5),
+			}
+		},
+
+		"Canned_food":
+		{
+			"costs": 
+			{
+				"credits": 15000, 
+				"Timber": 6, ///TODO: Check this data
+				"Bricks": 10, 
+				"Steel_beams": 8,
+				"Windows": 8
+			},
+			"workforce":
+			{
+				"artisan": -75
+			},
+			"depends":
+			{ 
+				"Goulash": 0.667,
+				"Iron": 0.667
+			},
+			"upkeep": -100,
+			"output": 0.667,
+			"building":
+			{
+				"name": "Cannery",
+				"size": Size(6, 7),
+			}
+		},
+
+		"Sewing_machines":
+		{
+			"costs": 
+			{
+				"credits": 12000, 
+				"Timber": 6, ///TODO: Check this data
+				"Bricks": 10, 
+				"Steel_beams": 8,
+				"Windows": 8
+			},
+			"workforce":
+			{
+				"artisan": -150
+			},
+			"depends":
+			{ 
+				"Steel": 2.0,
+				"Wood": 2.0
+			},
+			"upkeep": -500,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Sewing Machine Factory",
+				"size": Size(6, 9),
+			}
+		},
+
+		"Furs":
+		{
+			"costs": 
+			{
+				"credits": 2000, 
+				"Timber": 6
+			},
+			"workforce":
+			{
+				"farmer": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -50,
+			"output": 1.0,
+			"building":
+			{
+				"requirement": "Fur abundance, trees in it's influance radius.",
+				"name": "Hunging Cabin",
+				"size": Size(5, 5),
+				"range": 9
+			}
+		},
+
+		"Fur_Coats":
+		{
+			"costs": 
+			{
+				"credits": 2000, 
+				"Timber": 6,
+				"Bricks": 10,
+				"Steel_beams": 8,
+				"Windows": 5
+			},
+			"workforce":
+			{
+				"artisan": -200
+			},
+			"depends":
+			{ 
+				"Furs": 2,
+				"Cotton_fabric": 2
+			},
+			"upkeep": -500,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Fur Dealer",
+				"size": Size(4, 6)
 			}
 		},
 	};

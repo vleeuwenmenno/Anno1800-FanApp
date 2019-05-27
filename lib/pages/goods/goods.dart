@@ -57,31 +57,34 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 				),
 				drawer: SideMenu(activePageId: 2,),
 
-				body: GridView.builder(
-					gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
-					itemCount: PopulationCalculator().goods.keys.length,
-					itemBuilder: (BuildContext context, int index)
-					{
-						return GestureDetector(
-							child: Card(
-								color: Color(0xff714F28).withOpacity(0.5),
-								shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-								elevation: 0.0,
-								child: Column(
-									mainAxisAlignment: MainAxisAlignment.center,
-									children: <Widget>
-									[
-										Image.asset('assets/resources/${PopulationCalculator().goods.keys.elementAt(index)}.png', height: 42),
-										Text('${PopulationCalculator().goods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)),)
-									],
+				body: Container(
+					padding: EdgeInsets.all(4),
+					child: GridView.builder(
+						gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+						itemCount: PopulationCalculator().goods.keys.length,
+						itemBuilder: (BuildContext context, int index)
+						{
+							return GestureDetector(
+								child: Card(
+									color: Color(0xff714F28).withOpacity(0.5),
+									shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+									elevation: 0.0,
+									child: Column(
+										mainAxisAlignment: MainAxisAlignment.center,
+										children: <Widget>
+										[
+											Image.asset('assets/resources/${PopulationCalculator().goods.keys.elementAt(index)}.png', height: 42),
+											Text('${PopulationCalculator().goods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)),)
+										],
+									),
 								),
-							),
-							onTap: ()
-							{
-								Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "${PopulationCalculator().goods.keys.elementAt(index).toString()}"});
-							},
-						);
-					},
+								onTap: ()
+								{
+									Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "${PopulationCalculator().goods.keys.elementAt(index).toString()}"});
+								},
+							);
+						},
+					),
 				),
 
 		);

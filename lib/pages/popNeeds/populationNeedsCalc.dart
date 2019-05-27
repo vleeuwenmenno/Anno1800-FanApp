@@ -9,7 +9,6 @@ import 'package:anno1800_fanapp/widgets/drawer.dart';
 class PopulationNeedsCalc extends StatefulWidget 
 {	
 	Globals globals;
-	bool newWorld;
 
 	@override
 	PopulationNeedsCalcState createState() => PopulationNeedsCalcState();
@@ -45,13 +44,12 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 	Widget build(BuildContext context)
 	{
-	
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
 		if (once)
 		{
-			widget.newWorld = (ModalRoute.of(context).settings.arguments as Map)["newWorld"];
+			widget.globals.oldWorld = (ModalRoute.of(context).settings.arguments as Map)["newWorld"];
 			once = false;
 		}
 
@@ -65,7 +63,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 						IconButton(
 							onPressed: () 
 							{ 
-								widget.newWorld = !widget.newWorld;
+								widget.globals.oldWorld = !widget.globals.oldWorld;
 								setState(() { });
 							},
 							icon: Icon(
@@ -79,7 +77,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 					child: Column(
 						children: <Widget>
 						[
-							!widget.newWorld ?
+							!widget.globals.oldWorld ?
 							Column(
 								mainAxisAlignment: MainAxisAlignment.start,
 								crossAxisAlignment: CrossAxisAlignment.center,
@@ -191,7 +189,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 												"jornalero": int.tryParse(jornalerosCtrl.value),
 												"obrero": int.tryParse(obrerosCtrl.value)
-											}, "newWorld": widget.newWorld });
+											}, "newWorld": widget.globals.oldWorld });
 										},
 										child: Row(
 											mainAxisAlignment: MainAxisAlignment.center,

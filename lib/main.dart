@@ -82,6 +82,7 @@ class MyApp extends StatelessWidget
 				'/drawer/population needs/calc/result': (context) => PopNCalcResults(),
 
 				'/drawer/about': (context) => About(),
+				'/drawer/donate': (context) => About(),
 				'/drawer/about/changelog': (context) => Changelog(),
 				'/drawer/about/licenses': (context) => Licenses(),
 
