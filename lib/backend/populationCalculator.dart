@@ -1,6 +1,8 @@
 
 import 'dart:io';
 
+import 'package:flutter/material.dart';
+
 class PopulationCalculator
 {
 	Map needs = 
@@ -153,7 +155,19 @@ class PopulationCalculator
 			"depends":
 			{ },
 			"upkeep": -40,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Free coastline",
+				"name": "Fishery",
+				"size": Size(5, 6),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Wool":
@@ -170,7 +184,18 @@ class PopulationCalculator
 			"depends":
 			{ },
 			"upkeep": -20,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"name": "Sheep Farm",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 3,
+					"size": Size(3, 3),
+					"cost": 15
+				}
+			}
 		},
 
 		"Work_clothes":
@@ -189,7 +214,18 @@ class PopulationCalculator
 				"Wool": 2
 			},
 			"upkeep": -50,			
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"name": "Framework Knitters",
+				"size": Size(4, 4),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Sails":
@@ -209,7 +245,18 @@ class PopulationCalculator
 				"Wool": 2
 			},
 			"upkeep": -75,			
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"name": "Sailmakers",
+				"size": Size(5, 5),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Potato":
@@ -226,7 +273,19 @@ class PopulationCalculator
 			"depends":
 			{ },
 			"upkeep": -20,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Potato fertility",
+				"name": "Potato Farm",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 72,
+					"size": Size(1, 1),
+					"cost": 1 ///TODO: Double check
+				}
+			}
 		},
 
 		"Schnapps":
@@ -245,7 +304,19 @@ class PopulationCalculator
 				"Potato": 2
 			},
 			"upkeep": -40,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+
+				"name": "Schnapps Distillery",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Clay":
@@ -262,7 +333,19 @@ class PopulationCalculator
 			"depends":
 			{ },
 			"upkeep": -10,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Clay Deposit",
+				"name": "Clay Pit",
+				"size": Size(5, 5),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Bricks":
@@ -281,7 +364,19 @@ class PopulationCalculator
 				"Clay": 1
 			},
 			"upkeep": -10,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+
+				"name": "Brick Factory",
+				"size": Size(5, 5),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Pigs":
@@ -299,7 +394,18 @@ class PopulationCalculator
 			{ },
 			"attractiveness": -3,
 			"upkeep": -40,
-			"output": 1.0
+			"output": 1.0,
+			"building":
+			{
+				"name": "Pig Farm",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 5,
+					"size": Size(2, 3),
+					"cost": 25
+				}
+			}
 		},
 
 		"Sausages":
@@ -320,7 +426,18 @@ class PopulationCalculator
 			},
 			"attractiveness": -5,
 			"upkeep": -80,
-			"output": 1.0
+			"output": 1.0,
+			"building":
+			{
+				"name": "Slaughterhouse",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Grain":
@@ -337,7 +454,19 @@ class PopulationCalculator
 			"depends":
 			{ },
 			"upkeep": -20,
-			"output": 1.0
+			"output": 1.0,
+			"building":
+			{
+				"requirement": "Grain fertility",
+				"name": "Grain Farm",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 144,
+					"size": Size(1, 1),
+					"cost": 5
+				}
+			}
 		},
 
 		"Flour":
@@ -357,7 +486,18 @@ class PopulationCalculator
 				"Grain": 2
 			},
 			"upkeep": -50,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"name": "Flour Mill",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Bread":
@@ -377,7 +517,18 @@ class PopulationCalculator
 				"Flour": 1
 			},
 			"upkeep": -60,
-			"output": 1.0
+			"output": 1.0,
+			"building":
+			{
+				"name": "Bakery",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Malt":
@@ -398,7 +549,18 @@ class PopulationCalculator
 				"Grain": 2.0
 			},
 			"upkeep": -150,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"name": "Malthouse",
+				"size": Size(4, 5),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Hops":
@@ -415,7 +577,19 @@ class PopulationCalculator
 			"depends":
 			{ },
 			"upkeep": -20,
-			"output": 0.667
+			"output": 0.667,
+			"building":
+			{
+				"requirement": "Hops fertility",
+				"name": "Hop Farm",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 96,
+					"size": Size(1, 1),
+					"cost": 5
+				}
+			}
 		},
 
 		"Beer":
@@ -437,7 +611,18 @@ class PopulationCalculator
 				"Hops": 1.0
 			},
 			"upkeep": -200,
-			"output": 1.0
+			"output": 1.0,
+			"building":
+			{
+				"name": "Brewery",
+				"size": Size(4, 5),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Iron":
@@ -455,7 +640,19 @@ class PopulationCalculator
 			"depends":
 			{ },
 			"upkeep": -50,
-			"output": 4
+			"output": 4,
+			"building":
+			{
+				"requirement": "Iron Deposit",
+				"name": "Iron Mine",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Coal":
@@ -476,7 +673,20 @@ class PopulationCalculator
 				{ },
 				"attractiveness": -5,
 				"upkeep": -20,
-				"output": 2.0
+				"output": 2.0,
+				"building":
+				{
+					"requirement": "Trees in influence radius",
+					"name": "Charcoal Kiln",
+					"range": 9,
+					"size": Size(5, 5),
+					"module":
+					{
+						"count": 0,
+						"size": Size(0, 0),
+						"cost": 0
+					}
+				}
 			},
 			"Mine":
 			{
@@ -493,7 +703,19 @@ class PopulationCalculator
 				"depends":
 				{ },
 				"upkeep": -50,
-				"output": 4
+				"output": 4,
+				"building":
+				{
+					"requirement": "Coal Deposit",
+					"name": "Caol Mine",
+					"size": Size(3, 3),
+					"module":
+					{
+						"count": 0,
+						"size": Size(0, 0),
+						"cost": 0
+					}
+				}
 			}
 		},
 
@@ -516,7 +738,18 @@ class PopulationCalculator
 			},
 			"attractiveness": -5,
 			"upkeep": -100,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"name": "Furnace",
+				"size": Size(4, 7),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Steel_beams":
@@ -537,7 +770,18 @@ class PopulationCalculator
 			},
 			"attractiveness": -10,
 			"upkeep": -200,
-			"output": 1.333
+			"output": 1.333,
+			"building":
+			{
+				"name": "Steelworks",
+				"size": Size(5, 10),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 		
 		"Weapons":
@@ -559,7 +803,18 @@ class PopulationCalculator
 			},
 			"attractiveness": -5,
 			"upkeep": -150,
-			"output": 0.667
+			"output": 0.667,
+			"building":
+			{
+				"name": "Weapons Factory",
+				"size": Size(5, 7),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 
 		"Tallow":
@@ -581,7 +836,18 @@ class PopulationCalculator
 			},
 			"attractiveness": -5,
 			"upkeep": -40,
-			"output": 1.0
+			"output": 1.0,
+			"building":
+			{
+				"name": "Rendering Works",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 		
 		"Soap":
@@ -603,7 +869,18 @@ class PopulationCalculator
 			},
 			"attractiveness": -5,
 			"upkeep": -50,
-			"output": 2.0
+			"output": 2.0,
+			"building":
+			{
+				"name": "Soap Factory",
+				"size": Size(4, 4),
+				"module":
+				{
+					"count": 0,
+					"size": Size(0, 0),
+					"cost": 0
+				}
+			}
 		},
 	};
 

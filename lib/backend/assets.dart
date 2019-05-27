@@ -48,7 +48,7 @@ class AssetsManagement
 		"assets/icons/Tile.png",
 		"assets/icons/other/Attractiveness.png",
 		"assets/icons/other/Balance.png",
-		"assets/icons/other/Credits.png",
+		"assets/icons/credits.png",
 		"assets/icons/other/Influence.png",
 		"assets/icons/other/Workforce_artisans.png",
 		"assets/icons/other/Workforce_engineers.png",
