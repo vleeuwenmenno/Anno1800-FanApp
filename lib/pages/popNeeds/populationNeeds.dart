@@ -205,7 +205,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 									TabBar(
 										controller: _tabController,
 										isScrollable: true,
-										indicatorColor: Color(0xffFFE4AD),
+										indicatorColor: Color(0xfcFFE4AD),
 										labelColor: Color(0xffFFE4AD),
 										labelPadding: EdgeInsets.only(
 											left:((MediaQuery.of(context).size.width /3) -42)/2,
