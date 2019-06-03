@@ -1248,7 +1248,7 @@ class PopulationCalculator
 			}
 		},
 
-		"Reinforced_Concrete":
+		"Reinforced_concrete":
 		{
 			"costs": 
 			{
@@ -1285,7 +1285,7 @@ class PopulationCalculator
 				"Bricks": 15,
 				"Steel_beams": 12,
 				"Windows": 10,
-				"Reinforced_Concrete": 10
+				"Reinforced_concrete": 10
 			},
 			"workforce":
 			{
@@ -1312,7 +1312,7 @@ class PopulationCalculator
 				"Bricks": 15,
 				"Steel_beams": 12,
 				"Windows": 10,
-				"Reinforced_Concrete": 10
+				"Reinforced_concrete": 10
 			},
 			"workforce":
 			{
@@ -1339,7 +1339,7 @@ class PopulationCalculator
 				"Bricks": 15,
 				"Steel_beams": 12,
 				"Windows": 10,
-				"Reinforced_Concrete": 10
+				"Reinforced_concrete": 10
 			},
 			"workforce":
 			{
@@ -1369,7 +1369,7 @@ class PopulationCalculator
 				"Bricks": 15,
 				"Steel_beams": 12,
 				"Windows": 10,
-				"Reinforced_Concrete": 10
+				"Reinforced_concrete": 10
 			},
 			"workforce":
 			{
@@ -1423,7 +1423,7 @@ class PopulationCalculator
 				"Bricks": 20,
 				"Steel_beams": 16,
 				"Windows": 15,
-				"Reinforced_Concrete": 15
+				"Reinforced_concrete": 15
 			},
 			"workforce":
 			{
@@ -1443,7 +1443,7 @@ class PopulationCalculator
 			}
 		},
 
-		"Advanced_Weapons":
+		"Advanced_weapons":
 		{
 			"costs": 
 			{
@@ -1452,7 +1452,7 @@ class PopulationCalculator
 				"Bricks": 40,
 				"Steel_beams": 32,
 				"Windows": 30,
-				"Reinforced_Concrete": 30
+				"Reinforced_concrete": 30
 			},
 			"workforce":
 			{
