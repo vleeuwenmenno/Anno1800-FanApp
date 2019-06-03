@@ -77,6 +77,11 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 								itemCount: widget.globals.oldWorld ? oldWorldGoods.keys.length : newWorldGoods.keys.length,
 								itemBuilder: (BuildContext context, int index)
 								{
+									String key = widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index) : newWorldGoods.keys.elementAt(index);
+
+									if (key.endsWith("_"))
+										key = key.substring(0, key.length-1);
+
 									return GestureDetector(
 										child: Card(
 											color: Color(0xff714F28).withOpacity(0.5),
@@ -86,7 +91,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 												mainAxisAlignment: MainAxisAlignment.center,
 												children: <Widget>
 												[
-													Image.asset('assets/resources/${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index) : newWorldGoods.keys.elementAt(index)}.png', height: 42),
+													Image.asset('assets/resources/$key.png', height: 42),
 													Text('${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ") : newWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)), textAlign: TextAlign.center),
 												],
 											),

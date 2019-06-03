@@ -62,13 +62,18 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 				{
 					value.forEach((k, v)
 					{
+						String icon = k;
+
+						if (icon.endsWith("_"))
+							icon = icon.substring(0, icon.length-1);
+				
 						additional.add(
 							ResultIndicator(
 								style: ResultIndicatorStyle.WithoutCount,
 								width: (MediaQuery.of(context).size.width / 100) * 85,
 								count: 23,
 								text: "Input",
-								secondaryIcon: AssetImage("assets/resources/$k.png"),
+								secondaryIcon: AssetImage("assets/resources/$icon.png"),
 								icon: "${v}x",
 								onPressed: ()
 								{	
@@ -81,13 +86,18 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 				}
 				else if (key == "output")
 				{
+					String icon = widget.selectedGoods;
+
+					if (icon.endsWith("_"))
+						icon = icon.substring(0, icon.length-1);
+				
 					additional.add(
 						ResultIndicator(
 							style: ResultIndicatorStyle.WithoutCount,
 							width: (MediaQuery.of(context).size.width / 100) * 85,
 							text: "Produces",
 							icon: "${value}x",
-							secondaryIcon: AssetImage("assets/resources/${widget.selectedGoods}.png"),
+							secondaryIcon: AssetImage("assets/resources/$icon.png"),
 						)
 					);
 					additional.add(Padding(padding: EdgeInsets.all(8)));

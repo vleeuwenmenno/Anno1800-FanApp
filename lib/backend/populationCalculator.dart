@@ -141,6 +141,7 @@ class PopulationCalculator
 
 	Map goods = 
 	{
+		///OLD WORLD >>>>
 		"Wood":
 		{
 			"costs": 
@@ -324,7 +325,7 @@ class PopulationCalculator
 			"output": 2.0,
 			"building":
 			{
-				"requirement": "Potato fertility",
+				"requirement": "Potato fertility image:[assets/resources/Potato.png]",
 				"name": "Potato Farm",
 				"size": Size(3, 3),
 				"module":
@@ -1749,70 +1750,6 @@ class PopulationCalculator
 				}
 			}
 		},
-		
-		"Cotton":
-		{
-			"newWorld": true,
-			"costs":
-			{
-				"credits": 500, 
-				"Timber": 6,
-			},
-			"workforce":
-			{
-				"jornalero": -10
-			},
-			"depends":
-			{ },
-			"upkeep": -5,
-			"output": 1.0,
-			"building":
-			{
-				"name": "Cotton Plantation",
-				"size": Size(4, 4),
-				"module":
-				{
-					"count": 144,
-					"size": Size(1, 1),
-					"cost": 5
-				},
-				"unlockCondition":
-				{
-					"desc": "?",///TODO CONFIRM DATA
-					"img": "tiers/jornaleros"
-				}
-			}
-		},
-
-		"Cotton_fabric":
-		{
-			"newWorld": true,
-			"costs":
-			{
-				"credits": 500, 
-				"Timber": 6,
-			},
-			"workforce":
-			{
-				"jornalero": -10
-			},
-			"depends":
-			{ 
-				"Cotton": 2
-			},
-			"upkeep": -10,
-			"output": 2.0,
-			"building":
-			{
-				"name": "Cotton Mill",
-				"size": Size(4, 4),
-				"unlockCondition":
-				{
-					"desc": "100", ///TODO CONFIRM DATA
-					"img": "tiers/jornaleros"
-				}
-			}
-		},
 
 		"Carbon_filament":
 		{
@@ -2147,6 +2084,250 @@ class PopulationCalculator
 				}
 			}
 		},
+
+		///OLD WORLD ^^^^
+		///
+		///NEW WORLD >>>>
+
+		"Wood_":
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 500
+			},
+			"workforce":
+			{
+				"jornalero": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -10,
+			"output": 4,
+			"building":
+			{
+				"requirement": "Trees in it's influence radius",
+				"name": "Lumberjack's Hut",
+				"size": Size(4, 4),
+				"range": 7,
+			}
+		},
+
+		"Timber_":
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 500
+			},
+			"workforce":
+			{
+				"jornalero": -20
+			},
+			"depends":
+			{
+				"Wood_": 4
+			},
+			"upkeep": -10,
+			"output": 4,
+			"building":
+			{
+				"name": "Sawmill",
+				"size": Size(3, 4)
+			}
+		},
+		
+		"Cotton":
+		{
+			"newWorld": true,
+			"costs":
+			{
+				"credits": 500, 
+				"Timber_": 6,
+			},
+			"workforce":
+			{
+				"jornalero": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -5,
+			"output": 1.0,
+			"building":
+			{
+				"name": "Cotton Plantation",
+				"size": Size(4, 4),
+				"module":
+				{
+					"count": 144,
+					"size": Size(1, 1),
+					"cost": 5
+				},
+				"unlockCondition":
+				{
+					"desc": "?",///TODO CONFIRM DATA
+					"img": "tiers/jornaleros"
+				}
+			}
+		},
+
+		"Cotton_fabric":
+		{
+			"newWorld": true,
+			"costs":
+			{
+				"credits": 500, 
+				"Timber_": 6,
+			},
+			"workforce":
+			{
+				"jornalero": -10
+			},
+			"depends":
+			{ 
+				"Cotton": 2
+			},
+			"upkeep": -10,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Cotton Mill",
+				"size": Size(4, 4),
+				"unlockCondition":
+				{
+					"desc": "100", ///TODO CONFIRM DATA
+					"img": "tiers/jornaleros"
+				}
+			}
+		},
+
+		"Sails_":
+		{
+			"newWorld": true,
+			"costs": ///TODO CONFIRM DATA
+			{
+				"credits": 500,
+				"Timber_": 8
+			},
+			"workforce":
+			{
+				"jornalero": -20
+			},
+			"depends":
+			{
+				"Cotton_fabric": 2
+			},
+			"upkeep": -15,			
+			"output": 2.0,
+			"building":
+			{
+				"name": "Sailmakers",
+				"size": Size(5, 5),
+				"unlockCondition":
+				{
+					"desc": "?", ///TODO CONFIRM DATA
+					"img": "tiers/jornaleros"
+				}
+			}
+		},
+
+		"Plantains":
+		{
+			"newWorld": true,
+			"costs":
+			{
+				"credits": 500, 
+				"Timber_": 6,
+			},
+			"workforce":
+			{
+				"jornalero": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -5,
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Plantain Fertility image:[assets/resources/Plantains.png]",
+				"name": "Plantain Plantation",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 128,
+					"size": Size(1, 1),
+					"cost": 5
+				},
+				"unlockCondition":
+				{
+					"desc": "?",///TODO CONFIRM DATA
+					"img": "tiers/jornaleros"
+				}
+			}
+		},
+
+		"Fish_Oil": 
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 500,
+				"Timber_": 6
+			},
+			"workforce":
+			{
+				"jornalero": -15
+			},
+			"depends":
+			{ },
+			"upkeep": -5,
+			"output": 2.0,
+			"attractiveness": -5,
+			"building":
+			{
+				"requirement": "Free coastline",
+				"name": "Fishery",
+				"size": Size(5, 8),
+				"unlockCondition":
+				{
+					"desc": "?",///TODO CONFIRM DATA
+					"img": "tiers/jornaleros"
+				}
+			}
+		},
+
+		"Fried_plantains": 
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 500,
+				"Timber_": 2
+			},
+			"workforce":
+			{
+				"jornalero": -25
+			},
+			"depends":
+			{ 
+				"Plantains": 2.0,
+				"Fish_Oil": 2.0
+			},
+			"upkeep": -15,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Fishery",
+				"size": Size(3, 4),
+				"unlockCondition":
+				{
+					"desc": "50",
+					"img": "tiers/jornaleros"
+				}
+			}
+		},
+
+		///NEW WORLD ^^^^
 	};
 
 	Map calculate(int population, String tier)

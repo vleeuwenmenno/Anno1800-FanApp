@@ -47,6 +47,10 @@ class Globals
 
 	Widget createChipWithValue(String path, String key, dynamic val, BuildContext context, Globals globals) 
 	{
+		String icon = key;
+		if (icon.endsWith("_"))
+			icon = icon.substring(0, icon.length-1);
+
 		return GestureDetector(
 			child: Padding(
 				padding: EdgeInsets.only(right: 8),
@@ -61,7 +65,7 @@ class Globals
 						),
 					),
 					avatar: Image(
-						image: AssetImage("assets/$path/$key.png"),
+						image: AssetImage("assets/$path/$icon.png"),
 						width: 20,
 					),
 				)
