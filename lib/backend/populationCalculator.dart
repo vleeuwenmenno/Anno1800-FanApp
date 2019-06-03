@@ -341,7 +341,7 @@ class PopulationCalculator
 				{
 					"count": 72,
 					"size": Size(1, 1),
-					"cost": 1 ///TODO: Double check
+					"cost": 1
 				}
 			}
 		},
@@ -1119,7 +1119,7 @@ class PopulationCalculator
 			"costs": 
 			{
 				"credits": 15000, 
-				"Timber": 6, ///TODO: Check this data
+				"Timber": 6,
 				"Bricks": 10, 
 				"Steel_beams": 8,
 				"Windows": 8
@@ -1147,7 +1147,7 @@ class PopulationCalculator
 			"costs": 
 			{
 				"credits": 12000, 
-				"Timber": 6, ///TODO: Check this data
+				"Timber": 6,
 				"Bricks": 10, 
 				"Steel_beams": 8,
 				"Windows": 8
@@ -1281,7 +1281,7 @@ class PopulationCalculator
 			"costs": 
 			{
 				"credits": 5000, 
-				"Timber": 8,	///TODO: Check resources in game
+				"Timber": 8,
 				"Bricks": 15,
 				"Steel_beams": 12,
 				"Windows": 10,
@@ -1308,7 +1308,7 @@ class PopulationCalculator
 			"costs": 
 			{
 				"credits": 5000, 
-				"Timber": 8,	///TODO: Check resources in game
+				"Timber": 8,
 				"Bricks": 15,
 				"Steel_beams": 12,
 				"Windows": 10,
@@ -1335,7 +1335,7 @@ class PopulationCalculator
 			"costs": 
 			{
 				"credits": 17000, 
-				"Timber": 8,	///TODO: Check resources in game
+				"Timber": 8,
 				"Bricks": 15,
 				"Steel_beams": 12,
 				"Windows": 10,
@@ -1365,7 +1365,7 @@ class PopulationCalculator
 			"costs": 
 			{
 				"credits": 17000, 
-				"Timber": 8,	///TODO: Check resources in game
+				"Timber": 8,
 				"Bricks": 15,
 				"Steel_beams": 12,
 				"Windows": 10,
