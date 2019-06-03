@@ -74,13 +74,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 										children: <Widget>
 										[
 											Image.asset('assets/resources/${PopulationCalculator().goods.keys.elementAt(index)}.png', height: 42),
-											Padding(
-											  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-											  child: FittedBox(
-											  	fit: BoxFit.fitWidth,
-											  	child: Text('${PopulationCalculator().goods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)))
-											  ),
-											)
+											Text('${PopulationCalculator().goods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)),textAlign: TextAlign.center,)
 										],
 									),
 								),
