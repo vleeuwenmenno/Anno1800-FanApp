@@ -64,6 +64,42 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 				);
 				additional.add(Padding(padding: EdgeInsets.all(8)));
 			}
+			else if (k == "requirement")
+			{
+				RegExp exp = new RegExp(r"\i\m\a\g\e\:\[(.*)\].*");
+				Iterable<Match> matches = exp.allMatches(v);
+				String icon = "";
+
+				if (matches.length > 0)
+				{
+					icon =  matches.first.group(1);
+				}
+
+				additional.add(
+					ResultIndicator(
+						style: ResultIndicatorStyle.WithoutCount,
+						width: (MediaQuery.of(context).size.width / 100) * 85,
+						count: 23,
+						text: "Requires",
+						icon: "${v.replaceAll("image:[" + icon + "]", "")}",
+						secondaryIcon: icon != "" ? AssetImage(icon) : null,
+					)
+				);
+				additional.add(Padding(padding: EdgeInsets.all(8)));
+			}
+			else if (k == "range")
+			{
+				additional.add(
+					ResultIndicator(
+						style: ResultIndicatorStyle.WithoutCount,
+						width: (MediaQuery.of(context).size.width / 100) * 85,
+						count: 23,
+						text: "Range",
+						icon: "$v",
+					)
+				);
+				additional.add(Padding(padding: EdgeInsets.all(8)));
+			}
 			else if (k == "influence")
 			{
 				additional.add(
@@ -98,7 +134,25 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 					additional.add(Padding(padding: EdgeInsets.all(8)));
 				});
 			}
+			else if (k == "unlockCondition")
+			{
+				additional.add(
+					ResultIndicator(
+						style: ResultIndicatorStyle.WithoutCount,
+						width: (MediaQuery.of(context).size.width / 100) * 85,
+						count: 23,
+						text: "Unlock condition",
+						icon: "${v['desc']}",
+						secondaryIcon: AssetImage("assets/${v['img']}.png"),
+					)
+				);
+				additional.add(Padding(padding: EdgeInsets.all(8)));
+			}
 		}
+
+		String imgKey = widget.selectedBuilding;
+		if (imgKey.contains("Residence"))
+			imgKey = "Residence";
 
 		return Scaffold(
 				appBar: AppBar(
@@ -142,7 +196,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 												Image(
 													height: 128,
 													width: 128,
-													image: AssetImage("assets/buildings/${widget.selectedBuilding}.png"),
+													image: AssetImage("assets/buildings/$imgKey.png"),
 												),
 
 												Flexible(

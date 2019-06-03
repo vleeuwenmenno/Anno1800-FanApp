@@ -2414,7 +2414,12 @@ class PopulationCalculator
 				"credits": 13,
 				"Bricks": 1
 			},
-			"size": Size(1, 1)
+			"size": Size(1, 1),
+			"unlockCondition":
+			{
+				"desc": "1",
+				"img": "tiers/worker"
+			}
 		},
 		"Quay":
 		{
@@ -2449,6 +2454,76 @@ class PopulationCalculator
 			},
 			"size": Size(3, 3)
 		},
+		"Worker_Residence":
+		{
+			"name": "Worker Residence",
+			"desc": "Worker residences are the second-tier types of homes in the game. They are upgraded from farmer residences, provided the needs of the home are met. If a worker's residence has all of its needs met, it can be upgraded into an artisan residence.",
+			"costs": 
+			{
+				"Timber": 6.0
+			},
+			"size": Size(3, 3),
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/farmer"
+			}
+		},
+		"Artisan_Residence":
+		{
+			"name": "Artisan Residence",
+			"desc": "Artisan residences are the third-tier homes in the game. They are upgraded from a worker residence, provided the needs of the home are met. Artisans are capable of jobs that require careful crafting. An artisan residence can be upgraded into an engineer residence, provided the needs of the home are met.",
+			"costs": 
+			{
+				"Timber": 12.0,
+				"Bricks": 2.0,
+				"Steel_beams": 2.0
+			},
+			"size": Size(3, 3),
+			"unlockCondition":
+			{
+				"desc": "750",
+				"img": "tiers/worker"
+			}
+		},
+		"Engineer_Residence":
+		{
+			"name": "Engineer Residence",
+			"desc": "Engineer residences are the fourth-tier homes in the game. They are upgraded from an artisan residence, provided the needs of the home are met. Engineers are highly educated citizens that are capable of bringing modern age technology into the world through technological revolution. An engineer residence can be upgraded to a investor residence, provided the needs of the home are met.",
+			"costs": 
+			{
+				"Timber": 20.0,
+				"Bricks": 5.0,
+				"Steel_beams": 4.0,
+				"Windows": 2.0
+			},
+			"size": Size(3, 3),
+			"unlockCondition":
+			{
+				"desc": "1500",
+				"img": "tiers/artisan"
+			}
+		},
+		"Investor_Residence":
+		{
+			"name": "Investor Residence",
+			"desc": "Investor residences are the fifth and final tier of Old World population in the game. They are upgraded from engineer residences, provided the needs of the residents are met. Investors are the wealthy elite, members of an upper class who have built fortunes off inheritances or their wit and bare hands.",
+			"costs": 
+			{
+				"Timber": 30.0,
+				"Bricks": 9.0,
+				"Steel_beams": 7.0,
+				"Windows": 5.0,
+				"Reinforced_concrete": 3.0
+			},
+			"influence": 2,
+			"size": Size(3, 3),
+			"unlockCondition":
+			{
+				"desc": "1750",
+				"img": "tiers/engineer"
+			}
+		},
 		"Warehouse":
 		{
 			"name": "Small Warehouse",
@@ -2471,7 +2546,12 @@ class PopulationCalculator
 				"Timber": 4
 			},
 			"upkeep": -25,
-			"size": Size(3, 5)
+			"size": Size(3, 5),
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/farmer"
+			}
 		},
 		"Pub":
 		{
@@ -2483,7 +2563,12 @@ class PopulationCalculator
 				"Timber": 10
 			},
 			"upkeep": -20,
-			"size": Size(4, 6)
+			"size": Size(4, 6),
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/farmer"
+			}
 		},
 		"Trade_Union":
 		{
@@ -2497,7 +2582,12 @@ class PopulationCalculator
 			},
 			"upkeep": -50,
 			"influence": -20,
-			"size": Size(4, 4)
+			"size": Size(4, 4),
+			"unlockCondition":
+			{
+				"desc": "1",
+				"img": "tiers/worker"
+			}
 		},
 		"Church":
 		{
@@ -2510,7 +2600,12 @@ class PopulationCalculator
 				"Bricks": 25
 			},
 			"upkeep": -75,
-			"size": Size(6, 8)
+			"size": Size(6, 8),
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/worker"
+			}
 		},
 		"Sailing_shipyard":
 		{
@@ -2527,7 +2622,13 @@ class PopulationCalculator
 			"workforce":
 			{
 				"worker": 100
-			}
+			},
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/worker"
+			},
+			"requirement": "Free harbour area"
 		},
 		"Depot":
 		{
@@ -2540,7 +2641,13 @@ class PopulationCalculator
 				"Bricks": 10
 			},
 			"upkeep": -20,
-			"size": Size(4, 10)
+			"size": Size(4, 10),
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/worker"
+			},
+			"requirement": "Free harbour area"
 		},
 		"Harbourmasters_Office":
 		{
@@ -2554,7 +2661,13 @@ class PopulationCalculator
 			},
 			"upkeep": -50,
 			"influence": -20,
-			"size": Size(4, 4)
+			"size": Size(4, 4),
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/worker"
+			},
+			"requirement": "Free harbour area"
 		},
 		"Mounted_guns":
 		{
@@ -2569,7 +2682,14 @@ class PopulationCalculator
 			},
 			"upkeep": -10,
 			"influence": -3,
-			"size": Size(4, 4)
+			"size": Size(4, 4),
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/worker"
+			},
+			"requirement": "Free harbour area",
+			"range": "Attack Range: 72"
 		},
 		"Cannon_Tower":
 		{
@@ -2585,7 +2705,14 @@ class PopulationCalculator
 			},
 			"upkeep": -30,
 			"influence": -7,
-			"size": Size(4, 4)
+			"size": Size(4, 4),
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/worker"
+			},
+			"requirement": "Free harbour area",
+			"range": "Attack Range: 92"
 		},
 		"Police_Station":
 		{
@@ -2598,7 +2725,12 @@ class PopulationCalculator
 				"Bricks": 10
 			},
 			"upkeep": -50,
-			"size": Size(4, 6)
+			"size": Size(4, 6),
+			"unlockCondition":
+			{
+				"desc": "500",
+				"img": "tiers/worker"
+			},
 		},
 		"School":
 		{
@@ -2612,7 +2744,34 @@ class PopulationCalculator
 				"Steel_beams": 20
 			},
 			"upkeep": -50,
-			"size": Size(5, 6)
+			"size": Size(5, 6),
+			"unlockCondition":
+			{
+				"desc": "750",
+				"img": "tiers/worker"
+			},
+		},
+		"Town_Hall":
+		{
+			"name": "Town Hall",
+			"desc": "Only useful if equipped with items. Attach items here to provide bonuses to residences and public buildings.",
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber": 20,
+				"Bricks": 25,
+				"Steel_beams": 20,
+				"Windows": 5
+			},
+			"upkeep": -50,
+			"influence": -20,
+			"size": Size(4, 4),
+			"unlockCondition":
+			{
+				"desc": "1",
+				"img": "tiers/artisan"
+			},
+			"range": "Radius: 20"
 		},
 	};
 

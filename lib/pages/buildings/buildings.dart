@@ -77,6 +77,10 @@ class _BuildingsState extends State<Buildings> with SingleTickerProviderStateMix
 								itemCount: widget.globals.oldWorld ? oldWorldGoods.keys.length : newWorldGoods.keys.length,
 								itemBuilder: (BuildContext context, int index)
 								{
+									String key = widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index) : newWorldGoods.keys.elementAt(index);
+									if (key.contains("Residence"))
+										key = "Residence";
+
 									return GestureDetector(
 										child: Card(
 											color: Color(0xff714F28).withOpacity(0.5),
@@ -86,13 +90,13 @@ class _BuildingsState extends State<Buildings> with SingleTickerProviderStateMix
 												mainAxisAlignment: MainAxisAlignment.center,
 												children: <Widget>
 												[
-													Image.asset('assets/buildings/${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index) : newWorldGoods.keys.elementAt(index)}.png', height: 42),
+													Image.asset('assets/buildings/$key.png', height: 42),
 													Text('${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ") : newWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)), textAlign: TextAlign.center),
 												],
 											),
 										),
 										onTap: ()
-										{
+										{	
 											Navigator.pushNamed(context, '/buildings/buildingInfo', arguments: { "globals": widget.globals, "selectedBuilding": "${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString() : newWorldGoods.keys.elementAt(index).toString()}"});
 										},
 									);
