@@ -2393,6 +2393,229 @@ class PopulationCalculator
 		///NEW WORLD ^^^^
 	};
 
+	Map buildings = 
+	{
+		"Dirt_road":
+		{
+			"name": "Dirt Road",
+			"desc": "Connects buildings and allows for transportation of goods.",
+			"costs": 
+			{
+				"credits": 3
+			},
+			"size": Size(1, 1)
+		},
+		"Paved_street":
+		{
+			"name": "Paved Street",
+			"desc": "Improves street connections and allows for faster transportation of goods.",
+			"costs": 
+			{
+				"credits": 13,
+				"Bricks": 1
+			},
+			"size": Size(1, 1)
+		},
+		"Quay":
+		{
+			"name": "Quay",
+			"desc": "Beautifies your harbour area. Requires free harbour area.",
+			"costs": 
+			{
+				"credits": 5,
+				"Bricks": 1
+			},
+			"size": Size(1, 1)
+		},
+		"Marketplace":
+		{
+			"name": "Marketplace",
+			"desc": "A place that provides your inhabitants with all the necessities of daily life.",
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 10
+			},
+			"upkeep": -20,
+			"size": Size(5, 6)
+		},
+		"Residence":
+		{
+			"name": "Farmer Residence",
+			"desc": "Your residents live here. Residents provide income and workforce.",
+			"costs": 
+			{
+				"Timber": 2.0
+			},
+			"size": Size(3, 3)
+		},
+		"Warehouse":
+		{
+			"name": "Small Warehouse",
+			"desc": "Accepts and distributes goods from, and to your production buildings.",
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 10
+			},
+			"upkeep": -20,
+			"size": Size(5, 5)
+		},
+		"Fire_station":
+		{
+			"name": "Fire Station",
+			"desc": "Fights fire in its influence radius. Can mobilise additional special units if required.",
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 4
+			},
+			"upkeep": -25,
+			"size": Size(3, 5)
+		},
+		"Pub":
+		{
+			"name": "Small Warehouse",
+			"desc": "Provides a public service for your residents.",
+			"costs": 
+			{
+				"credits": 500,
+				"Timber": 10
+			},
+			"upkeep": -20,
+			"size": Size(4, 6)
+		},
+		"Trade_Union":
+		{
+			"name": "Trade Union",
+			"desc": "Only useful if equipped with items. Attach items here to provide bonuses to production.",
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber": 25,
+				"Bricks": 5
+			},
+			"upkeep": -50,
+			"influence": -20,
+			"size": Size(4, 4)
+		},
+		"Church":
+		{
+			"name": "Church",
+			"desc": "Provides a public service for your residents.",
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber": 25,
+				"Bricks": 25
+			},
+			"upkeep": -75,
+			"size": Size(6, 8)
+		},
+		"Sailing_shipyard":
+		{
+			"name": "Sailing Shipyard",
+			"desc": "Builds ships. Requires free coastline. Can be improved by electricity.",
+			"costs": 
+			{
+				"credits": 10000,
+				"Timber": 20,
+				"Bricks": 25
+			},
+			"upkeep": -100,
+			"size": Size(6, 15),
+			"workforce":
+			{
+				"worker": 100
+			}
+		},
+		"Depot":
+		{
+			"name": "Depot",
+			"desc": "Increases overall storage capacity by 50 tons. Requires free harbour area.",
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber": 10,
+				"Bricks": 10
+			},
+			"upkeep": -20,
+			"size": Size(4, 10)
+		},
+		"Harbourmasters_Office":
+		{
+			"name": "Harbourmaster's Office",
+			"desc": "Only useful if equipped with items. Attach items here to provide bonuses to harbour buildings.\nRequires free harbour area.",
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber": 20,
+				"Bricks": 10
+			},
+			"upkeep": -50,
+			"influence": -20,
+			"size": Size(4, 4)
+		},
+		"Mounted_guns":
+		{
+			"name": "Mounted Guns",
+			"desc": "Attacks and slows enemies over a medium range. More accurate up close. Requires free harbour area.",
+			"costs": 
+			{
+				"credits": 2000,
+				"Timber": 10,
+				"Bricks": 10,
+				"Weapons": 5
+			},
+			"upkeep": -10,
+			"influence": -3,
+			"size": Size(4, 4)
+		},
+		"Cannon_Tower":
+		{
+			"name": "Cannon Tower",
+			"desc": "Does solid damage to enemies at long range, with good all-round defense. Requires free harbour area.",
+			"costs": 
+			{
+				"credits": 4000,
+				"Timber": 10,
+				"Bricks": 10,
+				"Steel_beams": 8,
+				"Weapons": 10
+			},
+			"upkeep": -30,
+			"influence": -7,
+			"size": Size(4, 4)
+		},
+		"Police_Station":
+		{
+			"name": "Police Station",
+			"desc": "Fights riots in its influence radius. Can mobilise additional special units if required.",
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber": 8,
+				"Bricks": 10
+			},
+			"upkeep": -50,
+			"size": Size(4, 6)
+		},
+		"School":
+		{
+			"name": "School",
+			"desc": "Provides a public service for your residents.",
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber": 20,
+				"Bricks": 25,
+				"Steel_beams": 20
+			},
+			"upkeep": -50,
+			"size": Size(5, 6)
+		},
+	};
+
 	Map calculate(int population, String tier)
 	{
 		Map returnData = {};

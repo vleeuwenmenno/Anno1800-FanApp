@@ -65,7 +65,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 						)
 					],
 				),
-				drawer: SideMenu(activePageId: 2,),
+				drawer: SideMenu(activePageId: 2),
 
 				body: Container(
 					padding: EdgeInsets.all(4),

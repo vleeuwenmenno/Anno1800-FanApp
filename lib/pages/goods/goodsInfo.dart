@@ -71,7 +71,6 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 							ResultIndicator(
 								style: ResultIndicatorStyle.WithoutCount,
 								width: (MediaQuery.of(context).size.width / 100) * 85,
-								count: 23,
 								text: "Input",
 								secondaryIcon: AssetImage("assets/resources/$icon.png"),
 								icon: "${v}x",
@@ -231,7 +230,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 
 		return Scaffold(
 				appBar: AppBar(
-					title: Text('${PopulationCalculator().goods[widget.selectedGoods]["building"]["name"]}'),
+					title: Text('${PopulationCalculator().goods[widget.selectedGoods]["building"]["name"]} ${widget.selectedGoods.endsWith("_") ? "(New world)" : ""}'),
 					elevation: 0,
 					actions: <Widget>
 					[

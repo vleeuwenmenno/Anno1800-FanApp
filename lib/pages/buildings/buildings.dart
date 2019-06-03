@@ -28,7 +28,7 @@ class _BuildingsState extends State<Buildings> with SingleTickerProviderStateMix
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
-		PopulationCalculator().goods.forEach((key, value)
+		PopulationCalculator().buildings.forEach((key, value)
 		{
 			if (value.containsKey("newWorld"))
 				newWorldGoods[key] = value;
@@ -65,7 +65,7 @@ class _BuildingsState extends State<Buildings> with SingleTickerProviderStateMix
 						)
 					],
 				),
-				drawer: SideMenu(activePageId: 2,),
+				drawer: SideMenu(activePageId: 3),
 
 				body: Container(
 					padding: EdgeInsets.all(4),
@@ -86,14 +86,14 @@ class _BuildingsState extends State<Buildings> with SingleTickerProviderStateMix
 												mainAxisAlignment: MainAxisAlignment.center,
 												children: <Widget>
 												[
-													Image.asset('assets/resources/${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index) : newWorldGoods.keys.elementAt(index)}.png', height: 42),
+													Image.asset('assets/buildings/${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index) : newWorldGoods.keys.elementAt(index)}.png', height: 42),
 													Text('${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ") : newWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)), textAlign: TextAlign.center),
 												],
 											),
 										),
 										onTap: ()
 										{
-											Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString() : newWorldGoods.keys.elementAt(index).toString()}"});
+											Navigator.pushNamed(context, '/buildings/buildingInfo', arguments: { "globals": widget.globals, "selectedBuilding": "${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString() : newWorldGoods.keys.elementAt(index).toString()}"});
 										},
 									);
 								},

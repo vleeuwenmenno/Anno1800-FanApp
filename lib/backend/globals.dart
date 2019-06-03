@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/backend/populationCalculator.dart';
 import 'package:flutter/material.dart';
 
 import 'package:anno1800_fanapp/backend/assets.dart';
@@ -40,7 +41,10 @@ class Globals
 			),
 			onTap: ()
 			{
-				Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});						
+				if (PopulationCalculator().goods.containsKey(key))
+					Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});
+				else
+					Navigator.pushNamed(context, 'buildings/buildingInfo', arguments: { "globals": globals, "selectedBuilding": "$key"});				
 			},
 		);
 	}
@@ -72,7 +76,10 @@ class Globals
 			),
 			onTap: ()
 			{
-				Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});		
+				if (PopulationCalculator().goods.containsKey(key))
+					Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});
+				else
+					Navigator.pushNamed(context, 'buildings/buildingInfo', arguments: { "globals": globals, "selectedBuilding": "$key"});
 			},
 		);
 	}
