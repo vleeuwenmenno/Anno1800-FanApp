@@ -79,7 +79,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 
 							path = "buildings";
 
-							luxuryChips.add(createChip(path, luxKey, context));
+							luxuryChips.add(createChip(path, luxKey, context, widget.globals));
 						});
 					}
 					else
@@ -98,7 +98,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 
 							path = "buildings";
 
-						basicChips.add(createChip(path, key, context));
+						basicChips.add(createChip(path, key, context, widget.globals));
 					}
 				}
 			);
@@ -229,9 +229,10 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 	}
 }
 
-Widget createChip(String path, String key, BuildContext context) 
+Widget createChip(String path, String key, BuildContext context, Globals globals) 
 {
 	return GestureDetector(
+		behavior: HitTestBehavior.opaque,
 		child: Padding(
 			padding: EdgeInsets.only(right: 8),
 			child: Chip(
@@ -252,7 +253,7 @@ Widget createChip(String path, String key, BuildContext context)
 		),
 		onTap: ()
 		{
-			Navigator.pushNamed(context, "/goods", arguments: { "item": key });
+			Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "${key}"});						
 		},
 	);
 }

@@ -161,12 +161,6 @@ class PopulationCalculator
 				"name": "Lumberjack's Hut",
 				"size": Size(4, 4),
 				"range": 7,
-				"module":
-				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
-				}
 			}
 		},
 
@@ -189,13 +183,7 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Sawmill",
-				"size": Size(3, 4),
-				"module":
-				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
-				}
+				"size": Size(3, 4)
 			}
 		},
 
@@ -1565,6 +1553,7 @@ class PopulationCalculator
 
 		"Gold_Ore":
 		{
+			"newWorld": true,
 			"costs":
 			{
 				"credits": 2500, 
@@ -1573,7 +1562,7 @@ class PopulationCalculator
 			},
 			"workforce":
 			{
-				"obreros": -100
+				"obrero": -100
 			},
 			"depends":
 			{ },
@@ -1641,8 +1630,227 @@ class PopulationCalculator
 				"size": Size(5, 7)
 			}
 		},
-
 		
+		"Cotton":
+		{
+			"newWorld": true,
+			"costs":
+			{
+				"credits": 500, 
+				"Timber": 6,
+			},
+			"workforce":
+			{
+				"jornalero": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -5,
+			"output": 1.0,
+			"building":
+			{
+				"name": "Cotton Plantation",
+				"size": Size(4, 4),
+				"module":
+				{
+					"count": 144,
+					"size": Size(1, 1),
+					"cost": 5
+				}
+			}
+		},
+
+		"Cotton_fabric":
+		{
+			"newWorld": true,
+			"costs":
+			{
+				"credits": 500, 
+				"Timber": 6,
+			},
+			"workforce":
+			{
+				"jornalero": -10
+			},
+			"depends":
+			{ 
+				"Cotton": 2
+			},
+			"upkeep": -10,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Cotton Mill",
+				"size": Size(4, 4)
+			}
+		},
+
+		"Carbon_filament":
+		{
+			"costs":
+			{
+				"credits": 30000, 
+				"Timber": 8,
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10,
+				"Reinforced_concrete": 10
+			},
+			"workforce":
+			{
+				"engineer": -150
+			},
+			"depends":
+			{ 
+				"Coal": 1
+			},
+			"upkeep": -725,
+			"output": 1.0,
+			"building":
+			{
+				"name": "Filament Factory",
+				"size": Size(6, 7)
+			}
+		},
+
+		"Light_bulb":
+		{
+			"costs":
+			{
+				"credits": 45000, 
+				"Timber": 8,
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10,
+				"Reinforced_concrete": 10
+			},
+			"workforce":
+			{
+				"engineer": -150
+			},
+			"depends":
+			{ 
+				"Carbon_filament": 1,
+				"Glass": 1
+			},
+			"upkeep": -1000,
+			"output": 1.0,
+			"building":
+			{
+				"name": "Light Bulb Factory",
+				"size": Size(6, 7)
+			}
+		},
+
+		"Grapes":
+		{
+			"costs":
+			{
+				"credits": 8000, 
+				"Timber": 10
+			},
+			"workforce":
+			{
+				"farmer": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -200,
+			"output": 0.5,
+			"building":
+			{
+				"requirement": "Grape fertility",
+				"name": "Vineyard",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 128,
+					"size": Size(1, 1),
+					"cost": 15
+				}
+			}
+		},
+
+		"Champagne":
+		{
+			"costs":
+			{
+				"credits": 35000, 
+				"Timber": 10,
+				"Bricks": 20,
+				"Steel_beams": 16,
+				"Windows": 15,
+				"Reinforced_concrete": 15
+			},
+			"workforce":
+			{
+				"artisan": -150
+			},
+			"depends":
+			{ 
+				"Glass": 2,
+				"Grapes": 2
+			},
+			"upkeep": -200,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Champagne Cellar",
+				"size": Size(5, 6)
+			}
+		},
+
+		"Pearls":
+		{
+			"costs":
+			{
+				"credits": 8500, 
+				"Timber": 10
+			},
+			"workforce":
+			{
+				"jornalero": -50
+			},
+			"depends":
+			{ },
+			"upkeep": -25,
+			"output": 0.667,
+			"building":
+			{
+				"requirement": "Pearl abundance, Free coastline",
+				"name": "Pearl Farm",
+				"size": Size(6, 14)
+			}
+		},
+
+		"Jewelry":
+		{
+			"costs":
+			{
+				"credits": 33000, 
+				"Timber": 10,
+				"Bricks": 20,
+				"Steel_beams": 16,
+				"Windows": 15,
+				"Reinforced_concrete": 15
+			},
+			"workforce":
+			{
+				"artisan": -150
+			},
+			"depends":
+			{ 
+				"Pearls": 2.0,
+				"Gold": 2.0
+			},
+			"upkeep": -2500,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Jewellers",
+				"size": Size(5, 5)
+			}
+		},
 	};
 
 	Map calculate(int population, String tier)

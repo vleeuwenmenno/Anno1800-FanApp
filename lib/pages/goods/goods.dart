@@ -36,7 +36,9 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 				oldWorldGoods[key] = value;
 		});
 
-		return Scaffold(
+		return WillPopScope(
+			onWillPop: () async => false,
+			child: Scaffold(
 				appBar: AppBar(
 					title: Text(widget.globals.oldWorld ? 'Old world goods' : 'New world goods'),
 					elevation: 0,
@@ -94,7 +96,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 						},
 					),
 				),
-
+			)
 		);
 	}	
 }
