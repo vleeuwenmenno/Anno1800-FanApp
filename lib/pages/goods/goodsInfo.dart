@@ -69,7 +69,11 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 								count: 23,
 								text: "Input",
 								secondaryIcon: AssetImage("assets/resources/$k.png"),
-								icon: "${v}x"
+								icon: "${v}x",
+								onPressed: ()
+								{	
+									Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "$k"});	
+								},
 							)
 						);
 						additional.add(Padding(padding: EdgeInsets.all(8)));
@@ -94,13 +98,23 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 					{
 						if (k == "requirement")
 						{
+							RegExp exp = new RegExp(r"\i\m\a\g\e\:\[(.*)\].*");
+							Iterable<Match> matches = exp.allMatches(v);
+							String icon = "";
+
+							if (matches.length > 0)
+							{
+								icon =  matches.first.group(1);
+							}
+
 							additional.add(
 								ResultIndicator(
 									style: ResultIndicatorStyle.WithoutCount,
 									width: (MediaQuery.of(context).size.width / 100) * 85,
 									count: 23,
 									text: "Requires",
-									icon: "$v"
+									icon: "${v.replaceAll("image:[" + icon + "]", "")}",
+									secondaryIcon: icon != "" ? AssetImage(icon) : null,
 								)
 							);
 							additional.add(Padding(padding: EdgeInsets.all(8)));

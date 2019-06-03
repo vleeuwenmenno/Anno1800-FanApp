@@ -1609,7 +1609,7 @@ class PopulationCalculator
 			"output": 2.0,
 			"building":
 			{
-				"requirement": "Electricity",
+				"requirement": "Electricity image:[assets/icons/Electricity.png]",
 				"name": "Bicycle Factory",
 				"size": Size(6, 6),
 				"unlockCondition":
@@ -1644,7 +1644,7 @@ class PopulationCalculator
 			"output": 0.667,
 			"building":
 			{
-				"requirement": "Electricity",
+				"requirement": "Electricity image:[assets/icons/Electricity.png]",
 				"name": "Motor Assembly Line",
 				"size": Size(6, 9),
 				"unlockCondition":
@@ -2006,6 +2006,143 @@ class PopulationCalculator
 				"unlockCondition":
 				{
 					"desc": "1750",
+					"img": "tiers/investor"
+				}
+			}
+		},
+
+		"Wood_veneers":
+		{
+			"costs":///TODO CONFIRM DATA
+			{
+				"credits": 22000, 
+				"Timber": 10,
+				"Bricks": 20,
+				"Steel_beams": 16,
+				"Windows": 15,
+				"Reinforced_concrete": 15
+			},
+			"workforce":
+			{
+				"engineer": -150
+			},
+			"depends":
+			{ 
+				"Wood": 1.0
+			},
+			"upkeep": -750,
+			"output": 1.0,
+			"building":
+			{
+				"name": "Marquetry Workshop",
+				"size": Size(5, 5),
+				"unlockCondition":
+				{
+					"desc": "750",
+					"img": "tiers/investor"
+				}
+			}
+		},
+
+		"Gramophone":
+		{
+			"costs":///TODO CONFIRM DATA
+			{
+				"credits": 60000, 
+				"Timber": 10,
+				"Bricks": 20,
+				"Steel_beams": 16,
+				"Windows": 15,
+				"Reinforced_concrete": 15
+			},
+			"workforce":
+			{
+				"engineer": -150
+			},
+			"depends":
+			{ 
+				"Wood_veneers": 0.5,
+				"Brass": 0.5
+			},
+			"upkeep": -1600,
+			"output": 0.5,
+			"building":
+			{
+				"requirement": "Electricity image:[assets/icons/Electricity.png]",
+				"name": "Gramophone Factory",
+				"size": Size(7, 7),
+				"unlockCondition":
+				{
+					"desc": "3000",
+					"img": "tiers/investor"
+				}
+			}
+		},
+
+		"Chassis":
+		{
+			"costs":///TODO CONFIRM DATA
+			{
+				"credits": 56000, 
+				"Timber": 10,
+				"Bricks": 20,
+				"Steel_beams": 16,
+				"Windows": 15,
+				"Reinforced_concrete": 15
+			},
+			"workforce":
+			{
+				"engineer": -150
+			},
+			"depends":
+			{ 
+				"Wood": 0.5,
+				"Caoutchouc": 0.5
+			},
+			"upkeep": -1200,
+			"output": 0.5,
+			"building":
+			{
+				"name": "Coachmakers",
+				"size": Size(6, 9),
+				"unlockCondition":
+				{
+					"desc": "5000",
+					"img": "tiers/investor"
+				}
+			}
+		},
+
+		"Steam_carriages":
+		{
+			"costs":///TODO CONFIRM DATA
+			{
+				"credits": 115000, 
+				"Timber": 20,
+				"Bricks": 40,
+				"Steel_beams": 32,
+				"Windows": 30,
+				"Reinforced_concrete": 30
+			},
+			"workforce":
+			{
+				"engineer": -500
+			},
+			"depends":
+			{ 
+				"Steam_motors": 1.0,
+				"Chassis": 1.0
+			},
+			"upkeep": -3000,
+			"output": 1,
+			"building":
+			{
+				"name": "Cab Assembly Line",
+				"requirement": "Electricity image:[assets/icons/Electricity.png]",
+				"size": Size(8, 12),
+				"unlockCondition":
+				{
+					"desc": "5000",
 					"img": "tiers/investor"
 				}
 			}
