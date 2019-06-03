@@ -65,16 +65,16 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 						)
 					],
 				),
-				drawer: SideMenu(activePageId: 2,),
-
+				drawer: SideMenu(activePageId: 2),
 				body: SingleChildScrollView(
 					child: Padding(
 						padding: const EdgeInsets.all(16.0),
 						child: Column(
+							crossAxisAlignment: CrossAxisAlignment.start,
 							children: <Widget>
 							[
 								Row(
-								children: <Widget>
+									children: <Widget>
 									[
 										Text('Costs',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
 									],
@@ -94,7 +94,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 								),
 
 								Row(
-								children: <Widget>
+									children: <Widget>
 									[
 										Text('Additional information',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
 									],

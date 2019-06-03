@@ -69,31 +69,36 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 
 				body: Container(
 					padding: EdgeInsets.all(4),
-					child: GridView.builder(
-						gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
-						itemCount: widget.globals.oldWorld ? oldWorldGoods.keys.length : newWorldGoods.keys.length,
-						itemBuilder: (BuildContext context, int index)
+					child: OrientationBuilder(
+  						builder: (context, orientation) 
 						{
-							return GestureDetector(
-								child: Card(
-									color: Color(0xff714F28).withOpacity(0.5),
-									shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-									elevation: 0.0,
-									child: Column(
-										mainAxisAlignment: MainAxisAlignment.center,
-										children: <Widget>
-										[
-											Image.asset('assets/resources/${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index) : newWorldGoods.keys.elementAt(index)}.png', height: 42),
-											Text('${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ") : newWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)), textAlign: TextAlign.center),
-										],
-									),
-								),
-								onTap: ()
+							return GridView.builder(
+								gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: orientation == Orientation.landscape ? 8 : 4),
+								itemCount: widget.globals.oldWorld ? oldWorldGoods.keys.length : newWorldGoods.keys.length,
+								itemBuilder: (BuildContext context, int index)
 								{
-									Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString() : newWorldGoods.keys.elementAt(index).toString()}"});
+									return GestureDetector(
+										child: Card(
+											color: Color(0xff714F28).withOpacity(0.5),
+											shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+											elevation: 0.0,
+											child: Column(
+												mainAxisAlignment: MainAxisAlignment.center,
+												children: <Widget>
+												[
+													Image.asset('assets/resources/${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index) : newWorldGoods.keys.elementAt(index)}.png', height: 42),
+													Text('${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ") : newWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)), textAlign: TextAlign.center),
+												],
+											),
+										),
+										onTap: ()
+										{
+											Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString() : newWorldGoods.keys.elementAt(index).toString()}"});
+										},
+									);
 								},
 							);
-						},
+						}
 					),
 				),
 			)
