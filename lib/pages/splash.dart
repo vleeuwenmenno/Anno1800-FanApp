@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen>
 			if (once)
 			{
 				widget.globals.am.precacheImages(context);
-				widget.globals.nfd.loadData();
+				widget.globals.nfd.loadData(widget.globals);
 
 				once = false;
 			}

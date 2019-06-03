@@ -1,4 +1,5 @@
 
+import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/widgets/newsWidget.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
@@ -14,7 +15,7 @@ class NewsFeedData
 	int itemsLoaded = 0;
 	int itemsExpected = 20;
 
-	void loadData() async
+	void loadData(Globals globals) async
 	{
 		finished = false;
 		itemsLoaded = 0;
@@ -33,13 +34,13 @@ class NewsFeedData
 		/// make sure its clean before we add new data
 		newsWidgets = Map<String, News>();
 
-		await _processData(channel);
-		await _processData(channelDev);
+		await _processData(channel, globals);
+		await _processData(channelDev, globals);
 	
 		finished = true;
 	}
 
-	Future<void> _processData(RssFeed channel) async
+	Future<void> _processData(RssFeed channel, Globals globals) async
 	{
 		/// Loop all items and parse into News widgets
 		var futures = <Future>[];
@@ -55,7 +56,8 @@ class NewsFeedData
 					content: i.content.value,
 					images: i.content.images,
 					link: i.link,
-					publishDateTime: DateFormat("E, dd MMM yyyy HH:mm:ss Z").parse(i.pubDate)
+					publishDateTime: DateFormat("E, dd MMM yyyy HH:mm:ss Z").parse(i.pubDate),
+					globals: globals
 				);
 
 				var guid = new Uuid().v4();

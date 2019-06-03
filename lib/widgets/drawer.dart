@@ -100,6 +100,5 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 	}
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }

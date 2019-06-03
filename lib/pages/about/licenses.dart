@@ -3,7 +3,6 @@ import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
-import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';
 
 class Licenses extends StatefulWidget 

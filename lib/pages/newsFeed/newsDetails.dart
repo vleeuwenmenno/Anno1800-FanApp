@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/newsWidget.dart';
 import 'package:cached_network_image/cached_network_image.dart';

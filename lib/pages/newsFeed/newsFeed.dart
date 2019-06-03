@@ -103,7 +103,7 @@ class _NewsFeedState extends State<NewsFeed>
 				if (once)
 				{
 					widget.globals.am.precacheImages(context);
-					widget.globals.nfd.loadData();
+					widget.globals.nfd.loadData(widget.globals);
 
 					once = false;
 				}
