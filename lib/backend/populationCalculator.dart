@@ -1221,6 +1221,258 @@ class PopulationCalculator
 				"size": Size(4, 6)
 			}
 		},
+
+		"Cement":
+		{
+			"costs": 
+			{
+				"credits": 6000, 
+				"Timber": 8,
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10
+			},
+			"workforce":
+			{
+				"worker": -25
+			},
+			"depends":
+			{ },
+			"upkeep": -250,
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Limestone deposit",
+				"name": "Limestone Quarry",
+				"size": Size(3, 3)
+			}
+		},
+
+		"Reinforced_Concrete":
+		{
+			"costs": 
+			{
+				"credits": 15000, 
+				"Timber": 20,
+				"Bricks": 30,
+				"Steel_beams": 24,
+				"Windows": 25
+			},
+			"workforce":
+			{
+				"engineer": -75
+			},
+			"depends":
+			{ 
+				"Cement": 1,
+				"Steel": 1
+			},
+			"upkeep": -400,
+			"output": 1.0,
+			"building":
+			{
+				"name": "Concrete Factory",
+				"size": Size(5, 6)
+			}
+		},
+
+		"Copper":
+		{
+			"costs": 
+			{
+				"credits": 5000, 
+				"Timber": 8,	///TODO: Check resources in game
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10,
+				"Reinforced_Concrete": 10
+			},
+			"workforce":
+			{
+				"worker": -25
+			},
+			"depends":
+			{ },
+			"upkeep": -250,
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Copper deposit",
+				"name": "Copper Mine",
+				"size": Size(3, 3)
+			}
+		},
+
+		"Zinc":
+		{
+			"costs": 
+			{
+				"credits": 5000, 
+				"Timber": 8,	///TODO: Check resources in game
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10,
+				"Reinforced_Concrete": 10
+			},
+			"workforce":
+			{
+				"worker": -25
+			},
+			"depends":
+			{ },
+			"upkeep": -250,
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Zinc deposit",
+				"name": "Zinc Mine",
+				"size": Size(3, 3)
+			}
+		},
+
+		"Brass":
+		{
+			"costs": 
+			{
+				"credits": 17000, 
+				"Timber": 8,	///TODO: Check resources in game
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10,
+				"Reinforced_Concrete": 10
+			},
+			"workforce":
+			{
+				"worker": -25
+			},
+			"depends":
+			{
+				"Copper": 1,
+				"Zinc": 1
+			},
+			"attractiveness": -10,
+			"upkeep": -250,
+			"output": 1.0,
+			"building":
+			{
+				"name": "Brass Smeltery",
+				"size": Size(5, 5)
+			}
+		},
+
+		"Glasses":
+		{
+			"costs": 
+			{
+				"credits": 17000, 
+				"Timber": 8,	///TODO: Check resources in game
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10,
+				"Reinforced_Concrete": 10
+			},
+			"workforce":
+			{
+				"engineer": -100
+			},
+			"depends":
+			{
+				"Brass": 0.667,
+				"Glass": 0.667
+			},
+			"upkeep": -1000,
+			"output": 0.667,
+			"building":
+			{
+				"name": "Spectacle Factory",
+				"size": Size(4, 6)
+			}
+		},
+
+		"Saltpeter":
+		{
+			"costs": 
+			{
+				"credits": 12500, 
+				"Timber": 10,
+				"Bricks": 20,
+				"Steel_beams": 16,
+			},
+			"workforce":
+			{
+				"worker": -25
+			},
+			"depends":
+			{ },
+			"upkeep": -500,
+			"output": 0.5,
+			"building":
+			{
+				"requirement": "Nitre deposits, Free coastline",
+				"name": "Saltpeter Works",
+				"size": Size(4, 6)
+			}
+		},
+
+		"Dynamite":
+		{
+			"costs": 
+			{
+				"credits": 54000, 
+				"Timber": 10,
+				"Bricks": 20,
+				"Steel_beams": 16,
+				"Windows": 15,
+				"Reinforced_Concrete": 15
+			},
+			"workforce":
+			{
+				"engineer": -250
+			},
+			"depends":
+			{
+				"Tallow": 1,
+				"Saltpeter": 1,
+			},
+			"upkeep": -1000,
+			"output": 1.0,
+			"building":
+			{
+				"name": "Dynamite Factory",
+				"size": Size(5, 6)
+			}
+		},
+
+		"Advanced_Weapons":
+		{
+			"costs": 
+			{
+				"credits": 85000, 
+				"Timber": 20,
+				"Bricks": 40,
+				"Steel_beams": 32,
+				"Windows": 30,
+				"Reinforced_Concrete": 30
+			},
+			"workforce":
+			{
+				"engineer": -250
+			},
+			"depends":
+			{
+				"Steel": 0.5,
+				"Dynamite": 0.5,
+			},
+			"attractiveness": -15,
+			"upkeep": -2200,
+			"output": 0.5,
+			"building":
+			{
+				"requirement":"Electricity",
+				"name": "Heavy Weapons Factory",
+				"size": Size(9, 10)
+			}
+		},
 	};
 
 	Map calculate(int population, String tier)
