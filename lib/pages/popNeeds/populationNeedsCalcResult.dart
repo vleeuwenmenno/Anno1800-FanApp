@@ -59,7 +59,14 @@ class PopNCalcResultsState extends State<PopNCalcResults>
 								icon: AssetImage("assets/tiers/$key.png"),
 								secondaryIcon: AssetImage("assets/buildings/Residence.png"),
 								text: "Houses",
-								count: v['buildings']
+								count: v['buildings'],
+								onPressed: ()
+								{
+									if (PopulationCalculator().goods.containsKey(k))
+										Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "$k"});
+									else
+										Navigator.pushNamed(context, '/buildings/buildingInfo', arguments: { "globals": widget.globals, "selectedBuilding": "${key.substring(0, 1).toUpperCase()}${key.substring(1)}_$k"});
+								},
 							)
 						);
 
@@ -112,6 +119,13 @@ class PopNCalcResultsState extends State<PopNCalcResults>
 						text: "${k.toString().replaceAll('_', ' ')} (${(v['efficiency']*100).toStringAsFixed(1)}%)",
 						count: v['buildings'],
 						percentage: v['efficiency'],
+						onPressed: ()
+						{
+							if (PopulationCalculator().goods.containsKey(k))
+								Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "$k"});
+							else
+								Navigator.pushNamed(context, '/buildings/buildingInfo', arguments: { "globals": widget.globals, "selectedBuilding": "$k"});
+						},
 					)
 				);
 
