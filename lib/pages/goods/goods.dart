@@ -15,12 +15,12 @@ class Goods extends StatefulWidget
 
 class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 {
-	bool oldWorld;
+	Map oldWorldGoods = {};
+	Map newWorldGoods = {};
 
 	void initState() 
 	{
 		super.initState();
-		oldWorld = true;
   	}
 
 	Widget build(BuildContext context)
@@ -28,9 +28,17 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
+		PopulationCalculator().goods.forEach((key, value)
+		{
+			if (value.containsKey("newWorld"))
+				newWorldGoods[key] = value;
+			else
+				oldWorldGoods[key] = value;
+		});
+
 		return Scaffold(
 				appBar: AppBar(
-					title: Text(oldWorld ? 'Old world goods' : 'New world goods'),
+					title: Text(widget.globals.oldWorld ? 'Old world goods' : 'New world goods'),
 					elevation: 0,
 					actions: <Widget>
 					[
@@ -39,7 +47,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 							onPressed: () 
 							{
 								setState(() {
-									oldWorld = !oldWorld; 
+									widget.globals.oldWorld = !widget.globals.oldWorld; 
 								});
 							},
 							icon: Icon(Icons.swap_vert),
@@ -61,7 +69,7 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 					padding: EdgeInsets.all(4),
 					child: GridView.builder(
 						gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
-						itemCount: PopulationCalculator().goods.keys.length,
+						itemCount: widget.globals.oldWorld ? oldWorldGoods.keys.length : newWorldGoods.keys.length,
 						itemBuilder: (BuildContext context, int index)
 						{
 							return GestureDetector(
@@ -73,20 +81,20 @@ class _GoodsState extends State<Goods> with SingleTickerProviderStateMixin
 										mainAxisAlignment: MainAxisAlignment.center,
 										children: <Widget>
 										[
-											Image.asset('assets/resources/${PopulationCalculator().goods.keys.elementAt(index)}.png', height: 42),
+											Image.asset('assets/resources/${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index) : newWorldGoods.keys.elementAt(index)}.png', height: 42),
 											Padding(
-											  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-											  child: FittedBox(
-											  	fit: BoxFit.fitWidth,
-											  	child: Text('${PopulationCalculator().goods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)))
-											  ),
+											padding: const EdgeInsets.symmetric(horizontal: 8.0),
+											child: FittedBox(
+												fit: BoxFit.fitWidth,
+												child: Text('${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ") : newWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)))
+											),
 											)
 										],
 									),
 								),
 								onTap: ()
 								{
-									Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "${PopulationCalculator().goods.keys.elementAt(index).toString()}"});
+									Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString() : newWorldGoods.keys.elementAt(index).toString()}"});
 								},
 							);
 						},
