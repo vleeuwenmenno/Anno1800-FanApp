@@ -207,11 +207,10 @@ class PopulationCalculator
 				"requirement": "Free coastline",
 				"name": "Fishery",
 				"size": Size(5, 6),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "50",
+					"img": "tiers/farmer"
 				}
 			}
 		},
@@ -240,6 +239,11 @@ class PopulationCalculator
 					"count": 3,
 					"size": Size(3, 3),
 					"cost": 15
+				},
+				"unlockCondition":
+				{
+					"desc": "150",
+					"img": "tiers/farmer"
 				}
 			}
 		},
@@ -265,11 +269,10 @@ class PopulationCalculator
 			{
 				"name": "Framework Knitters",
 				"size": Size(4, 4),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "150",
+					"img": "tiers/farmer"
 				}
 			}
 		},
@@ -296,11 +299,10 @@ class PopulationCalculator
 			{
 				"name": "Sailmakers",
 				"size": Size(5, 5),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "150",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -330,6 +332,11 @@ class PopulationCalculator
 					"count": 72,
 					"size": Size(1, 1),
 					"cost": 1
+				},
+				"unlockCondition":
+				{
+					"desc": "100",
+					"img": "tiers/farmer"
 				}
 			}
 		},
@@ -356,11 +363,10 @@ class PopulationCalculator
 
 				"name": "Schnapps Distillery",
 				"size": Size(3, 4),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "100",
+					"img": "tiers/farmer"
 				}
 			}
 		},
@@ -385,11 +391,10 @@ class PopulationCalculator
 				"requirement": "Clay Deposit",
 				"name": "Clay Pit",
 				"size": Size(5, 5),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "1",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -416,11 +421,10 @@ class PopulationCalculator
 
 				"name": "Brick Factory",
 				"size": Size(5, 5),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "1",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -450,6 +454,11 @@ class PopulationCalculator
 					"count": 5,
 					"size": Size(2, 3),
 					"cost": 25
+				},
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -477,11 +486,10 @@ class PopulationCalculator
 			{
 				"name": "Slaughterhouse",
 				"size": Size(3, 4),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "1",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -511,6 +519,11 @@ class PopulationCalculator
 					"count": 144,
 					"size": Size(1, 1),
 					"cost": 5
+				},
+				"unlockCondition":
+				{
+					"desc": "150",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -537,11 +550,10 @@ class PopulationCalculator
 			{
 				"name": "Flour Mill",
 				"size": Size(3, 4),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "150",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -568,11 +580,10 @@ class PopulationCalculator
 			{
 				"name": "Bakery",
 				"size": Size(3, 4),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "150",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -600,11 +611,10 @@ class PopulationCalculator
 			{
 				"name": "Malthouse",
 				"size": Size(4, 5),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "500",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -634,6 +644,11 @@ class PopulationCalculator
 					"count": 96,
 					"size": Size(1, 1),
 					"cost": 5
+				},
+				"unlockCondition":
+				{
+					"desc": "500",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -662,11 +677,10 @@ class PopulationCalculator
 			{
 				"name": "Brewery",
 				"size": Size(4, 5),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "500",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -692,11 +706,10 @@ class PopulationCalculator
 				"requirement": "Iron Deposit",
 				"name": "Iron Mine",
 				"size": Size(3, 3),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "300",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -725,11 +738,10 @@ class PopulationCalculator
 				"name": "Charcoal Kiln",
 				"range": 9,
 				"size": Size(5, 5),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "300",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -754,11 +766,10 @@ class PopulationCalculator
 				"requirement": "Coal Deposit",
 				"name": "Coal Mine",
 				"size": Size(3, 3),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "250",
+					"img": "tiers/artisan"
 				}
 			}
 		},
@@ -788,11 +799,10 @@ class PopulationCalculator
 			{
 				"name": "Furnace",
 				"size": Size(4, 7),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "300",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -820,11 +830,10 @@ class PopulationCalculator
 			{
 				"name": "Steelworks",
 				"size": Size(5, 10),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "300",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -853,11 +862,10 @@ class PopulationCalculator
 			{
 				"name": "Weapons Factory",
 				"size": Size(5, 7),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "300",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -886,11 +894,10 @@ class PopulationCalculator
 			{
 				"name": "Rendering Works",
 				"size": Size(3, 3),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "300",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -919,11 +926,10 @@ class PopulationCalculator
 			{
 				"name": "Soap Factory",
 				"size": Size(4, 4),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "300",
+					"img": "tiers/worker"
 				}
 			}
 		},
@@ -949,11 +955,10 @@ class PopulationCalculator
 				"requirement": "Free coastline",
 				"name": "Sand Mine",
 				"size": Size(6, 7),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "1",
+					"img": "tiers/artisan"
 				}
 			}
 		},
@@ -981,11 +986,10 @@ class PopulationCalculator
 			{
 				"name": "Glassmakers",
 				"size": Size(4, 6),
-				"module":
+				"unlockCondition":
 				{
-					"count": 0,
-					"size": Size(0, 0),
-					"cost": 0
+					"desc": "1",
+					"img": "tiers/artisan"
 				}
 			}
 		},
@@ -1013,7 +1017,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Window Makers",
-				"size": Size(5, 5)
+				"size": Size(5, 5),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/artisan"
+				}
 			}
 		},
 
@@ -1041,6 +1050,11 @@ class PopulationCalculator
 					"count": 4,
 					"size": Size(3, 4),
 					"cost": 50
+				},
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/artisan"
 				}
 			}
 		},
@@ -1070,6 +1084,11 @@ class PopulationCalculator
 					"count": 108,
 					"size": Size(1, 1),
 					"cost": 10
+				},
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/artisan"
 				}
 			}
 		},
@@ -1099,6 +1118,11 @@ class PopulationCalculator
 			{
 				"name": "Artisanal Kitchen",
 				"size": Size(5, 5),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/artisan"
+				}
 			}
 		},
 
@@ -1127,6 +1151,11 @@ class PopulationCalculator
 			{
 				"name": "Cannery",
 				"size": Size(6, 7),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/artisan"
+				}
 			}
 		},
 
@@ -1155,6 +1184,11 @@ class PopulationCalculator
 			{
 				"name": "Sewing Machine Factory",
 				"size": Size(6, 9),
+				"unlockCondition":
+				{
+					"desc": "250",
+					"img": "tiers/artisan"
+				}
 			}
 		},
 
@@ -1178,7 +1212,12 @@ class PopulationCalculator
 				"requirement": "Fur abundance, trees in it's influance radius.",
 				"name": "Hunging Cabin",
 				"size": Size(5, 5),
-				"range": 9
+				"range": 9,
+				"unlockCondition":
+				{
+					"desc": "900",
+					"img": "tiers/artisan"
+				}
 			}
 		},
 
@@ -1206,7 +1245,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Fur Dealer",
-				"size": Size(4, 6)
+				"size": Size(4, 6),
+				"unlockCondition":
+				{
+					"desc": "900",
+					"img": "tiers/artisan"
+				}
 			}
 		},
 
@@ -1232,7 +1276,12 @@ class PopulationCalculator
 			{
 				"requirement": "Limestone deposit",
 				"name": "Limestone Quarry",
-				"size": Size(3, 3)
+				"size": Size(3, 3),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1260,7 +1309,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Concrete Factory",
-				"size": Size(5, 6)
+				"size": Size(5, 6),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1287,7 +1341,12 @@ class PopulationCalculator
 			{
 				"requirement": "Copper deposit",
 				"name": "Copper Mine",
-				"size": Size(3, 3)
+				"size": Size(3, 3),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1314,7 +1373,12 @@ class PopulationCalculator
 			{
 				"requirement": "Zinc deposit",
 				"name": "Zinc Mine",
-				"size": Size(3, 3)
+				"size": Size(3, 3),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1344,7 +1408,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Brass Smeltery",
-				"size": Size(5, 5)
+				"size": Size(5, 5),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1373,7 +1442,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Spectacle Factory",
-				"size": Size(4, 6)
+				"size": Size(4, 6),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1398,7 +1472,12 @@ class PopulationCalculator
 			{
 				"requirement": "Nitre deposits, Free coastline",
 				"name": "Saltpeter Works",
-				"size": Size(4, 6)
+				"size": Size(4, 6),
+				"unlockCondition":
+				{
+					"desc": "500",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1427,7 +1506,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Dynamite Factory",
-				"size": Size(5, 6)
+				"size": Size(5, 6),
+				"unlockCondition":
+				{
+					"desc": "500",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1458,7 +1542,12 @@ class PopulationCalculator
 			{
 				"requirement":"Electricity",
 				"name": "Heavy Weapons Factory",
-				"size": Size(9, 10)
+				"size": Size(9, 10),
+				"unlockCondition":
+				{
+					"desc": "500",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1487,6 +1576,11 @@ class PopulationCalculator
 					"count": 144,
 					"size": Size(1, 1),
 					"cost": 50
+				},
+				"unlockCondition":
+				{
+					"desc": "?",///TODO CONFIRM DATA
+					"img": "tiers/jornaleros"
 				}
 			}
 		},
@@ -1512,12 +1606,17 @@ class PopulationCalculator
 				"Caoutchouc": 2.0,
 			},
 			"upkeep": -1200,
-			"output": 2.0, ///TODO: Power?
+			"output": 2.0,
 			"building":
 			{
 				"requirement": "Electricity",
 				"name": "Bicycle Factory",
-				"size": Size(6, 6)
+				"size": Size(6, 6),
+				"unlockCondition":
+				{
+					"desc": "500",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1547,7 +1646,12 @@ class PopulationCalculator
 			{
 				"requirement": "Electricity",
 				"name": "Motor Assembly Line",
-				"size": Size(6, 9)
+				"size": Size(6, 9),
+				"unlockCondition":
+				{
+					"desc": "500",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1572,7 +1676,12 @@ class PopulationCalculator
 			{
 				"requirement": "Gold deposit",
 				"name": "Gold Mine",
-				"size": Size(3, 3)
+				"size": Size(3, 3),
+				"unlockCondition":
+				{
+					"desc": "600",
+					"img": "tiers/obreros"
+				}
 			}
 		},
 
@@ -1597,8 +1706,13 @@ class PopulationCalculator
 			"output": 1,
 			"building":
 			{
-				"name": "Gold Mine",
-				"size": Size(4, 5)
+				"name": "Goldsmiths",
+				"size": Size(4, 5),
+				"unlockCondition":
+				{
+					"desc": "1000",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1627,7 +1741,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Clockmakers",
-				"size": Size(5, 7)
+				"size": Size(5, 7),
+				"unlockCondition":
+				{
+					"desc": "1000",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 		
@@ -1656,6 +1775,11 @@ class PopulationCalculator
 					"count": 144,
 					"size": Size(1, 1),
 					"cost": 5
+				},
+				"unlockCondition":
+				{
+					"desc": "?",///TODO CONFIRM DATA
+					"img": "tiers/jornaleros"
 				}
 			}
 		},
@@ -1681,7 +1805,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Cotton Mill",
-				"size": Size(4, 4)
+				"size": Size(4, 4),
+				"unlockCondition":
+				{
+					"desc": "100", ///TODO CONFIRM DATA
+					"img": "tiers/jornaleros"
+				}
 			}
 		},
 
@@ -1709,7 +1838,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Filament Factory",
-				"size": Size(6, 7)
+				"size": Size(6, 7),
+				"unlockCondition":
+				{
+					"desc": "1750",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1738,7 +1872,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Light Bulb Factory",
-				"size": Size(6, 7)
+				"size": Size(6, 7),
+				"unlockCondition":
+				{
+					"desc": "1750",
+					"img": "tiers/engineer"
+				}
 			}
 		},
 
@@ -1767,6 +1906,11 @@ class PopulationCalculator
 					"count": 128,
 					"size": Size(1, 1),
 					"cost": 15
+				},
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/investor"
 				}
 			}
 		},
@@ -1796,7 +1940,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Champagne Cellar",
-				"size": Size(5, 6)
+				"size": Size(5, 6),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/investor"
+				}
 			}
 		},
 
@@ -1819,7 +1968,12 @@ class PopulationCalculator
 			{
 				"requirement": "Pearl abundance, Free coastline",
 				"name": "Pearl Farm",
-				"size": Size(6, 14)
+				"size": Size(6, 14),
+				"unlockCondition":
+				{
+					"desc": "300",
+					"img": "tiers/jornaleros"
+				}
 			}
 		},
 
@@ -1848,7 +2002,12 @@ class PopulationCalculator
 			"building":
 			{
 				"name": "Jewellers",
-				"size": Size(5, 5)
+				"size": Size(5, 5),
+				"unlockCondition":
+				{
+					"desc": "1750",
+					"img": "tiers/investor"
+				}
 			}
 		},
 	};

@@ -1,6 +1,7 @@
 import 'package:anno1800_fanapp/pages/about/about.dart';
 import 'package:anno1800_fanapp/pages/about/changelog.dart';
 import 'package:anno1800_fanapp/pages/about/licenses.dart';
+import 'package:anno1800_fanapp/pages/buildings/buildings.dart';
 import 'package:anno1800_fanapp/pages/newsFeed/newsDetails.dart';
 import 'package:anno1800_fanapp/pages/newsFeed/newsFeed.dart';
 import 'package:anno1800_fanapp/pages/popNeeds/populationNeeds.dart';
@@ -87,7 +88,9 @@ class MyApp extends StatelessWidget
 				'/drawer/about/licenses': (context) => Licenses(),
 
 				'/drawer/goods': (context) => Goods(),
-				'/goods/goodsInfo': (context) => GoodsInfo()
+				'/goods/goodsInfo': (context) => GoodsInfo(),
+
+				'drawer/buildings': (context) => Buildings()
 			},
 		);
 	}

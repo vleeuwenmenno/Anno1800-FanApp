@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
+enum ResultIndicatorStyle
+{
+	Count,
+	WithoutCount
+}
+
 class ResultIndicator extends StatefulWidget
 {
 	final String text;
 	final int count;
 
-	final ImageProvider icon;
+	final ResultIndicatorStyle style;
+
+	final dynamic icon;
 	final ImageProvider secondaryIcon;
 
 	final Color color;
@@ -25,6 +33,8 @@ class ResultIndicator extends StatefulWidget
 	ResultIndicator({
 		this.text,
 		this.count,
+
+		this.style = ResultIndicatorStyle.Count,
 
 		this.icon,
 		this.secondaryIcon,
@@ -90,6 +100,7 @@ class ResultIndicatorState extends State<ResultIndicator> with SingleTickerProvi
 							title: Row(
 								children: <Widget>
 								[
+									widget.style == ResultIndicatorStyle.Count ?
 									AnimatedContainer(
 										duration: widget.animationDuration,
 										width: 48,
@@ -110,7 +121,7 @@ class ResultIndicatorState extends State<ResultIndicator> with SingleTickerProvi
 												)
 											)
 										)
-									),
+									): Offstage(),
 
 									Padding(padding: EdgeInsets.only(left: 8)),
 
@@ -125,22 +136,50 @@ class ResultIndicatorState extends State<ResultIndicator> with SingleTickerProvi
 								]
 							),
 							trailing: Container(
-								child: Stack(
+								child: Wrap(
 									children: <Widget>
 									[
-										Opacity(child: Image(image: widget.icon, width: 24), opacity: 0.5),
+										widget.icon != null ?
+										widget.icon is ImageProvider ?
+										Opacity(
+											child: Image(
+												image: widget.icon, 
+												width: 24
+											), 
+											opacity: 0.5
+										)
+										:
+										widget.icon is String ?
+										Container(
+											padding: EdgeInsets.all(4),
+											child: RichText(
+												text: TextSpan(
+													text: "${widget.icon}",
+													style: TextStyle(
+														color: Color(0x80000000)
+													)
+												)
+											),
+										)
+										:
+										widget.icon
+										: Offstage(),
 
 										widget.secondaryIcon != null ?
-										Padding(
-											padding: EdgeInsets.only(left: 26), 
-											child: Opacity(
-												opacity: 0.5,
-												child: Image(
-													image: widget.secondaryIcon, 
-													width: 24
+										Column(
+											mainAxisAlignment: MainAxisAlignment.center,
+											children: <Widget>
+											[
+												Opacity(
+													opacity: 0.5,
+													child: Image(
+														image: widget.secondaryIcon, 
+														width: 24
+													)
 												)
-											)
-										) : Offstage()
+											],
+										)
+										: Offstage()
 									],
 								),
 							)

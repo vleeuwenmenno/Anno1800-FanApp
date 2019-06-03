@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/widgets/resultIndicator.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,6 +24,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 		widget.selectedGoods = (ModalRoute.of(context).settings.arguments as Map)["selectedGoods"];
 
 		List<Widget> costs = List<Widget>();
+		List<Widget> additional = List<Widget>();
 
 		for (int i = 0; i < PopulationCalculator().goods[widget.selectedGoods].length; i++) 
 		{
@@ -49,6 +51,153 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 			}
 		}
 
+		for (int i = 0; i < PopulationCalculator().goods[widget.selectedGoods].length; i++) 
+		{
+			String key = PopulationCalculator().goods[widget.selectedGoods].keys.elementAt(i);
+			dynamic value = PopulationCalculator().goods[widget.selectedGoods].values.elementAt(i);
+
+			if (key != "costs" && key != "upkeep" && key != "workforce" && key != "newWorld")
+			{
+				if (key == "depends")
+				{
+					value.forEach((k, v)
+					{
+						additional.add(
+							ResultIndicator(
+								style: ResultIndicatorStyle.WithoutCount,
+								width: (MediaQuery.of(context).size.width / 100) * 85,
+								count: 23,
+								text: "Input",
+								secondaryIcon: AssetImage("assets/resources/$k.png"),
+								icon: "${v}x"
+							)
+						);
+						additional.add(Padding(padding: EdgeInsets.all(8)));
+					});
+				}
+				else if (key == "output")
+				{
+					additional.add(
+						ResultIndicator(
+							style: ResultIndicatorStyle.WithoutCount,
+							width: (MediaQuery.of(context).size.width / 100) * 85,
+							text: "Produces",
+							icon: "${value}x",
+							secondaryIcon: AssetImage("assets/resources/${widget.selectedGoods}.png"),
+						)
+					);
+					additional.add(Padding(padding: EdgeInsets.all(8)));
+				}
+				else if (key == "building")
+				{
+					value.forEach((k, v)
+					{
+						if (k == "requirement")
+						{
+							additional.add(
+								ResultIndicator(
+									style: ResultIndicatorStyle.WithoutCount,
+									width: (MediaQuery.of(context).size.width / 100) * 85,
+									count: 23,
+									text: "Requires",
+									icon: "$v"
+								)
+							);
+							additional.add(Padding(padding: EdgeInsets.all(8)));
+						}
+						else if (k == "size")
+						{
+							additional.add(
+								ResultIndicator(
+									style: ResultIndicatorStyle.WithoutCount,
+									width: (MediaQuery.of(context).size.width / 100) * 85,
+									count: 23,
+									text: "Size",
+									icon: "${v.width.toStringAsFixed(0)}x${v.height.toStringAsFixed(0)}",
+									secondaryIcon: AssetImage("assets/icons/Tile.png"),
+								)
+							);
+							additional.add(Padding(padding: EdgeInsets.all(8)));
+						}
+						else if (k == "unlockCondition")
+						{
+							additional.add(
+								ResultIndicator(
+									style: ResultIndicatorStyle.WithoutCount,
+									width: (MediaQuery.of(context).size.width / 100) * 85,
+									count: 23,
+									text: "Unlock condition",
+									icon: "${v['desc']}",
+									secondaryIcon: AssetImage("assets/${v['img']}.png"),
+								)
+							);
+							additional.add(Padding(padding: EdgeInsets.all(8)));
+						}
+						else if (k == "module")
+						{
+							v.forEach((kk, vv)
+							{
+								if (kk == "count")
+								{
+									additional.add(
+										ResultIndicator(
+											style: ResultIndicatorStyle.WithoutCount,
+											width: (MediaQuery.of(context).size.width / 100) * 85,
+											count: 23,
+											text: "Modules",
+											icon: "$vv (${v['size'].width.toStringAsFixed(0)}x${v['size'].height.toStringAsFixed(0)})",
+											secondaryIcon: AssetImage("assets/icons/Tile.png")
+										)
+									);
+									additional.add(Padding(padding: EdgeInsets.all(8)));
+								}
+								else if (kk == "cost")
+								{
+									additional.add(
+										ResultIndicator(
+											style: ResultIndicatorStyle.WithoutCount,
+											width: (MediaQuery.of(context).size.width / 100) * 85,
+											count: 23,
+											text: "Cost per module",
+											icon: "$vv",
+											secondaryIcon: AssetImage("assets/icons/credits.png"),
+										)
+									);
+									additional.add(Padding(padding: EdgeInsets.all(8)));
+								}
+							});
+						}
+					});
+				}
+				else if (key == "attractiveness")
+				{
+					additional.add(
+						ResultIndicator(
+							style: ResultIndicatorStyle.WithoutCount,
+							width: (MediaQuery.of(context).size.width / 100) * 85,
+							text: "${key.substring(0, 1).toUpperCase()}${key.substring(1)}",
+							icon: "$value",
+							secondaryIcon: AssetImage("assets/icons/other/Attractiveness.png"),
+						)
+					);
+					additional.add(Padding(padding: EdgeInsets.all(8)));
+				}
+				else
+				{
+					additional.add(
+						ResultIndicator(
+							style: ResultIndicatorStyle.WithoutCount,
+							width: (MediaQuery.of(context).size.width / 100) * 85,
+							text: "${key.substring(0, 1).toUpperCase()}${key.substring(1)}",
+							icon: "${value}x",
+							secondaryIcon: AssetImage("assets/resources/${widget.selectedGoods}.png"),
+						)
+					);
+					additional.add(Padding(padding: EdgeInsets.all(8)));
+				}
+			}
+		}
+
 		return Scaffold(
 				appBar: AppBar(
 					title: Text('${PopulationCalculator().goods[widget.selectedGoods]["building"]["name"]}'),
@@ -70,37 +219,51 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 					child: Padding(
 						padding: const EdgeInsets.all(16.0),
 						child: Column(
-							crossAxisAlignment: CrossAxisAlignment.start,
 							children: <Widget>
 							[
-								Row(
+								Column(
+									crossAxisAlignment: CrossAxisAlignment.start,
 									children: <Widget>
 									[
-										Text('Costs',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+										Row(
+											children: <Widget>
+											[
+												Text('Costs',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+											],
+										),
+
+										Row(
+											children: <Widget>
+											[
+												Text('Required resources for acquiring the goods',  style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.5), height: 1.4)),
+											],
+										),
+
+										Divider(color: Color(0xff714F28)),
+
+										Wrap(
+											children: costs,
+										),
+
+										Padding(padding: EdgeInsets.all(16)),
+
+										Row(
+											children: <Widget>
+											[
+												Text('Additional information',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+											],
+										),
+
+										Divider(color: Color(0xff714F28)),
+										Padding(padding: EdgeInsets.all(4)),
 									],
 								),
 
-								Row(
-									children: <Widget>
-									[
-										Text('Required resources for acquiring the goods',  style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.5), height: 1.4)),
-									],
-								),
-
-								Divider(color: Color(0xff714F28)),
-
-								Wrap(
-									children: costs,
-								),
-
-								Row(
-									children: <Widget>
-									[
-										Text('Additional information',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
-									],
-								),
-
-								Divider(color: Color(0xff714F28)),
+								Column(
+									mainAxisAlignment: MainAxisAlignment.center,
+									crossAxisAlignment: CrossAxisAlignment.center,
+									children: additional
+								)
 							],
 						),
 					),
