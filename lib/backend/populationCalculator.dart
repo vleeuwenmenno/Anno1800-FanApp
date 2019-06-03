@@ -1473,6 +1473,176 @@ class PopulationCalculator
 				"size": Size(9, 10)
 			}
 		},
+
+		"Caoutchouc":
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 2500, 
+				"Timber": 8
+			},
+			"workforce":
+			{
+				"jornaleros": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -25,
+			"output": 1.0,
+			"building":
+			{
+				"name": "Caoutchouc",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 144,
+					"size": Size(1, 1),
+					"cost": 50
+				}
+			}
+		},
+
+		"High_wheeler":
+		{
+			"costs":
+			{
+				"credits": 42000, 
+				"Timber": 8,
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10,
+				"Reinforced_concrete": 10
+			},
+			"workforce":
+			{
+				"engineer": -10
+			},
+			"depends":
+			{ 
+				"Steel": 2.0,
+				"Caoutchouc": 2.0,
+			},
+			"upkeep": -1200,
+			"output": 2.0, ///TODO: Power?
+			"building":
+			{
+				"requirement": "Electricity",
+				"name": "Bicycle Factory",
+				"size": Size(6, 6)
+			}
+		},
+
+		"Steam_motors":
+		{
+			"costs":
+			{
+				"credits": 42000, 
+				"Timber": 16,
+				"Bricks": 30,
+				"Steel_beams": 24,
+				"Windows": 20,
+				"Reinforced_concrete": 20
+			},
+			"workforce":
+			{
+				"engineer": -250
+			},
+			"depends":
+			{ 
+				"Brass": 0.667,
+				"Iron": 0.667,
+			},
+			"upkeep": -1800,
+			"output": 0.667,
+			"building":
+			{
+				"requirement": "Electricity",
+				"name": "Motor Assembly Line",
+				"size": Size(6, 9)
+			}
+		},
+
+		"Gold_Ore":
+		{
+			"costs":
+			{
+				"credits": 2500, 
+				"Timber": 8,
+				"Bricks": 15
+			},
+			"workforce":
+			{
+				"obreros": -100
+			},
+			"depends":
+			{ },
+			"upkeep": -250,
+			"output": 0.4,
+			"building":
+			{
+				"requirement": "Gold deposit",
+				"name": "Gold Mine",
+				"size": Size(3, 3)
+			}
+		},
+
+		"Gold":
+		{
+			"costs":
+			{
+				"credits": 2500, 
+				"Timber": 8,
+				"Bricks": 15
+			},
+			"workforce":
+			{
+				"engineer": -125
+			},
+			"depends":
+			{ 
+				"Gold_Ore": 1.0,
+				"Coal": 1.0
+			},
+			"upkeep": -750,
+			"output": 1,
+			"building":
+			{
+				"name": "Gold Mine",
+				"size": Size(4, 5)
+			}
+		},
+
+		"Pocket_watch":
+		{
+			"costs":
+			{
+				"credits": 48000, 
+				"Timber": 8,
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10,
+				"Reinforced_concrete": 10
+			},
+			"workforce":
+			{
+				"engineer": -150
+			},
+			"depends":
+			{ 
+				"Gold": 0667,
+				"Glass": 0.667
+			},
+			"upkeep": -1400,
+			"output": 0.667,
+			"building":
+			{
+				"name": "Clockmakers",
+				"size": Size(5, 7)
+			}
+		},
+
+		
 	};
 
 	Map calculate(int population, String tier)
