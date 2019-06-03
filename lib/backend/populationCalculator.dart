@@ -1484,7 +1484,7 @@ class PopulationCalculator
 			},
 			"workforce":
 			{
-				"jornaleros": -10
+				"jornalero": -10
 			},
 			"depends":
 			{ },
