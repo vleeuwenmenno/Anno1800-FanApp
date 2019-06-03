@@ -2421,6 +2421,23 @@ class PopulationCalculator
 				"img": "tiers/worker"
 			}
 		},
+		"Railway":
+		{
+			"name": "Railway",
+			"desc": "Allows for transportation of oil by trains.",
+			"costs": 
+			{
+				"credits": 50,
+				"Timber": 1,
+				"Steel_beams": 1
+			},
+			"size": Size(1, 1),
+			"unlockCondition":
+			{
+				"desc": "1",
+				"img": "tiers/engineer"
+			}
+		},
 		"Quay":
 		{
 			"name": "Quay",
@@ -2714,6 +2731,31 @@ class PopulationCalculator
 			"requirement": "Free harbour area",
 			"range": "Attack Range: 92"
 		},
+		"Big_Betty":
+		{
+			"name": "Big Betty",
+			"desc": "	Deals huge area damage to enemies over a very long range, at the cost of long reload times.",
+			"costs": 
+			{
+				"credits": 22000,
+				"Timber": 40,
+				"Bricks": 75,
+				"Steel_beams": 60,
+				"Windows": 60,
+				"Reinforced_concrete": 50,
+				"Advanced_weapons": 20
+			},
+			"upkeep": -350,
+			"influence": -14,
+			"size": Size(4, 6),
+			"unlockCondition":
+			{
+				"desc": "150",
+				"img": "tiers/worker"
+			},
+			"requirement": "Free harbour area",
+			"range": "Attack Range: 108"
+		},
 		"Police_Station":
 		{
 			"name": "Police Station",
@@ -2772,6 +2814,371 @@ class PopulationCalculator
 				"img": "tiers/artisan"
 			},
 			"range": "Radius: 20"
+		},
+		"Variety_theatre":
+		{
+			"name": "Variety Theatre",
+			"desc": "Provides a public service for your residents.",
+			"costs": 
+			{
+				"credits": 10000,
+				"Timber": 30,
+				"Bricks": 50,
+				"Steel_beams": 40,
+				"Windows": 40
+			},
+			"upkeep": -100,
+			"size": Size(4, 5),
+			"unlockCondition":
+			{
+				"desc": "250",
+				"img": "tiers/artisan"
+			}
+		},
+		"Public_mooring":
+		{
+			"name": "Public Mooring",
+			"desc": "Enables visitors to make a stopover on your island. Requires free coastline. Limited to one per island.",
+			"costs": 
+			{
+				"credits": 25000,
+				"Timber": 20,
+				"Bricks": 20,
+				"Steel_beams": 10,
+				"Windows": 8
+			},
+			"upkeep": -400,
+			"size": Size(8, 25),
+			"unlockCondition":
+			{
+				"desc": "250",
+				"img": "tiers/artisan"
+			},
+			"requirement": "Free coastline"
+		},
+		"Repair_crane":
+		{
+			"name": "Repair Crane",
+			"desc": "Repairs nearby ships and buildings. Requires free harbour area.",
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber": 15,
+				"Bricks": 15,
+				"Steel_beams": 25
+			},
+			"upkeep": -50,
+			"influence": -3,
+			"size": Size(5, 5),
+			"unlockCondition":
+			{
+				"desc": "250",
+				"img": "tiers/artisan"
+			},
+			"requirement": "Free coastline",
+			"range": "Radius: 20?" ///TODO CONFIRM DATA
+		},
+		"Pier":
+		{
+			"name": "Pier",
+			"desc": "Provides additional space for ships to load and unload goods. Requires free harbour area.",
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber": 30,
+				"Bricks": 50,
+				"Steel_beams": 40,
+				"Windows": 40
+			},
+			"upkeep": -50,
+			"size": Size(7, 6),
+			"unlockCondition":
+			{
+				"desc": "250",
+				"img": "tiers/artisan"
+			},
+			"requirement": "Free harbour area"
+		},
+		"Zoo":
+		{
+			"name": "Zoo",
+			"desc": "The zoo is a special building that is unlocked upon reaching 500 Artisans and whose purpose is to increase the attractiveness of an island.\n\nWhile the main building itself does not provide attractiveness, the modules that attach to it gives the player an opportunity to display an Animal per module, up to 100 modules.",
+			"costs": 
+			{
+				"credits": 10000,
+				"Timber": 30,
+				"Bricks": 30,
+				"Steel_beams": 10,
+				"Windows": 5
+			},
+			"upkeep": -100,
+			"size": Size(4, 7),
+			"unlockCondition":
+			{
+				"desc": "500",
+				"img": "tiers/artisan"
+			},
+			"module":
+			{
+				"count": 100,
+				"size": Size(4, 6),
+				"cost": 500
+			},
+		},
+		"Hospital":
+		{
+			"name": "Hospital",
+			"desc": "Fights illness in its influence radius. Can mobilise additional special units if required.",
+			"costs": 
+			{
+				"credits": 10000,
+				"Timber": 12,
+				"Bricks": 20,
+				"Steel_beams": 16,
+				"Windows": 40
+			},
+			"upkeep": -100,
+			"size": Size(6, 6),
+			"unlockCondition":
+			{
+				"desc": "900",
+				"img": "tiers/artisan"
+			}
+		},
+		"University":
+		{
+			"name": "University",
+			"desc": "Provides a public service for your residents.",
+			"costs": 
+			{
+				"credits": 15000,
+				"Timber": 30,
+				"Bricks": 50,
+				"Steel_beams": 40,
+				"Windows": 40
+			},
+			"upkeep": -400,
+			"size": Size(6, 9),
+			"unlockCondition":
+			{
+				"desc": "1500",
+				"img": "tiers/artisan"
+			}
+		},
+		"Museum":
+		{
+			"name": "Museum",
+			"desc": "The Museum is a special building that is unlocked upon reaching 1500 Artisans and whose purpose is to increase the attractiveness of an island.\n\nWhile the main building itself does not provide attractiveness, the modules that attach to it gives the player an opportunity to display an Artifact per module, up to 100 modules.",
+			"costs": 
+			{
+				"credits": 10000,
+				"Timber": 30,
+				"Bricks": 30,
+				"Steel_beams": 10,
+				"Windows": 5
+			},
+			"upkeep": -100,
+			"size": Size(5, 8),
+			"unlockCondition":
+			{
+				"desc": "1500",
+				"img": "tiers/artisan"
+			},
+			"module":
+			{
+				"count": 100,
+				"size": Size(4, 5),
+				"cost": 500
+			},
+		},
+		"Oil_Harbour":
+		{
+			"name": "Oil Harbour",
+			"desc": "Provides trains for transportation and allows you to store and trade oil (+500 oil storage). Requires free coastline. Limited to one per island.",
+			"costs": 
+			{
+				"credits": 10000,
+				"Timber": 20,
+				"Bricks": 25,
+				"Steel_beams": 20,
+				"Windows": 15,
+				"Reinforced_concrete": 15
+			},
+			"upkeep": -100,
+			"size": Size(7, 8),
+			"unlockCondition":
+			{
+				"desc": "1",
+				"img": "tiers/engineer"
+			},
+			"requirement": "Free harbour area"
+		},
+		"Oil_Storage":
+		{
+			"name": "Oil Storage",
+			"desc": "Increases island storage for oil by 200. Requires free harbour area.",
+			"costs": 
+			{
+				"credits": 8000,
+				"Timber": 8,
+				"Bricks": 15,
+				"Steel_beams": 12,
+				"Windows": 10,
+				"Reinforced_concrete": 10
+			},
+			"upkeep": -50,
+			"size": Size(4, 8),
+			"unlockCondition":
+			{
+				"desc": "1",
+				"img": "tiers/engineer"
+			},
+			"requirement": "Free harbour area"
+		},
+		"Oil_Power_Plant":
+		{
+			"name": "Oil Power Plant",
+			"desc": "Burns oil to provide electricity to surrounding factories. Requires 1t of oil every 5 seconds.",
+			"costs": 
+			{
+				"credits": 25000,
+				"Timber": 30,
+				"Bricks": 50,
+				"Steel_beams": 40,
+				"Windows": 30,
+				"Reinforced_concrete": 25
+			},
+			"workforce":
+			{
+				"engineer": 150
+			},
+			"attractiveness": -15,
+			"upkeep": -400,
+			"size": Size(5, 5),
+			"unlockCondition":
+			{
+				"desc": "1",
+				"img": "tiers/engineer"
+			}
+		},
+		"Commuter_pier":
+		{
+			"name": "Commuter Pier",
+			"desc": "Enables the transfer of workforce between two or more islands.",
+			"costs": 
+			{
+				"credits": 25000,
+				"Steel_beams": 50,
+				"Windows": 40,
+				"Reinforced_concrete": 30
+			},
+			"influence": -15,
+			"upkeep": -200,
+			"size": Size(5, 4),
+			"unlockCondition":
+			{
+				"desc": "1",
+				"img": "tiers/engineer"
+			}
+		},
+		"Steam_shipyard":
+		{
+			"name": "Steam Shipyard",
+			"desc": "Produces steam-powered ships. Requires free coastline. Needs electricity.",
+			"costs": 
+			{
+				"credits": 90000,
+				"Timber": 50,
+				"Bricks": 100,
+				"Steel_beams": 80,
+				"Windows": 75,
+				"Reinforced_concrete": 75
+			},
+			"workforce":
+			{
+				"engineer": 200
+			},
+			"upkeep": -400,
+			"size": Size(7, 17),
+			"unlockCondition":
+			{
+				"desc": "500",
+				"img": "tiers/engineer"
+			}
+		},
+		"Bank":
+		{
+			"name": "Bank",
+			"desc": "Provides a public service for your residents.",
+			"costs": 
+			{
+				"credits": 100000,
+				"Timber": 40,
+				"Bricks": 75,
+				"Steel_beams": 60,
+				"Windows": 60,
+				"Reinforced_concrete": 50
+			},
+			"workforce":
+			{
+				"engineer": 200
+			},
+			"upkeep": -1000,
+			"size": Size(12, 10),
+			"unlockCondition":
+			{
+				"desc": "3000",
+				"img": "tiers/engineer"
+			}
+		},
+		"Worlds_fair":
+		{
+			"name": "World's Fair",
+			"desc": "The World Fair is the end-game monument building in Anno 1800, available to be constructed upon reaching Tier 5 residents in the Old World. Unlike other buildings, the World Fair is built over several stages, with each stage taking time to complete and requiring a significant amount of goods and a workforce investment for the period of construction for that stage. Upon completion, the World's Fair can host exhibitions which represent the new technology, discovery and exploration of the 19th century, rewarding items upon completion and a temporary Attractiveness Attractiveness bonus for the duration of the exhibition.",
+			"costs": 
+			{
+				"credits": 300000,
+				"Timber": 100,
+				"Bricks": 200,
+				"Steel_beams": 160,
+				"Windows": 150,
+				"Reinforced_concrete": 150,
+			},
+			"workforce":
+			{
+				"farmer": 500
+			},
+			"size": Size(18, 22),
+			"unlockCondition":
+			{
+				"desc": "1",
+				"img": "tiers/investor"
+			}
+		},
+		"Members_club":
+		{
+			"name": "Members Club",
+			"desc": "Provides a public service for your residents.",
+			"costs": 
+			{
+				"credits": 50000,
+				"Timber": 50,
+				"Bricks": 100,
+				"Steel_beams": 80,
+				"Windows": 75,
+				"Reinforced_concrete": 75,
+			},
+			"workforce":
+			{
+				"farmer": 500
+			},
+			"upkeep": -350,
+			"size": Size(6, 6),
+			"unlockCondition":
+			{
+				"desc": "750",
+				"img": "tiers/investor"
+			}
 		},
 	};
 

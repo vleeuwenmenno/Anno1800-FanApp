@@ -114,6 +114,20 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 				);
 				additional.add(Padding(padding: EdgeInsets.all(8)));
 			}
+			else if (k == "attractiveness")
+			{
+				additional.add(
+					ResultIndicator(
+						style: ResultIndicatorStyle.WithoutCount,
+						width: (MediaQuery.of(context).size.width / 100) * 85,
+						count: 23,
+						text: "Attractiveness",
+						icon: "$v",
+						secondaryIcon: AssetImage("assets/icons/other/Attractiveness.png"),
+					)
+				);
+				additional.add(Padding(padding: EdgeInsets.all(8)));
+			}
 			else if (k == "workforce")
 			{
 				v.forEach((key, value)
@@ -147,6 +161,40 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 					)
 				);
 				additional.add(Padding(padding: EdgeInsets.all(8)));
+			}
+			else if (k == "module")
+			{
+				v.forEach((kk, vv)
+				{
+					if (kk == "count")
+					{
+						additional.add(
+							ResultIndicator(
+								style: ResultIndicatorStyle.WithoutCount,
+								width: (MediaQuery.of(context).size.width / 100) * 85,
+								count: 23,
+								text: "Modules",
+								icon: "$vv (${v['size'].width.toStringAsFixed(0)}x${v['size'].height.toStringAsFixed(0)})",
+								secondaryIcon: AssetImage("assets/icons/Tile.png")
+							)
+						);
+						additional.add(Padding(padding: EdgeInsets.all(8)));
+					}
+					else if (kk == "cost")
+					{
+						additional.add(
+							ResultIndicator(
+								style: ResultIndicatorStyle.WithoutCount,
+								width: (MediaQuery.of(context).size.width / 100) * 85,
+								count: 23,
+								text: "Cost per module",
+								icon: "$vv",
+								secondaryIcon: AssetImage("assets/icons/credits.png"),
+							)
+						);
+						additional.add(Padding(padding: EdgeInsets.all(8)));
+					}
+				});
 			}
 		}
 

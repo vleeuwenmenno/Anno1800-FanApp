@@ -37,13 +37,19 @@ class PopNCalcResultsState extends State<PopNCalcResults>
 			Padding(padding: EdgeInsets.all(8)),
 		];
 
+		Map results = {};
 		widget.tiers.forEach((String key, int value)
 		{
 			Map t = PopulationCalculator().calculate(value, key);
 
-			if (t != null && t.length > 0)
+			results[key] = t;
+		});
+
+		results.forEach((key, value)
+		{
+			if (value != null && value.length > 0)
 			{
-				t.forEach((k, v)
+				value.forEach((k, v)
 				{
 					if (k == "Residence")
 					{
@@ -59,21 +65,57 @@ class PopNCalcResultsState extends State<PopNCalcResults>
 
 						widgets.add(Padding(padding: EdgeInsets.all(8)));
 					}
+				});
+			}
+		});
+
+		Map combined = {};
+
+		results.forEach((key, value)
+		{
+			value.forEach((k, v)
+			{
+				if (k != "Residence")
+				{
+					if (!combined.containsKey(k))
+					{
+						combined[k] = {};
+						combined[k]['tonsNeeded'] = v['tonsNeeded'];
+						combined[k]['efficiency'] = 0.0;
+						combined[k]['buildings'] = 0;
+
+					}
 					else
 					{
-						widgets.add(
-							ResultIndicator(
-								width: (MediaQuery.of(context).size.width / 100) * 85,
-								icon: AssetImage("assets/resources/$k.png"),
-								text: "${k.toString().replaceAll('_', ' ')} (${(v['efficiency']*100).toStringAsFixed(1)}%)",
-								count: v['buildings'],
-								percentage: v['efficiency'],
-							)
-						);
-
-						widgets.add(Padding(padding: EdgeInsets.all(8)));
+						combined[k]['tonsNeeded'] += v['tonsNeeded'];
+						combined[k]['efficiency'] += 0.0;
+						combined[k]['buildings'] += 0;
 					}
-				});
+				}
+			});
+		});
+
+		combined.forEach((k, v)
+		{
+			combined[k]['efficiency'] = combined[k]['tonsNeeded'] / ((combined[k]['tonsNeeded'] / PopulationCalculator().goods[k]["output"]).ceil() * PopulationCalculator().goods[k]["output"]);
+			combined[k]['buildings'] = (combined[k]['tonsNeeded'] / PopulationCalculator().goods[k]["output"]).ceil();
+		});
+
+		combined.forEach((k, v)
+		{
+			if (k != "Residence")
+			{
+				widgets.add(
+					ResultIndicator(
+						width: (MediaQuery.of(context).size.width / 100) * 85,
+						icon: AssetImage("assets/resources/$k.png"),
+						text: "${k.toString().replaceAll('_', ' ')} (${(v['efficiency']*100).toStringAsFixed(1)}%)",
+						count: v['buildings'],
+						percentage: v['efficiency'],
+					)
+				);
+
+				widgets.add(Padding(padding: EdgeInsets.all(8)));
 			}
 		});
 

@@ -91,7 +91,7 @@ class _BuildingsState extends State<Buildings> with SingleTickerProviderStateMix
 												children: <Widget>
 												[
 													Image.asset('assets/buildings/$key.png', height: 42),
-													Text('${widget.globals.oldWorld ? oldWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ") : newWorldGoods.keys.elementAt(index).toString().replaceAll("_", " ")}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)), textAlign: TextAlign.center),
+													Text('${widget.globals.oldWorld ? oldWorldGoods.values.elementAt(index)['name'] : newWorldGoods.values.elementAt(index)['name']}', style: TextStyle(color: Color(0XFFFFE4AD).withOpacity(0.87)), textAlign: TextAlign.center),
 												],
 											),
 										),
