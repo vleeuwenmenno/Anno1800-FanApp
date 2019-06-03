@@ -222,12 +222,44 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 			}
 		}
 
+		bool showSwap = false;
+
+		if (widget.selectedGoods.endsWith("_") && PopulationCalculator().goods.keys.contains(widget.selectedGoods.substring(0, widget.selectedGoods.length-1)))
+			showSwap = true;
+		else if (PopulationCalculator().goods.keys.contains("${widget.selectedGoods}_"))
+			showSwap = true;
+
 		return Scaffold(
 				appBar: AppBar(
 					title: Text('${PopulationCalculator().goods[widget.selectedGoods]["building"]["name"]}'),
 					elevation: 0,
 					actions: <Widget>
 					[
+						// Swap button
+						showSwap ?
+						IconButton(
+							onPressed: () 
+							{
+								if (widget.selectedGoods.endsWith("_"))
+								{
+									setState(() {
+										widget.globals.oldWorld = true; 
+									});
+									widget.selectedGoods = widget.selectedGoods.substring(0, widget.selectedGoods.length-1);
+									Navigator.pushReplacementNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": widget.selectedGoods});		
+								}
+								else
+								{
+									setState(() {
+										widget.globals.oldWorld = false; 
+									});
+									widget.selectedGoods = "${widget.selectedGoods}_";
+									Navigator.pushReplacementNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": widget.selectedGoods});
+								}
+							},
+							icon: Icon(Icons.swap_vert),
+						) : Offstage(),
+
 						// Production chain button
 						IconButton(
 							onPressed: ()

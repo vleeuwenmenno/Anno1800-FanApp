@@ -2324,6 +2324,72 @@ class PopulationCalculator
 			}
 		},
 
+		"Sugar_cane":
+		{
+			"newWorld": true,
+			"costs":
+			{
+				"credits": 500, 
+				"Timber_": 6,
+			},
+			"workforce":
+			{
+				"jornalero": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -5,
+			"output": 2.0,
+			"building":
+			{
+				"requirement": "Sugar cane fertility image:[assets/resources/Sugar_cane.png]",
+				"name": "Sugar Cane Plantation",
+				"size": Size(3, 4),
+				"module":
+				{
+					"count": 128,
+					"size": Size(1, 1),
+					"cost": 5
+				},
+				"unlockCondition":
+				{
+					"desc": "100",
+					"img": "tiers/jornaleros"
+				}
+			}
+		},
+
+		"Rum":
+		{
+			"newWorld": true,
+			"costs":
+			{
+				"credits": 2500, 
+				"Timber_": 6,
+			},
+			"workforce":
+			{
+				"jornalero": -30
+			},
+			"depends":
+			{ 
+				"Wood_": 2.0,
+				"Sugar_cane": 2.0
+			},
+			"upkeep": -50,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Rum Distillery",
+				"size": Size(6, 7),
+				"unlockCondition":
+				{
+					"desc": "100",
+					"img": "tiers/jornaleros"
+				}
+			}
+		},
+
 		///NEW WORLD ^^^^
 	};
 
