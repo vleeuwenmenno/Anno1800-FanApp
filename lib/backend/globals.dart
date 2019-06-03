@@ -15,6 +15,64 @@ class Globals
 	
 	bool oldWorld = true;
 
+	
+	Widget createChip(String path, String key, BuildContext context, Globals globals) 
+	{
+		return GestureDetector(
+			behavior: HitTestBehavior.opaque,
+			child: Padding(
+				padding: EdgeInsets.only(right: 8),
+				child: Chip(
+					backgroundColor: Color(0x80714F28),
+					label: RichText(
+						text: TextSpan(
+							text: "${key.toString().replaceAll('_', ' ')}",
+							style: TextStyle(
+								color: Color(0xDEFFE4AD)
+							)
+						),
+					),
+					avatar: Image(
+						image: AssetImage("assets/$path/$key.png"),
+						width: 20,
+					),
+				)
+			),
+			onTap: ()
+			{
+				Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});						
+			},
+		);
+	}
+
+	Widget createChipWithValue(String path, String key, dynamic val, BuildContext context, Globals globals) 
+	{
+		return GestureDetector(
+			child: Padding(
+				padding: EdgeInsets.only(right: 8),
+				child: Chip(
+					backgroundColor: Color(0x80714F28),
+					label: RichText(
+						text: TextSpan(
+							text: "${val.toString().replaceAll('_', ' ')}",
+							style: TextStyle(
+								color: Color(0xDEFFE4AD)
+							)
+						),
+					),
+					avatar: Image(
+						image: AssetImage("assets/$path/$key.png"),
+						width: 20,
+					),
+				)
+			),
+			onTap: ()
+			{
+				Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});		
+			},
+		);
+	}
+
 	void messageBox(BuildContext context, String message, String title, [VoidCallback onClosed]) 
 	{
 		// flutter defined function

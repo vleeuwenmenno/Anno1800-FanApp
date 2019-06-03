@@ -33,19 +33,19 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 				PopulationCalculator().goods[widget.selectedGoods][info].forEach((key, value)
 				{
 					String path = "resources";
-					costs.add(createChip(key == "credits" ? "icons" : path, key, value, context));
+					costs.add(widget.globals.createChipWithValue(key == "credits" ? "icons" : path, key, value, context, widget.globals));
 				});
 			}
 			else if (info == "workforce")
 			{
 				PopulationCalculator().goods[widget.selectedGoods][info].forEach((key, value)
 				{
-					costs.add(createChip("icons/other", "Workforce_${key}s", value, context));
+					costs.add(widget.globals.createChipWithValue("icons/other", "Workforce_${key}s", value, context, widget.globals));
 				});
 			}
 			else if (info == "upkeep")
 			{
-				costs.add(createChip("icons/other", "Balance", PopulationCalculator().goods[widget.selectedGoods][info], context));
+				costs.add(widget.globals.createChipWithValue("icons/other", "Balance", PopulationCalculator().goods[widget.selectedGoods][info], context, widget.globals));
 			}
 		}
 
@@ -108,33 +108,4 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 
 		);
 	}	
-
-	Widget createChip(String path, String key, dynamic val, BuildContext context) 
-	{
-		return GestureDetector(
-			child: Padding(
-				padding: EdgeInsets.only(right: 8),
-				child: Chip(
-					backgroundColor: Color(0x80714F28),
-					label: RichText(
-						text: TextSpan(
-							text: "${val.toString().replaceAll('_', ' ')}",
-							style: TextStyle(
-								color: Color(0xDEFFE4AD)
-							)
-						),
-					),
-					avatar: Image(
-						image: AssetImage("assets/$path/$key.png"),
-						width: 20,
-					),
-				)
-			),
-			onTap: ()
-			{
-				Navigator.pushNamed(context, "/goods", arguments: { "item": key });
-			},
-		);
-	}
-
 }

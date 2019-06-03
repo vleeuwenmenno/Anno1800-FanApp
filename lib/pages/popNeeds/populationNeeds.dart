@@ -79,7 +79,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 
 							path = "buildings";
 
-							luxuryChips.add(createChip(path, luxKey, context, widget.globals));
+							luxuryChips.add(widget.globals.createChip(path, luxKey, context, widget.globals));
 						});
 					}
 					else
@@ -98,7 +98,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 
 							path = "buildings";
 
-						basicChips.add(createChip(path, key, context, widget.globals));
+						basicChips.add(widget.globals.createChip(path, key, context, widget.globals));
 					}
 				}
 			);
@@ -227,35 +227,6 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 			),
 		);
 	}
-}
-
-Widget createChip(String path, String key, BuildContext context, Globals globals) 
-{
-	return GestureDetector(
-		behavior: HitTestBehavior.opaque,
-		child: Padding(
-			padding: EdgeInsets.only(right: 8),
-			child: Chip(
-				backgroundColor: Color(0x80714F28),
-				label: RichText(
-					text: TextSpan(
-						text: "${key.toString().replaceAll('_', ' ')}",
-						style: TextStyle(
-							color: Color(0xDEFFE4AD)
-						)
-					),
-				),
-				avatar: Image(
-					image: AssetImage("assets/$path/$key.png"),
-					width: 20,
-				),
-			)
-		),
-		onTap: ()
-		{
-			Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "${key}"});						
-		},
-	);
 }
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate 
