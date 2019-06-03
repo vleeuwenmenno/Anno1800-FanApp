@@ -3,6 +3,7 @@ import 'package:anno1800_fanapp/pages/about/changelog.dart';
 import 'package:anno1800_fanapp/pages/about/licenses.dart';
 import 'package:anno1800_fanapp/pages/buildings/buildings.dart';
 import 'package:anno1800_fanapp/pages/buildings/buildingsInfo.dart';
+import 'package:anno1800_fanapp/pages/goods/goodsChain.dart';
 import 'package:anno1800_fanapp/pages/newsFeed/newsDetails.dart';
 import 'package:anno1800_fanapp/pages/newsFeed/newsFeed.dart';
 import 'package:anno1800_fanapp/pages/popNeeds/populationNeeds.dart';
@@ -90,6 +91,7 @@ class MyApp extends StatelessWidget
 
 				'/drawer/goods': (context) => Goods(),
 				'/goods/goodsInfo': (context) => GoodsInfo(),
+				'/goods/goodsChain': (context) => GoodsChain(),
 
 				'/drawer/buildings': (context) => Buildings(),
 				'/buildings/buildingInfo': (context) => BuildingInfo()
