@@ -2390,6 +2390,234 @@ class PopulationCalculator
 			}
 		},
 
+		"Alpaca_wool":
+		{
+			"newWorld": true,
+			"costs":
+			{
+				"credits": 500, 
+				"Timber_": 6,
+			},
+			"workforce":
+			{
+				"jornalero": -10
+			},
+			"depends":
+			{ },
+			"upkeep": -5,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Alpaca Farm",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 4,
+					"size": Size(3, 3),
+					"cost": 15
+				},
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/jornaleros"
+				},
+			}
+		},
+
+		"Poncho":
+		{
+			"newWorld": true,
+			"costs":
+			{
+				"credits": 500, 
+				"Timber_": 6,
+			},
+			"workforce":
+			{
+				"jornalero": -30
+			},
+			"depends":
+			{ 
+				"Alpaca_wool": 2,
+			},
+			"upkeep": -15,
+			"output": 2.0,
+			"building":
+			{
+				"name": "Poncho Darner",
+				"size": Size(4, 5),
+				"unlockCondition":
+				{
+					"desc": "200",
+					"img": "tiers/jornaleros"
+				},
+			}
+		},
+
+		"Clay_":
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber_": 4
+			},
+			"workforce":
+			{
+				"obrero": -100
+			},
+			"depends":
+			{
+				"Clay_"	
+			},
+			"upkeep": -10,
+			"output": 2,
+			"building":
+			{
+				"name": "Clay Pit",
+				"size": Size(5, 5),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/obreros"
+				},
+			}
+		},
+
+		"Bricks_":
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber_": 8
+			},
+			"workforce":
+			{
+				"obrero": -50
+			},
+			"depends":
+			{
+				"Clay_": 1
+			},
+			"upkeep": -20,
+			"output": 2,
+			"building":
+			{
+				"name": "Brick Factory",
+				"size": Size(5, 5),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/obreros"
+				},
+			}
+		},
+
+		"Corn_":
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber_": 3
+			},
+			"workforce":
+			{
+				"jornalero": -10
+			},
+			"depends":
+			{
+				
+			},
+			"upkeep": -25,
+			"output": 1,
+			"building":
+			{
+				"name": "Corn Farm",
+				"size": Size(3, 3),
+				"module":
+				{
+					"count": 168,
+					"size": Size(1, 1),
+					"cost": 5
+				},
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/obreros"
+				},
+			}
+		},
+
+		"Beef_":
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber_": 6
+			},
+			"workforce":
+			{
+				"jornalero": -20
+			},
+			"depends":
+			{
+				
+			},
+			"upkeep": -25,
+			"output": 1,
+			"building":
+			{
+				"name": "Cattle Farm",
+				"size": Size(4, 5),
+				"module":
+				{
+					"count": 6,
+					"size": Size(3, 4),
+					"cost": 50
+				},
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/obreros"
+				},
+			}
+		},
+
+		"Tortilla_":
+		{
+			"newWorld": true,
+			"costs": 
+			{
+				"credits": 2500,
+				"Timber_": 3,
+				"Bricks_": 2
+			},
+			"workforce":
+			{
+				"obrero": -100
+			},
+			"depends":
+			{
+				"Beef_": 2,
+				"Corn_": 2
+			},
+			"upkeep": -100,
+			"output": 2,
+			"building":
+			{
+				"name": "Cattle Farm",
+				"size": Size(3, 5),
+				"unlockCondition":
+				{
+					"desc": "1",
+					"img": "tiers/obreros"
+				},
+			}
+		},
+
 		///NEW WORLD ^^^^
 	};
 
