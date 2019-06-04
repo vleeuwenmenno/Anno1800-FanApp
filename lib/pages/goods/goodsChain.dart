@@ -24,13 +24,144 @@ class _GoodsChainState extends State<GoodsChain> with SingleTickerProviderStateM
 		widget.selectedGoods = (ModalRoute.of(context).settings.arguments as Map)["selectedGoods"];
 
 		List<Widget> costs = List<Widget>();
+		List<Widget> chain = List<Widget>();
+
+		List deps = [];
 		Map combined = PopulationCalculator().goods[widget.selectedGoods];
 
-		combined.remove("depends");
-		combined.remove("output");
-		combined.remove("building");
+		deps.add([]);
+		deps.add([]);
+		deps.add([]);
+		deps.add([]);
+		deps.add([]);
+
+		combined['name'] = widget.selectedGoods;
+
+		/// Add initial item
+		deps[0].add(combined);
+		
+		if (combined.containsKey("depends"))
+			combined["depends"].forEach((k, v)
+			{
+				if (k == "Coal")
+					k = "Coal_Kiln";
+
+				Map good = PopulationCalculator().goods[k];
+				good['name'] = k;
+
+				if (good.containsKey("depends"))
+					good["depends"].forEach((kk, vv)
+					{
+						if (kk == "Coal")
+							kk = "Coal_Kiln";
+
+						Map good2 = PopulationCalculator().goods[kk];
+						good2['name'] = kk;
+
+						if (good2.containsKey("depends"))
+							good2["depends"].forEach((kkk, vvv)
+							{
+								if (kkk == "Coal")
+									kkk = "Coal_Kiln";
+
+								Map good3 = PopulationCalculator().goods[kkk];
+								good3['name'] = kkk;
+
+								if (good3.containsKey("depends"))
+									good3["depends"].forEach((kkkk, vvvv)
+									{
+										if (kkkk == "Coal")
+											kkkk = "Coal_Kiln";
+
+										Map good4 = PopulationCalculator().goods[kkkk];
+										good4['name'] = kkkk;
+
+										deps[4].add(good4);
+									});
+
+								deps[3].add(good3);
+							});
+
+						deps[2].add(good2);
+					});
+
+				deps[1].add(good);
+			});
+
+		
+
+		deps = deps.reversed.toList();
 
 		///We need to write a method that resolves the costs for each dependency but also for the dependencies of the dependencies until none are left.
+		for (var v in deps)
+		{
+			List<Widget> images = [];
+			for (Map m in v)
+			{
+				if (m['building'].containsKey("requirement") && m['building']['requirement'].startsWith("Electricity"))
+				{
+					images.add(
+						Stack(
+							children: <Widget>
+							[
+								Padding(
+									padding: EdgeInsets.all(8),
+									child: Image(
+										width: 64,
+										height: 64,
+										image: AssetImage("assets/resources/${m['name']}.png"),
+									)
+								),
+
+								Text(
+									"${m['output']}"
+								),
+								Padding(
+									padding: EdgeInsets.only(left: 6),
+									child: Image(
+										width: 16,
+										height: 16,
+										image: AssetImage("assets/icons/Electricity.png"),
+									)
+								),
+							],
+						)
+					);
+				}
+				else
+					images.add(
+						Stack(
+							children: <Widget>
+							[
+								Padding(
+									padding: EdgeInsets.all(8),
+									child: Image(
+										width: 64,
+										height: 64,
+										image: AssetImage("assets/resources/${m['name']}.png"),
+									)
+								),
+
+								Text(
+									"${m['output']}"
+								),
+								Padding(
+									padding: EdgeInsets.only(left: 6),
+									child: Offstage()
+								),
+							],
+						)
+					);
+			}
+
+			chain.add(
+				Column(
+					mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+					crossAxisAlignment: CrossAxisAlignment.center,
+					children: images
+				)
+			);
+		}
 
 		for (int i = 0; i < combined.length; i++) 
 		{
@@ -97,8 +228,27 @@ class _GoodsChainState extends State<GoodsChain> with SingleTickerProviderStateM
 
 									Padding(padding: EdgeInsets.all(16)),
 
-									
+									Row(
+										children: <Widget>
+										[
+											Text('Production chain',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+										],
+									),
+
+									Row(
+										children: <Widget>
+										[
+											Text('The full production chain to produce ${widget.selectedGoods.replaceAll("_", " ").toLowerCase()}',  style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.5), height: 1.4)),
+										],
+									),
+
+									Divider(color: Color(0xff714F28)),
 								],
+							),
+					
+							Row(
+								mainAxisAlignment: MainAxisAlignment.center,
+								children: chain,
 							),
 						],
 					),

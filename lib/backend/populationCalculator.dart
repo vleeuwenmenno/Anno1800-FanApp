@@ -1636,7 +1636,7 @@ class PopulationCalculator
 			"depends":
 			{ 
 				"Brass": 0.667,
-				"Iron": 0.667,
+				"Steel": 0.667,
 			},
 			"upkeep": -1800,
 			"output": 0.667,

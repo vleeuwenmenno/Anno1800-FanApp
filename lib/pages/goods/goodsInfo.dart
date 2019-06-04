@@ -263,7 +263,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 						IconButton(
 							onPressed: ()
 							{
-								Navigator.pushReplacementNamed(context, '/goods/goodsChain', arguments: { "globals": widget.globals, "selectedGoods": widget.selectedGoods});
+								Navigator.pushNamed(context, '/goods/goodsChain', arguments: { "globals": widget.globals, "selectedGoods": widget.selectedGoods});
 							},
 							icon: Image.asset('assets/buildings/Trade_Union.png', height: 24.0,),
 						)
