@@ -2283,7 +2283,7 @@ class PopulationCalculator
 			"building":
 			{
 				"requirement": "Free coastline",
-				"name": "Fishery",
+				"name": "Fish Oil Factory",
 				"size": Size(5, 8),
 				"unlockCondition":
 				{
@@ -2314,7 +2314,7 @@ class PopulationCalculator
 			"output": 2.0,
 			"building":
 			{
-				"name": "Fishery",
+				"name": "Fried Plantain Kitchen",
 				"size": Size(3, 4),
 				"unlockCondition":
 				{
@@ -2467,9 +2467,7 @@ class PopulationCalculator
 				"obrero": -100
 			},
 			"depends":
-			{
-				"Clay_"	
-			},
+			{ },
 			"upkeep": -10,
 			"output": 2,
 			"building":
@@ -2563,9 +2561,7 @@ class PopulationCalculator
 				"jornalero": -20
 			},
 			"depends":
-			{
-				
-			},
+			{ },
 			"upkeep": -25,
 			"output": 1,
 			"building":

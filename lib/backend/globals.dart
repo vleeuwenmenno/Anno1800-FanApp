@@ -43,7 +43,7 @@ class Globals
 			{
 				if (PopulationCalculator().goods.containsKey(key))
 					Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});
-				else
+				else if (PopulationCalculator().buildings.containsKey(key))
 					Navigator.pushNamed(context, '/buildings/buildingInfo', arguments: { "globals": globals, "selectedBuilding": "$key"});				
 			},
 		);
@@ -78,7 +78,7 @@ class Globals
 			{
 				if (PopulationCalculator().goods.containsKey(key))
 					Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});
-				else
+				else if (PopulationCalculator().buildings.containsKey(key))
 					Navigator.pushNamed(context, '/buildings/buildingInfo', arguments: { "globals": globals, "selectedBuilding": "$key"});
 			},
 		);

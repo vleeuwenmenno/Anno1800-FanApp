@@ -100,6 +100,10 @@ class _GoodsChainState extends State<GoodsChain> with SingleTickerProviderStateM
 			{
 				if (m['building'].containsKey("requirement") && m['building']['requirement'].startsWith("Electricity"))
 				{
+					String icon = m['name'];
+					if (icon.endsWith("_"))
+						icon = icon.substring(0, icon.length-1);
+
 					images.add(
 						Stack(
 							children: <Widget>
@@ -109,7 +113,7 @@ class _GoodsChainState extends State<GoodsChain> with SingleTickerProviderStateM
 									child: Image(
 										width: 64,
 										height: 64,
-										image: AssetImage("assets/resources/${m['name']}.png"),
+										image: AssetImage("assets/resources/$icon.png"),
 									)
 								),
 
@@ -129,6 +133,11 @@ class _GoodsChainState extends State<GoodsChain> with SingleTickerProviderStateM
 					);
 				}
 				else
+				{
+					String icon = m['name'];
+					if (icon.endsWith("_"))
+						icon = icon.substring(0, icon.length-1);
+
 					images.add(
 						Stack(
 							children: <Widget>
@@ -138,7 +147,7 @@ class _GoodsChainState extends State<GoodsChain> with SingleTickerProviderStateM
 									child: Image(
 										width: 64,
 										height: 64,
-										image: AssetImage("assets/resources/${m['name']}.png"),
+										image: AssetImage("assets/resources/$icon.png"),
 									)
 								),
 
@@ -152,6 +161,7 @@ class _GoodsChainState extends State<GoodsChain> with SingleTickerProviderStateM
 							],
 						)
 					);
+				}
 			}
 
 			chain.add(
