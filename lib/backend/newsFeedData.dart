@@ -13,29 +13,29 @@ class NewsFeedData
 	bool finished = false;
 
 	int itemsLoaded = 0;
-	int itemsExpected = 20;
+	int itemsExpected = 10;
 
 	void loadData(Globals globals) async
 	{
 		finished = false;
 		itemsLoaded = 0;
-		itemsExpected = 20;
+		itemsExpected = 10;
 
 		/// Load data from RSS Feed
 		Client client = new Client();
-		Response response = await client.get("https://www.anno-union.com/en/category/annnouncement/feed");
-		Response responseDev = await client.get("https://www.anno-union.com/en/category/devblog-en/feed");
+		Response response = await client.get("https://www.anno-union.com/en/feed");
+		// Response responseDev = await client.get("https://www.anno-union.com/en/category/devblog-en/feed");
 
-		RssFeed channelDev = new RssFeed.parse(responseDev.body);
+		// RssFeed channelDev = new RssFeed.parse(responseDev.body);
 		RssFeed channel = new RssFeed.parse(response.body);
 
-		itemsExpected = channel.items.length + channelDev.items.length;
+		itemsExpected = channel.items.length; //+ channelDev.items.length;
 
 		/// make sure its clean before we add new data
 		newsWidgets = Map<String, News>();
 
 		await _processData(channel, globals);
-		await _processData(channelDev, globals);
+		// await _processData(channelDev, globals);
 	
 		finished = true;
 	}
@@ -67,7 +67,12 @@ class NewsFeedData
 				RegExp exp = RegExp(r'<div class="featured-image">(.*)src\s*=\s*"(.+?)"(.*)<\/div>');
 				Iterable<Match> matches = exp.allMatches(r.body);
 
-				newsWidgets[guid].img = matches.elementAt(0).group(2);
+				try
+				{
+					newsWidgets[guid].img = matches.elementAt(0).group(2);
+				}
+				catch (e)
+				{ }
 
 				itemsLoaded++;
 			});

@@ -42,7 +42,7 @@ class _NewsFeedState extends State<NewsFeed>
 		{
 			setState(() { });
 
-			if (widget.globals.nfd.newsWidgets != null)
+			if (widget.globals.nfd != null && widget.globals.nfd.newsWidgets != null)
 			{
 				t.cancel();
 			}
@@ -54,7 +54,8 @@ class _NewsFeedState extends State<NewsFeed>
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
-		loadingProgress = (widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages) / (widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length);
+		if (widget.globals.nfd != null && widget.globals.nfd.newsWidgets != null)
+			loadingProgress = (widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages) / (widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length);
 
 		return WillPopScope(
 			onWillPop: () async => false,
@@ -73,7 +74,25 @@ class _NewsFeedState extends State<NewsFeed>
 					],
 				),
 				drawer: SideMenu(activePageId: 0),
-				body: SmartRefresher(
+				body: widget.globals.nfd.newsWidgets == null ? 
+				SmartRefresher(
+					enablePullDown: true,
+					header: ClassicHeader(),
+					controller: _refreshController,
+					onRefresh: _onRefresh,
+					child: ListView.builder(
+						itemCount: 1,
+						itemBuilder: (BuildContext ctxt, int index) 
+						{
+							return Center(
+								child: Text(
+									"No news feed data loaded!"
+								),
+							);
+						}
+					)
+				)
+				: SmartRefresher(
 					enablePullDown: true,
 					header: ClassicHeader(),
 					controller: _refreshController,

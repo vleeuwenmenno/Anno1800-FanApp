@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:anno1800_fanapp/backend/assets.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/backend/newsFeedData.dart';
+import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,8 +11,8 @@ class SplashScreen extends StatefulWidget
 {
 	Globals globals;
 
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
+	@override
+	_SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> 
@@ -75,9 +76,7 @@ class _SplashScreenState extends State<SplashScreen>
 				loadingProgress = (widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages) / (widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length);
 		} 
 		catch (e) 
-		{ 
-			widget.globals.messageBox(context, "Error!", e);
-		}
+		{ }
 
 		try
 		{
@@ -85,9 +84,7 @@ class _SplashScreenState extends State<SplashScreen>
 			operations = widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages;
 		} 
 		catch (e) 
-		{ 
-			widget.globals.messageBox(context, "Error!", e);
-		}
+		{ }
 
 		return Scaffold
 		(
@@ -174,6 +171,25 @@ class _SplashScreenState extends State<SplashScreen>
 														value: loadingProgress,
 													),
 												),
+
+												Padding(padding: EdgeInsets.all(4)),
+
+												DetailedButton(
+													height: 32,
+													controller: DetailedButtonController(enabled: true),
+													child: Text(
+														"Skip loading news feed",
+														style: TextStyle
+														(
+															color: Color(0xffFFE4AD)
+														)
+													),
+													onPressed: ()
+													{
+														Navigator.pushReplacementNamed(context, "/drawer/news", arguments: { "globals": widget.globals });
+														progressChecker.cancel();
+													},
+												)
 										  	],
 										  ),
 										),
