@@ -10,10 +10,19 @@ class NewsFeedData
 {
 	Map<String, News> newsWidgets;
 
-	bool finished = false;
+	bool finished;
 
-	int itemsLoaded = 0;
-	int itemsExpected = 10;
+	int itemsLoaded;
+	int itemsExpected;
+
+	NewsFeedData({
+		this.finished = false,
+		this.itemsExpected = 10,
+		this.itemsLoaded = 0
+	})
+	{
+		newsWidgets = new Map<String, News>();
+	}
 
 	void loadData(Globals globals) async
 	{
@@ -26,20 +35,21 @@ class NewsFeedData
 		Response response = await client.get("https://www.anno-union.com/en/feed");
 
 		RssFeed channel;
+		
 		try
 		{
 			channel = new RssFeed.parse(response.body);
 
-			itemsExpected = channel.items.length; //+ channelDev.items.length;
+			itemsExpected = channel.items.length;
+			
+			/// Make sure its clean before we add new data
+			newsWidgets = Map<String, News>();
+			await _processData(channel, globals);
 		}
 		catch (e) 
 		{
 			print(e); 
 		}
-
-		/// Make sure its clean before we add new data
-		newsWidgets = Map<String, News>();
-		await _processData(channel, globals);
 	
 		finished = true;
 	}

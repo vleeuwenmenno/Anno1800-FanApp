@@ -75,7 +75,7 @@ class _NewsFeedState extends State<NewsFeed>
 				),
 				drawer: SideMenu(activePageId: 0),
 				body: 
-				widget.globals.nfd == null || widget.globals.nfd.newsWidgets == null ? 
+				widget.globals.nfd == null || widget.globals.nfd.newsWidgets == null || widget.globals.nfd.newsWidgets.length < 1 ? 
 				SmartRefresher(
 					enablePullDown: true,
 					header: ClassicHeader(),
@@ -85,13 +85,15 @@ class _NewsFeedState extends State<NewsFeed>
 						itemCount: 1,
 						itemBuilder: (BuildContext ctxt, int index) 
 						{
-							return Center(
-								child: Padding(
-									padding: EdgeInsets.all(16),
-									child: Text(
-										"No news feed data loaded!"
+							return Row(
+								mainAxisAlignment: MainAxisAlignment.center,
+								children: <Widget>
+								[
+									Padding(
+										padding: EdgeInsets.all(8),
+										child: Text("No news feed data loaded!")
 									)
-								)
+								],
 							);
 						}
 					)

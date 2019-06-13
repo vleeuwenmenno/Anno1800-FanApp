@@ -45,7 +45,7 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 					crossAxisAlignment: CrossAxisAlignment.start,
 					children: <Widget>
 					[
-						Text('Anno 1800 Fan App',
+						Text('Anno 1800 FanApp',
 							style: TextStyle(
 								fontSize: 24, 
 								color: Color(0xffFFE4AD)

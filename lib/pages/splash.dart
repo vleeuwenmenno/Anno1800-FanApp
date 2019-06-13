@@ -112,7 +112,7 @@ class _SplashScreenState extends State<SplashScreen>
 											(
 												TextSpan
 												(
-													text: 'FAN APP', 
+													text: 'FanApp', 
 													style: TextStyle
 													(
 														fontSize: ScreenUtil(allowFontScaling: true).setSp(48),
