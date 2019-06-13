@@ -24,26 +24,18 @@ class _SplashScreenState extends State<SplashScreen>
 	int operations = 0;
 	int totalOperations = 0;
 
-	bool once = true;
-
 	@override
 	void initState()
 	{
 		super.initState();
 		
-		AssetsManagement.imageAssets = [];
+		AssetsManagement.precacheImages(context);
+
 		widget.globals.lastReload = DateTime.now().millisecondsSinceEpoch;
+		widget.globals.nfd.loadData(widget.globals);
 
 		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
-		{ 
-			if (once && widget.globals.nfd != null)
-			{
-				AssetsManagement.precacheImages(context);
-				widget.globals.nfd.loadData(widget.globals);
-
-				once = false;
-			}
-
+		{
 			setState(() { });
 
 			if (loadingProgress == 1)

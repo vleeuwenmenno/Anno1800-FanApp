@@ -37,7 +37,8 @@ void main()
 	Catcher(MyApp(),
 		debugConfig: debugOptions,
 		releaseConfig: releaseOptions,
-		profileConfig: profileOptions
+		profileConfig: profileOptions,
+		enableLogger: true
 	);
 }
 
@@ -82,7 +83,7 @@ class MyApp extends StatelessWidget
 		);
 
 		return MaterialApp(
-			// navigatorKey: Catcher.navigatorKey,
+			navigatorKey: Catcher.navigatorKey,
 			title: 'Anno 1800 FanApp',
 			theme: ThemeData(
 				primarySwatch: darkBrown,
