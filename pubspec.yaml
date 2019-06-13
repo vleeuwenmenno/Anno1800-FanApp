@@ -1,6 +1,6 @@
 name: anno1800_fanapp
 description: A fan made app to display all the news, layouts, production chains and other useful things while playing Anno 1800
-version: 0.0.3+4
+version: 0.0.6+59
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
