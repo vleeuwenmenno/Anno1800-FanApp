@@ -18,6 +18,22 @@ class ChangelogState extends State<Changelog>
 {
 	Map versionHistory = 
 	{
+		"Beta release": 
+		{
+			"versionNo": "v0.0.4+5",
+			"timeDate": DateTime(2019, 6, 13, 17, 25).millisecondsSinceEpoch,
+			"desc": 
+			"""
+			- First beta version
+			- Removed old mockup widgets
+			- Fixed asset cache management
+			- Fixed news feed no data label
+			- Added new app icon
+			- Added tooltips to chips in goods and buildings
+			- Disabled unfinished tabs in the drawer (More is coming ;])
+			"""
+		},
+
 		"Test release 2": 
 		{
 			"versionNo": "v0.0.3+4",
@@ -35,7 +51,6 @@ class ChangelogState extends State<Changelog>
 			"timeDate": DateTime(2019, 6, 13, 13, 49).millisecondsSinceEpoch,
 			"desc": 
 			"""
-			- First beta version
 			- Most old world goods & buildings & chains are in
 			- New world is work-in-progress
 			"""

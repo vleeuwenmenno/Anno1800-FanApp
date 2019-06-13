@@ -5,6 +5,7 @@ class SideMenu extends StatefulWidget
 {
 	Globals globals;
 	final int activePageId;
+	
 	SideMenu({
 		this.activePageId
 	});
@@ -12,6 +13,7 @@ class SideMenu extends StatefulWidget
 	@override
 	SideMenuState createState() => SideMenuState();
 }
+
 
 class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 {
@@ -45,6 +47,11 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 					crossAxisAlignment: CrossAxisAlignment.start,
 					children: <Widget>
 					[
+						Image(
+							image: AssetImage("assets/appIcon/University.png"),
+							width: 64,
+						),
+
 						Text('Anno 1800 FanApp',
 							style: TextStyle(
 								fontSize: 24, 

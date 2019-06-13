@@ -37,16 +37,7 @@ class NewsDetailsState extends State<NewsDetails>
 			appBar: AppBar(
 				title: Text('Anno Union - News feed'),
 				actions: <Widget>
-				[
-					
-					IconButton(
-						onPressed: () 
-						{ },
-						icon: Icon(
-							Icons.search, color: Color(0xffFFE4AD)
-						)
-					)
-				],
+				[ ],
 			),
 			body: SingleChildScrollView(
 				child: Column(

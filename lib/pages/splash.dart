@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:anno1800_fanapp/backend/assets.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,14 +31,14 @@ class _SplashScreenState extends State<SplashScreen>
 	{
 		super.initState();
 		
-		widget.globals.am.imageAssets = [];
+		AssetsManagement.imageAssets = [];
 		widget.globals.lastReload = DateTime.now().millisecondsSinceEpoch;
 
 		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
 		{ 
 			if (once && widget.globals.nfd != null)
 			{
-				widget.globals.am.precacheImages(context);
+				AssetsManagement.precacheImages(context);
 				widget.globals.nfd.loadData(widget.globals);
 
 				once = false;
@@ -66,13 +67,13 @@ class _SplashScreenState extends State<SplashScreen>
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 
-		if (widget.globals.nfd != null && widget.globals.am.imageAssets != null && widget.globals.am.imageAssets.length > 0)
-			loadingProgress = (widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages) / (widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length);
+		if (widget.globals.nfd != null)
+			loadingProgress = (widget.globals.nfd.itemsLoaded) / (widget.globals.nfd.itemsExpected );
 
 		if (widget.globals.nfd != null)
 		{
-			totalOperations = widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length;
-			operations = widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages;
+			totalOperations = widget.globals.nfd.itemsExpected;
+			operations = widget.globals.nfd.itemsLoaded;
 		}
 
 		return Scaffold
@@ -141,7 +142,7 @@ class _SplashScreenState extends State<SplashScreen>
 													(
 														TextSpan
 														(
-															text: 'Loading Assets... ($operations/$totalOperations)',
+															text: 'Loading Assets... ${(loadingProgress*100).toStringAsFixed(0)}%',
 															style: TextStyle
 															(
 																color: Color(0xffFFE4AD)

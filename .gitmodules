@@ -1,0 +1,3 @@
+[submodule "lib/backend/webfeed"]
+	path = lib/backend/webfeed
+	url = git@github.com:vleeuwenmenno/webfeed.git

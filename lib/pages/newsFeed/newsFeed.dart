@@ -1,11 +1,16 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:anno1800_fanapp/backend/assets.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/backend/newsFeedData.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
+import 'package:http/http.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:webfeed/domain/media/media.dart';
 
 class NewsFeed extends StatefulWidget 
 {
@@ -55,7 +60,7 @@ class _NewsFeedState extends State<NewsFeed>
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
 
 		if (widget.globals.nfd != null && widget.globals.nfd.newsWidgets != null)
-			loadingProgress = (widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages) / (widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length);
+			loadingProgress = (widget.globals.nfd.itemsLoaded + AssetsManagement.cachedImages) / (widget.globals.nfd.itemsExpected + AssetsManagement.imageAssets.length);
 
 		return WillPopScope(
 			onWillPop: () async => false,
@@ -63,15 +68,7 @@ class _NewsFeedState extends State<NewsFeed>
 				appBar: AppBar(
 					title: Text('Anno Union - News feed'),
 					actions: <Widget>
-					[
-						IconButton(
-							onPressed: () 
-							{ },
-							icon: Icon(
-								Icons.search, color: Color(0xffFFE4AD)
-							)
-						)
-					],
+					[ ],
 				),
 				drawer: SideMenu(activePageId: 0),
 				body: 
@@ -123,11 +120,11 @@ class _NewsFeedState extends State<NewsFeed>
 			loadingProgress = 0;
 			widget.globals.lastReload = DateTime.now().millisecondsSinceEpoch;
 			widget.globals.nfd = NewsFeedData();
-			progressChecker = Timer.periodic(Duration(milliseconds: 500), (Timer t) async
+			progressChecker = Timer.periodic(Duration(milliseconds: 500), (Timer t)
 			{
 				if (once && widget.globals.nfd != null)
 				{
-					widget.globals.am.precacheImages(context);
+					AssetsManagement.precacheImages(context);
 					widget.globals.nfd.loadData(widget.globals);
 
 					once = false;

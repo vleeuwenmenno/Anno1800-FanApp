@@ -54,15 +54,6 @@ class _BuildingsState extends State<Buildings> with SingleTickerProviderStateMix
 							},
 							icon: Icon(Icons.swap_vert),
 						),
-
-						// Search button
-						IconButton(
-							onPressed: ()
-							{
-								print('Search button pressed || missing search function');
-							},
-							icon: Icon(Icons.search),
-						)
 					],
 				),
 				drawer: SideMenu(activePageId: 3),

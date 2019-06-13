@@ -196,15 +196,10 @@ class AssetsManagement
 		"assets/tiers/workerBanner.jpg",
 	];
 	
-	List<String> imageAssets;
-	int cachedImages;
+	static List<String> imageAssets = [];
+	static int cachedImages = 0;
 
-	AssetsManagement({
-		this.cachedImages = 0,
-		this.imageAssets = const []
-	});
-
-	void precacheImages(BuildContext context)
+	static void precacheImages(BuildContext context)
 	{
 		imageAssets = [];
 		cachedImages = 0;

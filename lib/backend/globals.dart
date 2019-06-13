@@ -7,7 +7,6 @@ import 'package:anno1800_fanapp/widgets/drawer.dart';
 
 class Globals
 {
-	AssetsManagement am;
 	SideMenu sideMenu;
 	NewsFeedData nfd;
 
@@ -22,7 +21,6 @@ class Globals
 		this.selectedPage = 0,
 	})
 	{
-		this.am = new AssetsManagement(cachedImages: 0, imageAssets: []);
 		this.sideMenu = new SideMenu();
 		this.nfd = new NewsFeedData();
 	}

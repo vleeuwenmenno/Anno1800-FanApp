@@ -26,70 +26,58 @@ class NewsFeedData
 		newsWidgets = new Map<String, News>();
 	}
 
-	void loadData(Globals globals) async
+	void loadData(Globals globals)
 	{
 		finished = false;
 		itemsLoaded = 0;
 		itemsExpected = 10;
 
 		/// Load data from RSS Feed
-		Response response = await  Client().get("https://www.anno-union.com/en/feed");
-		RssFeed channel = RssFeed.parse(utf8.decode(response.bodyBytes));
-
-		if (channel != null)
+		Client().get("https://www.anno-union.com/en/feed").then((r)
 		{
-			itemsExpected = channel.items.length;
+			RssFeed channel = RssFeed.parse(r.body);
 
-			/// Make sure its clean before we add new data
-			newsWidgets = Map<String, News>();
-			await _processData(channel, globals);
-			
-			finished = true;
-		}
-		else
-			finished = true;
+			if (channel != null)
+			{
+				itemsExpected = channel.items.length;
+				_processData(channel, globals);
+				
+				finished = true;
+			}
+			else
+				finished = true;
+		});
 	}
 
-	Future<void> _processData(RssFeed channel, Globals globals) async
+	void _processData(RssFeed channel, Globals globals)
 	{
 		/// Loop all items and parse into News widgets
-		var futures = <Future>[];
 		for (var index = 0; index < channel.items.length; index++) 
 		{
 			RssItem i = channel.items[index];
-			var thread = new Future(() async 
+			News n = News(
+				title: i.title,
+				desc: i.description,
+				categories: i.categories,
+				content: i.content.value,
+				images: i.content.images,
+				link: i.link,
+				publishDateTime: DateFormat("E, dd MMM yyyy HH:mm:ss Z").parse(i.pubDate),
+				globals: globals
+			);
+
+			var guid = new Uuid().v4();
+			newsWidgets[guid] = n;
+
+			Client().get("${i.link}").then((r)
 			{
-				News n = News(
-					title: i.title,
-					desc: i.description,
-					categories: i.categories,
-					content: i.content.value,
-					images: i.content.images,
-					link: i.link,
-					publishDateTime: DateFormat("E, dd MMM yyyy HH:mm:ss Z").parse(i.pubDate),
-					globals: globals
-				);
-
-				var guid = new Uuid().v4();
-				newsWidgets[guid] = n;
-
-				Response r =  await Client().get("${i.link}");
 				RegExp exp = RegExp(r'<div class="featured-image">(.*)src\s*=\s*"(.+?)"(.*)<\/div>');
 				Iterable<Match> matches = exp.allMatches(r.body);
 
-				try
-				{
-					newsWidgets[guid].img = matches.elementAt(0).group(2);
-				}
-				catch (e)
-				{ }
+				newsWidgets[guid].img = matches.elementAt(0).group(2);
 
 				itemsLoaded++;
 			});
-
-			futures.add(thread);
 		}
-
-		await Future.wait(futures);
 	}
 }
