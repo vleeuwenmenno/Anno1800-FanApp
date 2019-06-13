@@ -20,6 +20,17 @@ class ChangelogState extends State<Changelog>
 	{
 		"Beta release": 
 		{
+			"versionNo": "v0.0.3+4",
+			"timeDate": DateTime(2019, 6, 13, 15, 38).millisecondsSinceEpoch,
+			"desc": 
+			"""
+			- Fixed release build issues
+			- News feed is currently broken on release builds :(
+			"""
+		},
+
+		"Beta release": 
+		{
 			"versionNo": "v0.0.2+3",
 			"timeDate": DateTime(2019, 6, 13, 13, 49).millisecondsSinceEpoch,
 			"desc": 
