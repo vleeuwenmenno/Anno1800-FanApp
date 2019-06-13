@@ -20,8 +20,8 @@ class ChangelogState extends State<Changelog>
 	{
 		"Beta release": 
 		{
-			"versionNo": "v0.0.4+5",
-			"timeDate": DateTime(2019, 6, 13, 17, 25).millisecondsSinceEpoch,
+			"versionNo": "v0.0.5+57",
+			"timeDate": DateTime(2019, 6, 13, 19, 47).millisecondsSinceEpoch,
 			"desc": 
 			"""
 			- First beta version
@@ -33,50 +33,6 @@ class ChangelogState extends State<Changelog>
 			- Disabled unfinished tabs in the drawer (More is coming ;])
 			"""
 		},
-
-		"Test release 2": 
-		{
-			"versionNo": "v0.0.3+4",
-			"timeDate": DateTime(2019, 6, 13, 15, 38).millisecondsSinceEpoch,
-			"desc": 
-			"""
-			- Fixed release build issues
-			- News feed is currently broken on release builds :(
-			"""
-		},
-
-		"Test release 1": 
-		{
-			"versionNo": "v0.0.2+3",
-			"timeDate": DateTime(2019, 6, 13, 13, 49).millisecondsSinceEpoch,
-			"desc": 
-			"""
-			- Most old world goods & buildings & chains are in
-			- New world is work-in-progress
-			"""
-		},
-
-		"Minor update": 
-		{
-			"versionNo": "v0.0.1+2",
-			"timeDate": DateTime(2019, 5, 12, 1, 44).millisecondsSinceEpoch,
-			"desc": 
-			"""
-			- Added changelog data
-			- Rolled the code
-			- Baked noodles 
-			"""
-		},
-
-		"Initial version": 
-		{
-			"versionNo": "v0.0.1+0",
-			"timeDate": DateTime(2019, 5, 12, 0, 32).millisecondsSinceEpoch,
-			"desc": 
-			"""
-			- Initial version!
-			"""
-		}
 	};
 
 	List<Widget> versionWidgets = [];
