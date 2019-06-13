@@ -31,9 +31,9 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 			"Population needs": "assets/tiers/investor.png",
 			"Goods": "assets/buildings/Warehouse.png",
 			"Buildings": "assets/buildings/Town_Hall.png",
-			"Inter-dependencies": "assets/buildings/Depot.png",
-			"Production-layouts": "assets/icons/Tile.png",
-			"City-layouts": "assets/buildings/Residence.png",
+			// "Inter-dependencies": "assets/buildings/Depot.png", ///TODO: IMPLEMENT
+			// "Production-layouts": "assets/icons/Tile.png", ///TODO: IMPLEMENT
+			// "City-layouts": "assets/buildings/Residence.png", ///TODO: IMPLEMENT
 			"Donate": "assets/resources/Beer.png",
 			"About": "assets/buildings/Warehouse.png"
 		};

@@ -24,18 +24,22 @@ class NewsFeedData
 		/// Load data from RSS Feed
 		Client client = new Client();
 		Response response = await client.get("https://www.anno-union.com/en/feed");
-		// Response responseDev = await client.get("https://www.anno-union.com/en/category/devblog-en/feed");
 
-		// RssFeed channelDev = new RssFeed.parse(responseDev.body);
-		RssFeed channel = new RssFeed.parse(response.body);
+		RssFeed channel;
+		try
+		{
+			channel = new RssFeed.parse(response.body);
 
-		itemsExpected = channel.items.length; //+ channelDev.items.length;
+			itemsExpected = channel.items.length; //+ channelDev.items.length;
+		}
+		catch (e) 
+		{
+			print(e); 
+		}
 
-		/// make sure its clean before we add new data
+		/// Make sure its clean before we add new data
 		newsWidgets = Map<String, News>();
-
 		await _processData(channel, globals);
-		// await _processData(channelDev, globals);
 	
 		finished = true;
 	}

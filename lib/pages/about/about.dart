@@ -26,7 +26,7 @@ class AboutState extends State<About>
 				appBar: AppBar(
 					title: Text('About'),
 				),
-				drawer: SideMenu(activePageId: 8),
+				drawer: SideMenu(activePageId: 5),
 				body: Stack(
 					children: <Widget>
 					[

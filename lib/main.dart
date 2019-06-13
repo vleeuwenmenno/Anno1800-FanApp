@@ -13,8 +13,33 @@ import 'package:anno1800_fanapp/pages/goods/goods.dart';
 import 'package:anno1800_fanapp/pages/goods/goodsInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/pages/splash.dart';
+import 'package:catcher/catcher_plugin.dart';
 
-void main() => runApp(MyApp());
+void main()
+{
+	//debug configuration
+ 	CatcherOptions debugOptions = CatcherOptions(DialogReportMode(), [ConsoleHandler()]);
+
+	//release configuration
+	CatcherOptions releaseOptions = CatcherOptions(DialogReportMode(),
+	[
+		EmailManualHandler(["menno@vleeuwen.me"])
+	]);
+
+	//profile configuration
+	CatcherOptions profileOptions = CatcherOptions(
+		NotificationReportMode(),
+		[ConsoleHandler(), ToastHandler()],
+		handlerTimeout: 10000,
+	);
+
+	//MyApp is root widget
+	Catcher(MyApp(),
+		debugConfig: debugOptions,
+		releaseConfig: releaseOptions,
+		profileConfig: profileOptions
+	);
+}
 
 class MyApp extends StatelessWidget 
 {
@@ -57,6 +82,7 @@ class MyApp extends StatelessWidget
 		);
 
 		return MaterialApp(
+			// navigatorKey: Catcher.navigatorKey,
 			title: 'Anno 1800 FanApp',
 			theme: ThemeData(
 				primarySwatch: darkBrown,

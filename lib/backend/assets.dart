@@ -3,7 +3,7 @@ import 'package:flutter/painting.dart';
 
 class AssetsManagement
 {
-	List<String> assets =
+	static const List<String> assets =
 	[
 		/*
 		Use this command to list all the files in assets/ (run inside root of project)
@@ -15,16 +15,18 @@ class AssetsManagement
 		NF&&f{ print "\""s"/"$0"\"," }'
 
 		*/
-		"assets/Letter.png",
+		"assets/appIcon",
 		"assets/background.png",
-		"assets/buildings",     
+		"assets/buildings",
 		"assets/calculator.svg",
 		"assets/icons",
-		"assets/logo.png",      
+		"assets/Letter.png",
+		"assets/logo.png",
 		"assets/resources",
 		"assets/ships",
 		"assets/swap.svg",
 		"assets/tiers",
+		"assets/appIcon/University.png",
 		"assets/buildings/Bank.png",
 		"assets/buildings/Big_Betty.png",
 		"assets/buildings/Cannon_Tower.png",
@@ -62,12 +64,13 @@ class AssetsManagement
 		"assets/buildings/Warehouse.png",
 		"assets/buildings/Worlds_fair.png",
 		"assets/buildings/Zoo.png",
-		"assets/icons/Electricity.png",
-		"assets/icons/Tile.png",
 		"assets/icons/credits.png",
+		"assets/icons/Electricity.png",
 		"assets/icons/other",
+		"assets/icons/Tile.png",
 		"assets/icons/other/Attractiveness.png",
 		"assets/icons/other/Balance.png",
+		"assets/icons/other/calculator.png",
 		"assets/icons/other/Influence.png",
 		"assets/icons/other/Workforce_artisans.png",
 		"assets/icons/other/Workforce_engineers.png",
@@ -76,7 +79,6 @@ class AssetsManagement
 		"assets/icons/other/Workforce_jornaleros.png",
 		"assets/icons/other/Workforce_obreros.png",
 		"assets/icons/other/Workforce_workers.png",
-		"assets/icons/other/calculator.png",
 		"assets/resources/Advanced_weapons.png",
 		"assets/resources/Alpaca_wool.png",
 		"assets/resources/Beef.png",
@@ -172,9 +174,9 @@ class AssetsManagement
 		"assets/ships/Pirate_gunboat.png",
 		"assets/ships/Pirate_monitor.png",
 		"assets/ships/Pirate_ship-of-the-line.png",
-		"assets/ships/Pyrphorian_Warship.png",
 		"assets/ships/Pyrphorian_battlecruiser.png",
 		"assets/ships/Pyrphorian_monitor.png",
+		"assets/ships/Pyrphorian_Warship.png",
 		"assets/ships/Royal_ship-of-the-line.png",
 		"assets/ships/Schooner.png",
 		"assets/ships/Ship-of-the-line.png",
@@ -194,8 +196,13 @@ class AssetsManagement
 		"assets/tiers/workerBanner.jpg",
 	];
 	
-	List<String> imageAssets = [];
-	int cachedImages = 0;
+	List<String> imageAssets;
+	int cachedImages;
+
+	AssetsManagement({
+		this.cachedImages = 0,
+		this.imageAssets = const []
+	});
 
 	void precacheImages(BuildContext context)
 	{

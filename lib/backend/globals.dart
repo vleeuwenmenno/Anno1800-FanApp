@@ -8,15 +8,25 @@ import 'package:anno1800_fanapp/widgets/drawer.dart';
 class Globals
 {
 	AssetsManagement am;
-	SideMenu sideMenu = SideMenu();
-	NewsFeedData nfd = NewsFeedData();
+	SideMenu sideMenu;
+	NewsFeedData nfd;
 
-	int selectedPage = 0;
-	int lastReload = 0;
-	
-	bool oldWorld = true;
+	int selectedPage;
+	int lastReload;
+	bool oldWorld;
 
-	
+	Globals(
+	{
+		this.oldWorld = true,
+		this.lastReload = 0,
+		this.selectedPage = 0,
+	})
+	{
+		this.am = new AssetsManagement(cachedImages: 0, imageAssets: []);
+		this.sideMenu = new SideMenu();
+		this.nfd = new NewsFeedData();
+	}
+
 	Widget createChip(String path, String key, BuildContext context, Globals globals) 
 	{
 		return GestureDetector(
@@ -55,65 +65,37 @@ class Globals
 		if (icon.endsWith("_"))
 			icon = icon.substring(0, icon.length-1);
 
-		return GestureDetector(
-			child: Padding(
-				padding: EdgeInsets.only(right: 8),
-				child: Chip(
-					backgroundColor: Color(0x80714F28),
-					label: RichText(
-						text: TextSpan(
-							text: "${val.toString().replaceAll('_', ' ')}",
-							style: TextStyle(
-								color: Color(0xDEFFE4AD)
-							)
+		return Tooltip(
+			padding: EdgeInsets.all(12),
+			preferBelow: false,
+			message: key.replaceAll("_", " "),
+			child: GestureDetector(
+				child: Padding(
+					padding: EdgeInsets.only(right: 8),
+					child: Chip(
+						backgroundColor: Color(0x80714F28),
+						label: RichText(
+							text: TextSpan(
+								text: "${val.toString().replaceAll('_', ' ')}",
+								style: TextStyle(
+									color: Color(0xDEFFE4AD)
+								)
+							),
 						),
-					),
-					avatar: Image(
-						image: AssetImage("assets/$path/$icon.png"),
-						width: 20,
-					),
-				)
+						avatar: Image(
+							image: AssetImage("assets/$path/$icon.png"),
+							width: 20,
+						),
+					)
+				),
+				onTap: ()
+				{
+					if (PopulationCalculator().goods.containsKey(key))
+						Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});
+					else if (PopulationCalculator().buildings.containsKey(key))
+						Navigator.pushNamed(context, '/buildings/buildingInfo', arguments: { "globals": globals, "selectedBuilding": "$key"});
+				},
 			),
-			onTap: ()
-			{
-				if (PopulationCalculator().goods.containsKey(key))
-					Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": globals, "selectedGoods": "$key"});
-				else if (PopulationCalculator().buildings.containsKey(key))
-					Navigator.pushNamed(context, '/buildings/buildingInfo', arguments: { "globals": globals, "selectedBuilding": "$key"});
-			},
 		);
 	}
-
-	void messageBox(BuildContext context, String message, String title, [VoidCallback onClosed]) 
-	{
-		// flutter defined function
-		showDialog(
-			context: context,
-			builder: (BuildContext context) 
-			{
-				// return object of type Dialog
-				return AlertDialog(
-					title: Text(title),
-					content: Text(message),
-					actions: <Widget>
-					[
-						// usually buttons at the bottom of the dialog
-						FlatButton(
-							child: Text("Close"),
-							onPressed: () 
-							{
-								if (onClosed != null)
-									onClosed();
-
-								Navigator.of(context).pop();
-							},
-						),
-					],
-				);
-			},
-		);
-	}
-}
-
-class AssetManagement {
 }

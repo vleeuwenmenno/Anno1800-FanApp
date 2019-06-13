@@ -139,10 +139,6 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 							text: "Active workforce",
 							secondaryIcon: AssetImage("assets/tiers/$key.png"),
 							icon: "$value",
-							onPressed: ()
-							{	
-								Navigator.pushNamed(context, '/goods/goodsInfo', arguments: { "globals": widget.globals, "selectedGoods": "$k"});	
-							},
 						)
 					);
 					additional.add(Padding(padding: EdgeInsets.all(8)));
@@ -207,16 +203,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 					title: Text('${PopulationCalculator().buildings[widget.selectedBuilding]["name"]}'),
 					elevation: 0,
 					actions: <Widget>
-					[
-						// Production chain button
-						IconButton(
-							onPressed: ()
-							{
-								// Route to Production chain
-							},
-							icon: Image.asset('assets/buildings/Trade_Union.png', height: 24.0,),
-						)
-					],
+					[ ],
 				),
 				drawer: SideMenu(activePageId: 2),
 				body: SingleChildScrollView(

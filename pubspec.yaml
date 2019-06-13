@@ -1,6 +1,6 @@
 name: anno1800_fanapp
 description: A fan made app to display all the news, layouts, production chains and other useful things while playing Anno 1800
-version: 0.0.1+2
+version: 0.0.2+3
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -10,6 +10,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.2
   
+  catcher: ^0.1.4
   cached_network_image: ^0.8.0
   flutter_screenutil: ^0.5.2
   webfeed: ^0.4.2
@@ -37,3 +38,4 @@ flutter:
    - assets/icons/other/
    - assets/ships/
    - assets/resources/
+   - assets/appIcon/

@@ -74,7 +74,8 @@ class _NewsFeedState extends State<NewsFeed>
 					],
 				),
 				drawer: SideMenu(activePageId: 0),
-				body: widget.globals.nfd.newsWidgets == null ? 
+				body: 
+				widget.globals.nfd == null || widget.globals.nfd.newsWidgets == null ? 
 				SmartRefresher(
 					enablePullDown: true,
 					header: ClassicHeader(),
@@ -85,9 +86,12 @@ class _NewsFeedState extends State<NewsFeed>
 						itemBuilder: (BuildContext ctxt, int index) 
 						{
 							return Center(
-								child: Text(
-									"No news feed data loaded!"
-								),
+								child: Padding(
+									padding: EdgeInsets.all(16),
+									child: Text(
+										"No news feed data loaded!"
+									)
+								)
 							);
 						}
 					)
@@ -98,7 +102,7 @@ class _NewsFeedState extends State<NewsFeed>
 					controller: _refreshController,
 					onRefresh: _onRefresh,
 					child: ListView.builder(
-						itemCount: widget.globals.nfd.newsWidgets != null ? widget.globals.nfd.newsWidgets.length : 0,
+						itemCount: widget.globals.nfd != null && widget.globals.nfd.newsWidgets != null ? widget.globals.nfd.newsWidgets.length : 0,
 						itemBuilder: (BuildContext ctxt, int index) 
 						{
 							return widget.globals.nfd.newsWidgets.values.elementAt(index);

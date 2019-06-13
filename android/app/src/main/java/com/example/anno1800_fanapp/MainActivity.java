@@ -1,4 +1,4 @@
-package com.example.anno1800_fanapp;
+package me.vleeuwen.anno1800fa;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

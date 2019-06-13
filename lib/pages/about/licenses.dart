@@ -28,6 +28,12 @@ class LicensesState extends State<Licenses>
 			"author": "Matthew Whitaker",
 			"license": "MIT"
 		},
+		"catcher": 
+		{
+			"versionNo": "v0.1.4",
+			"author": "Jakub Homlala",
+			"license": "Apache 2.0"
+		},
 		"webfeed": 
 		{
 			"versionNo": "v0.4.2",

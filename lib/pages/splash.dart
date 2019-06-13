@@ -1,15 +1,14 @@
 import 'dart:async';
-import 'package:anno1800_fanapp/backend/assets.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
-import 'package:anno1800_fanapp/backend/newsFeedData.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
 class SplashScreen extends StatefulWidget 
 {
-	Globals globals;
+	Globals globals = new Globals();
 
 	@override
 	_SplashScreenState createState() => _SplashScreenState();
@@ -31,15 +30,12 @@ class _SplashScreenState extends State<SplashScreen>
 	{
 		super.initState();
 		
-		widget.globals = Globals();
-		widget.globals.nfd = new NewsFeedData();
-		widget.globals.am = new AssetsManagement();
 		widget.globals.am.imageAssets = [];
 		widget.globals.lastReload = DateTime.now().millisecondsSinceEpoch;
 
 		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
-		{
-			if (once)
+		{ 
+			if (once && widget.globals.nfd != null)
 			{
 				widget.globals.am.precacheImages(context);
 				widget.globals.nfd.loadData(widget.globals);
@@ -70,21 +66,14 @@ class _SplashScreenState extends State<SplashScreen>
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 
-		try
-		{
-			if (widget.globals.am.imageAssets != null && widget.globals.am.imageAssets.length > 0)
-				loadingProgress = (widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages) / (widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length);
-		} 
-		catch (e) 
-		{ }
+		if (widget.globals.nfd != null && widget.globals.am.imageAssets != null && widget.globals.am.imageAssets.length > 0)
+			loadingProgress = (widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages) / (widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length);
 
-		try
+		if (widget.globals.nfd != null)
 		{
 			totalOperations = widget.globals.nfd.itemsExpected + widget.globals.am.imageAssets.length;
 			operations = widget.globals.nfd.itemsLoaded + widget.globals.am.cachedImages;
-		} 
-		catch (e) 
-		{ }
+		}
 
 		return Scaffold
 		(

@@ -62,6 +62,9 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 				{
 					value.forEach((k, v)
 					{
+						if (k == "Coal")
+							k = "Coal_Kiln";
+							
 						String icon = k;
 
 						if (icon.endsWith("_"))
