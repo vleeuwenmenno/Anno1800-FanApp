@@ -4,7 +4,7 @@ You can download the app on for your device here
 
 <a href="#"><img src="./docs/play_store.png" height="50"></a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="#"><img src="./docs/app_store.png" height="50"></a>
+<!-- <a href="#"><img src="./docs/app_store.png" height="50"></a> -->
 
 \* We haven't uploaded to any of them yet so for now please download the APK directly from GitHub
 
