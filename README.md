@@ -2,7 +2,7 @@
 
 You can download the app on for your device here
 
-<a href="#"><img src="./docs/play_store.png" height="50"></a>
+<a href="https://play.google.com/store/apps/details?id=me.vleeuwen.anno1800fa"><img src="./docs/play_store.png" height="50"></a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!-- <a href="#"><img src="./docs/app_store.png" height="50"></a> -->
 
