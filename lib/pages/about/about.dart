@@ -1,6 +1,7 @@
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
+import 'package:anno1800_fanapp/widgets/fireworks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
@@ -43,15 +44,41 @@ class AboutState extends State<About>
 	{
 		if (i == 0)
 		{
-			var result = await FlutterInappPurchase.buyProduct("");
+			try
+			{
+				PurchasedItem result = await FlutterInappPurchase.buyProduct("cred");
+				String s = await FlutterInappPurchase.consumePurchase(result.purchaseToken);
+
+				Navigator.pushNamed(context, "/thnx", arguments: {"globals": widget.globals});
+			}
+			catch (e)
+			{ }
 		}
 		else if (i == 1)
 		{
-			var result = await FlutterInappPurchase.buyProduct("");
+			try
+			{
+				PurchasedItem result = await FlutterInappPurchase.buyProduct("beer");
+				String s = await FlutterInappPurchase.consumePurchase(result.purchaseToken);
+
+				Navigator.pushNamed(context, "/thnx", arguments: {"globals": widget.globals});
+			}
+			catch (ex)
+			{ }
 		}
 		else if (i == 2)
 		{
-			var result = await FlutterInappPurchase.buyProduct("");
+			try
+			{
+				PurchasedItem result = await FlutterInappPurchase.buyProduct("buam");
+				String s = await FlutterInappPurchase.consumePurchase(result.purchaseToken);
+
+				Navigator.pushNamed(context, "/thnx", arguments: {"globals": widget.globals});
+			}
+			catch (e)
+			{
+
+			}
 		}
 	}
 

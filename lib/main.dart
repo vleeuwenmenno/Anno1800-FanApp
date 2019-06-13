@@ -1,6 +1,7 @@
 import 'package:anno1800_fanapp/pages/about/about.dart';
 import 'package:anno1800_fanapp/pages/about/changelog.dart';
 import 'package:anno1800_fanapp/pages/about/licenses.dart';
+import 'package:anno1800_fanapp/pages/about/thnx.dart';
 import 'package:anno1800_fanapp/pages/buildings/buildings.dart';
 import 'package:anno1800_fanapp/pages/buildings/buildingsInfo.dart';
 import 'package:anno1800_fanapp/pages/goods/goodsChain.dart';
@@ -18,10 +19,10 @@ import 'package:catcher/catcher_plugin.dart';
 void main()
 {
 	//debug configuration
- 	CatcherOptions debugOptions = CatcherOptions(DialogReportMode(), [ConsoleHandler()]);
+ 	CatcherOptions debugOptions = CatcherOptions(PageReportMode(showStackTrace: true), [ConsoleHandler()]);
 
 	//release configuration
-	CatcherOptions releaseOptions = CatcherOptions(DialogReportMode(),
+	CatcherOptions releaseOptions = CatcherOptions(SilentReportMode(),
 	[
 		EmailManualHandler(["menno@vleeuwen.me"])
 	]);
@@ -121,7 +122,9 @@ class MyApp extends StatelessWidget
 				'/goods/goodsChain': (context) => GoodsChain(),
 
 				'/drawer/buildings': (context) => Buildings(),
-				'/buildings/buildingInfo': (context) => BuildingInfo()
+				'/buildings/buildingInfo': (context) => BuildingInfo(),
+
+				'/thnx': (context) => Thnx()
 			},
 		);
 	}

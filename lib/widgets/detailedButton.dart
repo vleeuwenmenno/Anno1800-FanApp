@@ -56,7 +56,7 @@ class DetailedButton extends StatefulWidget
 		this.labelStyle = const TextStyle(
 			fontFamily: 'Angsana New',
 			fontSize: 14.0,
-			color: const Color(0xff000000),
+			color: const Color(0xffFFE4AD),
 			fontWeight: FontWeight.bold
 		),
 

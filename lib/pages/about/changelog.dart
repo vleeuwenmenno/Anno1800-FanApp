@@ -18,7 +18,19 @@ class ChangelogState extends State<Changelog>
 {
 	Map versionHistory = 
 	{
-		"Beta release": 
+		"v0.0.8+61": 
+		{
+			"versionNo": "v0.0.8+61",
+			"timeDate": DateTime(2019, 6, 13, 23, 51).millisecondsSinceEpoch,
+			"desc": 
+			"""
+			- You can now donate using in-app-purchases
+			- Hopefully fixes launch issues
+			- Errors are now catched so they can be reported to developers
+			"""
+		},
+
+		"v0.0.7+60": 
 		{
 			"versionNo": "v0.0.7+60",
 			"timeDate": DateTime(2019, 6, 13, 22, 08).millisecondsSinceEpoch,

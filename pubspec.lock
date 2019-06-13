@@ -263,6 +263,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.1"
+  pimp_my_button:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "8845aceaafc04ccb1db4cc4e7074395cf698c607"
+      url: "git://github.com/Norbert515/pimp_my_button.git"
+    source: git
+    version: "0.0.1"
   platform:
     dependency: transitive
     description:
