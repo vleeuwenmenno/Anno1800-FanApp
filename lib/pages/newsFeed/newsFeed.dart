@@ -123,9 +123,9 @@ class _NewsFeedState extends State<NewsFeed>
 			loadingProgress = 0;
 			widget.globals.lastReload = DateTime.now().millisecondsSinceEpoch;
 			widget.globals.nfd = NewsFeedData();
-			progressChecker = Timer.periodic(Duration(milliseconds: 500), (Timer t) 
+			progressChecker = Timer.periodic(Duration(milliseconds: 500), (Timer t) async
 			{
-				if (once)
+				if (once && widget.globals.nfd != null)
 				{
 					widget.globals.am.precacheImages(context);
 					widget.globals.nfd.loadData(widget.globals);

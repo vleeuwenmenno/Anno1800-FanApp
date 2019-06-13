@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/widgets/newsWidget.dart';
 import 'package:http/http.dart';
@@ -31,27 +33,21 @@ class NewsFeedData
 		itemsExpected = 10;
 
 		/// Load data from RSS Feed
-		Client client = new Client();
-		Response response = await client.get("https://www.anno-union.com/en/feed");
+		Response response = await  Client().get("https://www.anno-union.com/en/feed");
+		RssFeed channel = RssFeed.parse(utf8.decode(response.bodyBytes));
 
-		RssFeed channel;
-		
-		try
+		if (channel != null)
 		{
-			channel = new RssFeed.parse(response.body);
-
 			itemsExpected = channel.items.length;
-			
+
 			/// Make sure its clean before we add new data
 			newsWidgets = Map<String, News>();
 			await _processData(channel, globals);
+			
+			finished = true;
 		}
-		catch (e) 
-		{
-			print(e); 
-		}
-	
-		finished = true;
+		else
+			finished = true;
 	}
 
 	Future<void> _processData(RssFeed channel, Globals globals) async
