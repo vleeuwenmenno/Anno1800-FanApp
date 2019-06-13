@@ -64,10 +64,10 @@ class LicensesState extends State<Licenses>
 			"author": "Dart Team",
 			"license": "BSD"
 		},
-		"uuid": 
+		"flutter_inapp_purchase": 
 		{
-			"versionNo": "v2.0.1",
-			"author": "Yulian Kuncheff",
+			"versionNo": "v0.9.2",
+			"author": "dooboolab",
 			"license": "MIT"
 		},
 		"timeago": 

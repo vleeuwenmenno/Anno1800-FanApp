@@ -20,6 +20,17 @@ class ChangelogState extends State<Changelog>
 	{
 		"Beta release": 
 		{
+			"versionNo": "v0.0.7+60",
+			"timeDate": DateTime(2019, 6, 13, 22, 08).millisecondsSinceEpoch,
+			"desc": 
+			"""
+			- Bugfixes
+			- Added in-app-purchases for donations (WIP)
+			"""
+		},
+
+		"Beta release": 
+		{
 			"versionNo": "v0.0.5+57",
 			"timeDate": DateTime(2019, 6, 13, 19, 47).millisecondsSinceEpoch,
 			"desc": 

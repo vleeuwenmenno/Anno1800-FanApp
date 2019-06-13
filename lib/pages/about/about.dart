@@ -4,6 +4,7 @@ import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
+import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
 
 class About extends StatefulWidget 
 {	
@@ -15,6 +16,45 @@ class About extends StatefulWidget
 
 class AboutState extends State<About> 
 {
+	List<IAPItem> _iaps = [];
+
+	/// start connection for android
+	@override
+	void initState() 
+	{
+		super.initState();
+		asyncInitState(); // async is not allowed on initState() directly
+	}
+
+	void asyncInitState() async 
+	{
+		await FlutterInappPurchase.initConnection;
+	}
+
+	/// start connection for android
+	@override
+	void dispose() async
+	{
+		super.dispose();
+		await FlutterInappPurchase.endConnection;
+	}
+
+	void donate(int i) async
+	{
+		if (i == 0)
+		{
+			var result = await FlutterInappPurchase.buyProduct("");
+		}
+		else if (i == 1)
+		{
+			var result = await FlutterInappPurchase.buyProduct("");
+		}
+		else if (i == 2)
+		{
+			var result = await FlutterInappPurchase.buyProduct("");
+		}
+	}
+
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
@@ -67,7 +107,7 @@ class AboutState extends State<About>
 										controller: DetailedButtonController(enabled: true, forceEnabled: true),
 										onPressed: ()
 										{
-											
+											donate(0);
 										},
 										child: Row(
 											mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +137,7 @@ class AboutState extends State<About>
 										controller: DetailedButtonController(enabled: true, forceEnabled: true),
 										onPressed: ()
 										{
-											
+											donate(1);
 										},
 										child: Row(
 											mainAxisAlignment: MainAxisAlignment.center,
@@ -127,7 +167,7 @@ class AboutState extends State<About>
 										controller: DetailedButtonController(enabled: true, forceEnabled: true),
 										onPressed: ()
 										{
-											
+											donate(2);
 										},
 										child: Row(
 											mainAxisAlignment: MainAxisAlignment.center,

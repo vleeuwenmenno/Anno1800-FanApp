@@ -36,6 +36,15 @@ class _SplashScreenState extends State<SplashScreen>
 
 		progressChecker = Timer.periodic(Duration(milliseconds: 200), (Timer t) 
 		{
+			if (widget.globals.nfd != null)
+				loadingProgress = (widget.globals.nfd.itemsLoaded) / (widget.globals.nfd.itemsExpected );
+
+			if (widget.globals.nfd != null)
+			{
+				totalOperations = widget.globals.nfd.itemsExpected;
+				operations = widget.globals.nfd.itemsLoaded;
+			}
+			
 			setState(() { });
 
 			if (loadingProgress == 1)
@@ -58,15 +67,6 @@ class _SplashScreenState extends State<SplashScreen>
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-
-		if (widget.globals.nfd != null)
-			loadingProgress = (widget.globals.nfd.itemsLoaded) / (widget.globals.nfd.itemsExpected );
-
-		if (widget.globals.nfd != null)
-		{
-			totalOperations = widget.globals.nfd.itemsExpected;
-			operations = widget.globals.nfd.itemsLoaded;
-		}
 
 		return Scaffold
 		(
@@ -134,7 +134,7 @@ class _SplashScreenState extends State<SplashScreen>
 													(
 														TextSpan
 														(
-															text: 'Loading Assets... ${(loadingProgress*100).toStringAsFixed(0)}%',
+															text: 'Loading news feed... ${(loadingProgress*100).toStringAsFixed(0)}%',
 															style: TextStyle
 															(
 																color: Color(0xffFFE4AD)
@@ -154,23 +154,26 @@ class _SplashScreenState extends State<SplashScreen>
 													),
 												),
 
-												Padding(padding: EdgeInsets.all(4)),
+												Padding(padding: EdgeInsets.all(8)),
 
-												DetailedButton(
-													height: 32,
-													controller: DetailedButtonController(enabled: true),
-													child: Text(
-														"Skip loading news feed",
-														style: TextStyle
-														(
-															color: Color(0xffFFE4AD)
-														)
+												Opacity(
+													opacity: 0.8,
+													child: DetailedButton(
+														height: 48,
+														controller: DetailedButtonController(enabled: true),
+														child: Text(
+															"Skip loading news feed",
+															style: TextStyle
+															(
+																color: Color(0xffFFE4AD)
+															)
+														),
+														onPressed: ()
+														{
+															Navigator.pushReplacementNamed(context, "/drawer/news", arguments: { "globals": widget.globals });
+															progressChecker.cancel();
+														},
 													),
-													onPressed: ()
-													{
-														Navigator.pushReplacementNamed(context, "/drawer/news", arguments: { "globals": widget.globals });
-														progressChecker.cancel();
-													},
 												)
 										  	],
 										  ),
