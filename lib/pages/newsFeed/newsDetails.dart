@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/newsWidget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -103,7 +104,7 @@ class NewsDetailsState extends State<NewsDetails>
 						),
 
 						MenuEntryRow(
-							subText: "Open source in browser",
+							subText: Localize.of(context).trans("newsFeed.openSource"),
 							onTap: ()
 							{
 								launchURL(widget.news.link);

@@ -1,5 +1,8 @@
+import 'package:anno1800_fanapp/backend/globals.dart';
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:anno1800_fanapp/pages/about/about.dart';
 import 'package:anno1800_fanapp/pages/about/changelog.dart';
+import 'package:anno1800_fanapp/pages/about/languages.dart';
 import 'package:anno1800_fanapp/pages/about/licenses.dart';
 import 'package:anno1800_fanapp/pages/about/thnx.dart';
 import 'package:anno1800_fanapp/pages/buildings/buildings.dart';
@@ -15,8 +18,9 @@ import 'package:anno1800_fanapp/pages/goods/goodsInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/pages/splash.dart';
 import 'package:catcher/catcher_plugin.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main()
+void main() async
 {
 	//debug configuration
  	CatcherOptions debugOptions = CatcherOptions(PageReportMode(showStackTrace: true), [ConsoleHandler()]);
@@ -45,6 +49,11 @@ void main()
 
 class MyApp extends StatelessWidget 
 {
+	Locale deviceLocale;
+	var returnData = {};
+
+	Globals globals = Globals();
+
 	// This widget is the root of your application.
 	@override
 	Widget build(BuildContext context)
@@ -100,6 +109,28 @@ class MyApp extends StatelessWidget
 					iconTheme: IconThemeData(color: sand)
 				),
 			),
+			supportedLocales: Globals.supportedLangs,
+			localizationsDelegates: 
+			[
+				LocalizeDelegate(Globals.supportedLangs),
+				GlobalMaterialLocalizations.delegate,
+				GlobalWidgetsLocalizations.delegate
+			],
+			localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales)
+			{
+				deviceLocale = locale;
+				locale = locale;
+
+				for (Locale supportedLocale in supportedLocales)
+				{
+					if (supportedLocale.languageCode == locale.languageCode || supportedLocale.countryCode == locale.countryCode)
+					{
+						return supportedLocale;
+					}
+				}
+
+				return supportedLocales.first;
+			},
 			initialRoute: '/',
 			routes: 
 			{
@@ -112,10 +143,11 @@ class MyApp extends StatelessWidget
 				'/drawer/population needs/calc': (context) => PopulationNeedsCalc(),
 				'/drawer/population needs/calc/result': (context) => PopNCalcResults(),
 
-				'/drawer/about': (context) => About(),
+				'/drawer/settings': (context) => About(),
 				'/drawer/donate': (context) => About(),
 				'/drawer/about/changelog': (context) => Changelog(),
 				'/drawer/about/licenses': (context) => Licenses(),
+				'/drawer/about/languages': (context) => Languages(),
 
 				'/drawer/goods': (context) => Goods(),
 				'/goods/goodsInfo': (context) => GoodsInfo(),

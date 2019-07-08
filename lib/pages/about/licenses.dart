@@ -1,4 +1,5 @@
 import 'package:anno1800_fanapp/backend/globals.dart';
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -113,7 +114,7 @@ class LicensesState extends State<Licenses>
 				[
 					MenuEntryRow(
 						mainText: "$k",
-						subText: "${v['versionNo']} (by ${v['author']})",
+						subText: "${v['versionNo']} (${Localize.of(context).trans("settings.licenses.by")} ${v['author']})",
 						textRight: "${v['license']}",
 						type: MenuEntryRowType.Text,
 						onTap: ()
@@ -127,7 +128,7 @@ class LicensesState extends State<Licenses>
 
 		return Scaffold(
 			appBar: AppBar(
-				title: Text('Licenses'),
+				title: Text(Localize.of(context).trans("settings.licenses.title")),
 			),
 			drawer: SideMenu(activePageId: 7),
 			body: SingleChildScrollView(

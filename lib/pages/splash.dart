@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:anno1800_fanapp/backend/assets.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -134,7 +135,7 @@ class _SplashScreenState extends State<SplashScreen>
 													(
 														TextSpan
 														(
-															text: 'Loading news feed... ${(loadingProgress*100).toStringAsFixed(0)}%',
+															text: '${Localize.of(context).trans("app.loading")} ${(loadingProgress*100).toStringAsFixed(0)}%',
 															style: TextStyle
 															(
 																color: Color(0xffFFE4AD)
@@ -162,7 +163,7 @@ class _SplashScreenState extends State<SplashScreen>
 														height: 48,
 														controller: DetailedButtonController(enabled: true),
 														child: Text(
-															"Skip loading news feed",
+															Localize.of(context).trans("app.skipLoading"),
 															style: TextStyle
 															(
 																color: Color(0xffFFE4AD)

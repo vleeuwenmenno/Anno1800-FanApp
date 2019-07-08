@@ -1,4 +1,5 @@
 import 'package:anno1800_fanapp/backend/globals.dart';
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:anno1800_fanapp/widgets/detailedTextfield.dart';
@@ -84,8 +85,8 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 								children: <Widget>
 								[
 									MenuEntryRow(
-										mainText: "Needs calculator",
-										subText: "Enter the amount of population your city has",
+										mainText: Localize.of(context).trans("popneedscalc.title"),
+										subText: Localize.of(context).trans("popneedscalc.desc"),
 										type: MenuEntryRowType.Text
 									),
 
@@ -93,7 +94,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 									DetailedTextfield(
 										width: (MediaQuery.of(context).size.width / 100) * 85,
-										hintText: "Farmers",
+										hintText: Localize.of(context).trans("farmers"),
 										icon: AssetImage("assets/tiers/farmer.png"),
 										controller: farmersCtrl,
 									),
@@ -102,7 +103,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 									DetailedTextfield(
 										width: (MediaQuery.of(context).size.width / 100) * 85,
-										hintText: "Workers",
+										hintText:  Localize.of(context).trans("workers"),
 										icon: AssetImage("assets/tiers/worker.png"),
 										controller: workerCtrl
 									),
@@ -111,7 +112,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 									DetailedTextfield(
 										width: (MediaQuery.of(context).size.width / 100) * 85,
-										hintText: "Artisans",
+										hintText: Localize.of(context).trans("artisans"),
 										icon: AssetImage("assets/tiers/artisan.png"),
 										controller: artisanCtrl,
 									),
@@ -120,7 +121,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 									
 									DetailedTextfield(
 										width: (MediaQuery.of(context).size.width / 100) * 85,
-										hintText: "Engineers",
+										hintText:  Localize.of(context).trans("engineers"),
 										icon: AssetImage("assets/tiers/engineer.png"),
 										controller: engineerCtrl,
 									),
@@ -129,7 +130,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 									DetailedTextfield(
 										width: (MediaQuery.of(context).size.width / 100) * 85,
-										hintText: "Investors",
+										hintText: Localize.of(context).trans("investors"),
 										icon: AssetImage("assets/tiers/investor.png"),
 										controller: investorCtrl,
 									)
@@ -142,8 +143,8 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 								children: <Widget>
 								[
 									MenuEntryRow(
-										mainText: "Needs calculator",
-										subText: "Enter the amount of population your city has",
+										mainText: Localize.of(context).trans("popneedscalc.title"),
+										subText: Localize.of(context).trans("popneedscalc.desc"),
 										type: MenuEntryRowType.Text
 									),
 
@@ -151,7 +152,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 									DetailedTextfield(
 										width: (MediaQuery.of(context).size.width / 100) * 85,
-										hintText: "Jornaleros",
+										hintText: Localize.of(context).trans("jornaleros"),
 										icon: AssetImage("assets/tiers/jornaleros.png"),
 										controller: jornalerosCtrl,
 									),
@@ -160,7 +161,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 
 									DetailedTextfield(
 										width: (MediaQuery.of(context).size.width / 100) * 85,
-										hintText: "Obreros",
+										hintText: Localize.of(context).trans("obreros"),
 										icon: AssetImage("assets/tiers/obreros.png"),
 										controller: obrerosCtrl
 									),
@@ -197,7 +198,7 @@ class PopulationNeedsCalcState extends State<PopulationNeedsCalc>
 											[
 												RichText(
 													text: TextSpan(
-														text: "Calculate",
+														text: Localize.of(context).trans("popneedscalc.calcBtn"),
 														style: TextStyle(
 															fontFamily: 'Angsana New',
 															fontSize: 14.0,

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:anno1800_fanapp/backend/assets.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/backend/newsFeedData.dart';
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -66,7 +67,7 @@ class _NewsFeedState extends State<NewsFeed>
 			onWillPop: () async => false,
 			child: Scaffold(
 				appBar: AppBar(
-					title: Text('Anno Union - News feed'),
+					title: Text(Localize.of(context).trans("newsFeed.title")),
 					actions: <Widget>
 					[ ],
 				),

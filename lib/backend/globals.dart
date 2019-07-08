@@ -14,6 +14,33 @@ class Globals
 	int lastReload;
 	bool oldWorld;
 
+	static const List<Locale> supportedLangs = 
+	[
+		const Locale('en', 'US'),
+		const Locale('nl', 'NL'),
+		const Locale('th', 'TH'),
+		const Locale('de', 'DE')
+	];
+
+	static const Map<String, Locale> supportedLangsNames =
+	{
+		"English": const Locale('en', 'US'),
+		"Nederlands": const Locale('nl', 'NL'),
+		"ไทย": const Locale('th', 'TH'),
+		"Deutsch": const Locale('de', 'DE')
+	};
+
+	static String langNameFromCode(String code)
+	{
+		String name = "";
+		supportedLangsNames.forEach((lang, locale)
+		{
+			if (code == "${locale.languageCode}_${locale.countryCode}")
+				name = lang;
+		});
+		return name;
+	}
+
 	Globals(
 	{
 		this.oldWorld = true,

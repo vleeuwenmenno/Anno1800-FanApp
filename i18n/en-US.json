@@ -1,0 +1,44 @@
+{
+    "app.title": "Anno 1800 FanApp",
+    "app.loading": "Loading news feed...",
+    "app.skipLoading": "Skip loading news feed",
+
+    "drawer.desc": "Select a topic to start with",
+
+    "drawer.news": "News",
+    "drawer.population needs": "Population needs",
+    "drawer.goods": "Goods",
+    "drawer.buildings": "Buildings",
+    "drawer.donate": "Donate",
+    "drawer.settings": "Settings",
+
+    "newsFeed.title": "Anno Union - News feed",
+    "newsFeed.openSource": "Open the source in browser",
+
+    "farmers": "Farmers",
+    "workers": "Workers",
+    "artisans": "Artisans",
+    "engineers": "Engineers",
+    "investors": "Investors",
+
+    "jornaleros": "Jornaleros",
+    "obreros": "Obreros",
+
+    "popneeds.basicNeeds": "Basic needs",
+    "popneeds.luxNeeds": "Luxury needs",
+
+    "popneedscalc.title": "Needs calculator",
+    "popneedscalc.desc": "Enter the amount of population your city has",
+    "popneedscalc.calcBtn": "Calculate",
+
+    "settings.title": "Settings",
+    "settings.changelog": "Changelog",
+    "settings.licenses": "Licenses",
+    "settings.lang": "Language",
+    "settings.donate.sm": "Every credit counts...",
+    "settings.donate.med": "Buy us a beer",
+    "settings.donate.big": "Buy us a meal",
+
+    "settings.licenses.title": "Licenses",
+    "settings.licenses.by": "by"
+}

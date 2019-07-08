@@ -1,4 +1,5 @@
 import 'package:anno1800_fanapp/backend/globals.dart';
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:anno1800_fanapp/widgets/fireworks.dart';
@@ -91,7 +92,7 @@ class AboutState extends State<About>
 			onWillPop: () async => false,
 			child: Scaffold(
 				appBar: AppBar(
-					title: Text('About'),
+					title: Text(Localize.of(context).trans("settings.title")),
 				),
 				drawer: SideMenu(activePageId: 5),
 				body: Stack(
@@ -103,7 +104,17 @@ class AboutState extends State<About>
 							children: <Widget>
 							[
 								MenuEntryRow(
-									mainText: "Changelog",
+									mainText: Localize.of(context).trans("settings.lang"),
+									subText: Localize.of(context).locale != null ? Globals.langNameFromCode("${Localize.of(context).locale.languageCode}_${Localize.of(context).locale.countryCode}") : "",
+									type: MenuEntryRowType.Text,
+									onTap: ()
+									{
+										Navigator.pushNamed(context, "/drawer/about/languages", arguments: { "globals": widget.globals });
+									},
+								),
+
+								MenuEntryRow(
+									mainText: Localize.of(context).trans("settings.changelog"),
 									type: MenuEntryRowType.None,
 									onTap: ()
 									{
@@ -112,7 +123,7 @@ class AboutState extends State<About>
 								),
 
 								MenuEntryRow(
-									mainText: "Licenses",
+									mainText: Localize.of(context).trans("settings.licenses"),
 									type: MenuEntryRowType.None,
 									onTap: ()
 									{
@@ -144,7 +155,7 @@ class AboutState extends State<About>
 												Padding(padding: EdgeInsets.all(4)),
 												RichText(
 													text: TextSpan(
-														text: "Every credit counts...",
+														text: Localize.of(context).trans("settings.donate.sm"),
 														style: TextStyle(
 															fontFamily: 'Angsana New',
 															fontSize: 14.0,
@@ -174,7 +185,7 @@ class AboutState extends State<About>
 												Padding(padding: EdgeInsets.all(4)),
 												RichText(
 													text: TextSpan(
-														text: "Buy us a beer",
+														text: Localize.of(context).trans("settings.donate.med"),
 														style: TextStyle(
 															fontFamily: 'Angsana New',
 															fontSize: 14.0,
@@ -204,7 +215,7 @@ class AboutState extends State<About>
 												Padding(padding: EdgeInsets.all(4)),
 												RichText(
 													text: TextSpan(
-														text: "Buy us a meal",
+														text: Localize.of(context).trans("settings.donate.big"),
 														style: TextStyle(
 															fontFamily: 'Angsana New',
 															fontSize: 14.0,

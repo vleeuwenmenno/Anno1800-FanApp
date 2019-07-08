@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,15 +40,15 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 		
 		List<Tab> tabs = widget.globals.oldWorld ? 
 		[	
-			Tab(icon: Image.asset('assets/tiers/farmer.png', height: 42,), text: 'Farmers'),
-			Tab(icon: Image.asset('assets/tiers/worker.png', height: 42,), text: 'Workers'),
-			Tab(icon: Image.asset('assets/tiers/artisan.png', height: 42,), text: 'Artisans'),
-			Tab(icon: Image.asset('assets/tiers/engineer.png', height: 42,), text: 'Engineers'),
-			Tab(icon: Image.asset('assets/tiers/investor.png', height: 42,), text: 'Investors'),
+			Tab(icon: Image.asset('assets/tiers/farmer.png', height: 42,), text: Localize.of(context).trans("farmers")),
+			Tab(icon: Image.asset('assets/tiers/worker.png', height: 42,), text:  Localize.of(context).trans("workers")),
+			Tab(icon: Image.asset('assets/tiers/artisan.png', height: 42,), text:  Localize.of(context).trans("artisans")),
+			Tab(icon: Image.asset('assets/tiers/engineer.png', height: 42,), text:  Localize.of(context).trans("engineers")),
+			Tab(icon: Image.asset('assets/tiers/investor.png', height: 42,), text:  Localize.of(context).trans("investors")),
 		] :
 		[
-			Tab(icon: Image.asset('assets/tiers/jornaleros.png', height: 42,), text: 'Jornaleros'),
-			Tab(icon: Image.asset('assets/tiers/obreros.png', height: 42,), text: 'Obreros'),
+			Tab(icon: Image.asset('assets/tiers/jornaleros.png', height: 42,), text: Localize.of(context).trans("jornaleros")),
+			Tab(icon: Image.asset('assets/tiers/obreros.png', height: 42,), text:  Localize.of(context).trans("obreros")),
 		];
 		List<Widget> tabViews = List<Widget>();
 
@@ -113,7 +114,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 							Row(
 								children: <Widget>
 								[
-									Text('Basic needs',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+									Text(Localize.of(context).trans("popneeds.basicNeeds"),  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
 								],
 							),
 							Divider(color: Color(0xff714F28)),
@@ -125,7 +126,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 							Row(
 								children: <Widget>
 								[
-									Text('Luxury needs',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+									Text(Localize.of(context).trans("popneeds.luxNeeds"),  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
 								],
 							),
 							Divider(color: Color(0xff714F28)),

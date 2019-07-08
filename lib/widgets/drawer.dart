@@ -1,4 +1,5 @@
 import 'package:anno1800_fanapp/backend/globals.dart';
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:flutter/material.dart';
 
 class SideMenu extends StatefulWidget
@@ -37,7 +38,7 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 			// "Production-layouts": "assets/icons/Tile.png", ///TODO: IMPLEMENT
 			// "City-layouts": "assets/buildings/Residence.png", ///TODO: IMPLEMENT
 			"Donate": "assets/resources/Beer.png",
-			"About": "assets/buildings/Warehouse.png"
+			"Settings": "assets/buildings/Warehouse.png"
 		};
 
 		itemWidgets.add(
@@ -52,14 +53,14 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 							width: 64,
 						),
 
-						Text('Anno 1800 FanApp',
+						Text(Localize.of(context).trans("app.title"),
 							style: TextStyle(
 								fontSize: 24, 
 								color: Color(0xffFFE4AD)
 							),
 						),
 
-						Text('Select a topic to start with',
+						Text(Localize.of(context).trans("drawer.desc"),
 							style: TextStyle(
 								fontSize: 12, 
 								color: Color(0x99FFE4AD)
@@ -83,7 +84,7 @@ class SideMenuState extends State<SideMenu> with AutomaticKeepAliveClientMixin
 						opacity: widget.activePageId == i ? 1.0 : 0.5,
 						child:  ListTile(
 							leading: Image.asset(value, width: 32),
-							title: Text(key),
+							title: Text(Localize.of(context).trans("drawer.${key.toLowerCase()}")),
 							onTap: () 
 							{
 								print("Going to /drawer/${key.trim().toLowerCase()}");
