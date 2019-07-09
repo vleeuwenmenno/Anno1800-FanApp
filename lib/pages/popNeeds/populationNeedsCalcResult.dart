@@ -1,5 +1,6 @@
 import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/backend/populationCalculator.dart';
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:anno1800_fanapp/widgets/resultIndicator.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +30,8 @@ class PopNCalcResultsState extends State<PopNCalcResults>
 		List<Widget> widgets = <Widget>
 		[
 			MenuEntryRow(
-				mainText: "Result",
-				subText: "Values in brackets is efficiency",
+				mainText: Localize.of(context).trans("popneedscalc.result.title"),
+				subText: Localize.of(context).trans("popneedscalc.result.desc"),
 				type: MenuEntryRowType.Text
 			),
 

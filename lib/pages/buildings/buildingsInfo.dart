@@ -1,3 +1,4 @@
+import 'package:anno1800_fanapp/localize.dart';
 import 'package:anno1800_fanapp/widgets/resultIndicator.dart';
 import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/backend/globals.dart';
@@ -218,7 +219,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 										Row(
 											children: <Widget>
 											[
-												Text('Building information',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+												Text(Localize.of(context).trans("buildingInfo.headTitle"),  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
 											],
 										),
 
@@ -265,14 +266,14 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 										Row(
 											children: <Widget>
 											[
-												Text('Costs',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+												Text(Localize.of(context).trans("buildingsInfo.title"),  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
 											],
 										),
 
 										Row(
 											children: <Widget>
 											[
-												Text('Required resources for acquiring the building',  style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.5), height: 1.4)),
+												Text(Localize.of(context).trans("buildingsInfo.desc"),  style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.5), height: 1.4)),
 											],
 										),
 
@@ -287,7 +288,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 										Row(
 											children: <Widget>
 											[
-												Text('Additional information',  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
+												Text(Localize.of(context).trans("buildingsInfo.additional"),  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff714F28))),
 											],
 										),
 

@@ -144,7 +144,7 @@ class _PopulationNeedsState extends State<PopulationNeeds> with SingleTickerProv
 			onWillPop: () async => false,
 			child: Scaffold(
 				appBar: AppBar(
-					title: Text(widget.globals.oldWorld ? 'Old world needs' : 'New world needs'),
+					title: Text(widget.globals.oldWorld ? Localize.of(context).trans("popneeds.oldWorldNeeds") : Localize.of(context).trans("popneeds.newWorldNeeds")),
 					elevation: 0,
 					actions: <Widget>
 					[

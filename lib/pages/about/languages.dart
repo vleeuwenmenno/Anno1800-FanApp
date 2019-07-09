@@ -2,6 +2,7 @@ import 'package:anno1800_fanapp/backend/globals.dart';
 import 'package:anno1800_fanapp/localize.dart';
 import 'package:anno1800_fanapp/widgets/MenuEntryRow.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Languages extends StatefulWidget
 {
@@ -26,6 +27,7 @@ class LanguageState extends State<Languages>
 					mainText: lang,
 					onTap: () async
 					{
+						await FlutterSecureStorage().write(key: "lang", value: Globals.langNameFromCode("${locale.languageCode}_${locale.countryCode}"));
 						bool reload = await Localize.of(context).load(locale);
 
 						if (reload)

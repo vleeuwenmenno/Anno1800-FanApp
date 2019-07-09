@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:anno1800_fanapp/pages/splash.dart';
 import 'package:catcher/catcher_plugin.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() async
 {

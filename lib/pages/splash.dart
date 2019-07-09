@@ -6,6 +6,7 @@ import 'package:anno1800_fanapp/widgets/detailedButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 
 class SplashScreen extends StatefulWidget 
@@ -68,6 +69,15 @@ class _SplashScreenState extends State<SplashScreen>
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+
+		FlutterSecureStorage flutterSecureStorage = FlutterSecureStorage();
+		flutterSecureStorage.readAll().then((Map m)
+		{
+			if (m.containsKey("lang"))
+				Localize.of(context).load(Globals.supportedLangsNames[m['lang']]);
+			else
+				flutterSecureStorage.write(key: "lang", value: "English");
+		});
 
 		return Scaffold
 		(

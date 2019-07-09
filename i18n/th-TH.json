@@ -31,5 +31,17 @@
     "popneedscalc.desc": "ป้อนจำนวนประชากรที่เมืองของคุณมี",
     "app.loading": "กำลังโหลดฟีดข่าว ...",
     "app.skipLoading": "ข้ามการโหลดฟีดข่าว",
-    "popneedscalc.calcBtn": "คำนวณ"
+    "popneedscalc.calcBtn": "คำนวณ",
+    "popneeds.newWorldNeeds": "โลกใหม่ที่ต้องการ",
+    "popneeds.oldWorldNeeds": "โลกเก่าต้องการ",
+    "popneedscalc.result.title": "ผลการคำนวณ",
+    "popneedscalc.result.desc": "ค่าในวงเล็บคือประสิทธิภาพ",
+    "buildingInfo.headTitle": "ข้อมูลอาคาร",
+    "buildingsInfo.title": "ค่าใช้จ่าย",
+    "buildingsInfo.desc": "ทรัพยากรที่จำเป็นสำหรับการรับอาคาร",
+    "buildingsInfo.additional": "ข้อมูลเพิ่มเติม",
+    "goodsInfo.headTitle": "ข้อมูลอาคาร",
+    "goodsInfo.title": "ค่าใช้จ่าย",
+    "goodsInfo.desc": "ทรัพยากรที่จำเป็นสำหรับการรับสินค้า",
+    "goodsInfo.additional": "ข้อมูลเพิ่มเติม"
 }

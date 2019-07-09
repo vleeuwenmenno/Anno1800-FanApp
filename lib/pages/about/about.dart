@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anno1800_fanapp/widgets/drawer.dart';
 import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class About extends StatefulWidget 
 {	
@@ -83,10 +84,17 @@ class AboutState extends State<About>
 		}
 	}
 
+	String lang;
+
 	Widget build(BuildContext context)
 	{
 		ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 		widget.globals = (ModalRoute.of(context).settings.arguments as Map)["globals"];
+
+		FlutterSecureStorage().read(key: "lang").then((String s) {
+			lang =s;
+			setState(() {});
+		});
 
 		return WillPopScope(
 			onWillPop: () async => false,
@@ -105,7 +113,7 @@ class AboutState extends State<About>
 							[
 								MenuEntryRow(
 									mainText: Localize.of(context).trans("settings.lang"),
-									subText: Localize.of(context).locale != null ? Globals.langNameFromCode("${Localize.of(context).locale.languageCode}_${Localize.of(context).locale.countryCode}") : "",
+									subText: lang,
 									type: MenuEntryRowType.Text,
 									onTap: ()
 									{

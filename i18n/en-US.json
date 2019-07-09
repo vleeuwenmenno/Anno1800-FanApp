@@ -26,10 +26,25 @@
 
     "popneeds.basicNeeds": "Basic needs",
     "popneeds.luxNeeds": "Luxury needs",
+    "popneeds.newWorldNeeds": "New world needs",
+    "popneeds.oldWorldNeeds": "Old world needs",
 
     "popneedscalc.title": "Needs calculator",
     "popneedscalc.desc": "Enter the amount of population your city has",
     "popneedscalc.calcBtn": "Calculate",
+
+    "popneedscalc.result.title": "Calculator results",
+    "popneedscalc.result.desc": "Values in brackets is efficiency",
+
+    "buildingInfo.headTitle": "Building information",
+    "buildingsInfo.title": "Costs",
+    "buildingsInfo.desc": "Required resources for acquiring the building",
+    "buildingsInfo.additional": "Additional information",
+
+    "goodsInfo.headTitle": "Goods information",
+    "goodsInfo.title": "Costs",
+    "goodsInfo.desc": "Required resources for acquiring the goods",
+    "goodsInfo.additional": "Additional information",
 
     "settings.title": "Settings",
     "settings.changelog": "Changelog",

@@ -31,5 +31,17 @@
     "popneedscalc.desc": "Geben Sie die Bevölkerungszahl Ihrer Stadt ein",
     "app.loading": "Newsfeed wird geladen ...",
     "app.skipLoading": "Lade News-Feed überspringen",
-    "popneedscalc.calcBtn": "Berechnung"
+    "popneedscalc.calcBtn": "Berechnung",
+    "popneeds.newWorldNeeds": "Neue Welt braucht",
+    "popneeds.oldWorldNeeds": "Alte Welt braucht",
+    "popneedscalc.result.title": "Rechnerergebnisse",
+    "popneedscalc.result.desc": "Werte in Klammern bedeuten Effizienz",
+    "buildingInfo.headTitle": "Gebäudeinformationen",
+    "buildingsInfo.title": "Kosten",
+    "buildingsInfo.desc": "Erforderliche Ressourcen für den Erwerb des Gebäudes",
+    "buildingsInfo.additional": "Zusätzliche Information",
+    "goodsInfo.headTitle": "Gebäudeinformationen",
+    "goodsInfo.title": "Kosten",
+    "goodsInfo.desc": "Erforderliche Ressourcen für den Erwerb der Ware",
+    "goodsInfo.additional": "Zusätzliche Information"
 }
