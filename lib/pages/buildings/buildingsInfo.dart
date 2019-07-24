@@ -58,7 +58,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 						style: ResultIndicatorStyle.WithoutCount,
 						width: (MediaQuery.of(context).size.width / 100) * 85,
 						count: 23,
-						text: "Size",
+						text: Localize.of(context).trans("buildingsInfo.size"),
 						icon: "${v.width.toStringAsFixed(0)}x${v.height.toStringAsFixed(0)}",
 						secondaryIcon: AssetImage("assets/icons/Tile.png"),
 					)
@@ -81,7 +81,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 						style: ResultIndicatorStyle.WithoutCount,
 						width: (MediaQuery.of(context).size.width / 100) * 85,
 						count: 23,
-						text: "Requires",
+						text: Localize.of(context).trans("buildingsInfo.requires"),
 						icon: "${v.replaceAll("image:[" + icon + "]", "")}",
 						secondaryIcon: icon != "" ? AssetImage(icon) : null,
 					)
@@ -95,7 +95,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 						style: ResultIndicatorStyle.WithoutCount,
 						width: (MediaQuery.of(context).size.width / 100) * 85,
 						count: 23,
-						text: "Range",
+						text: Localize.of(context).trans("buildingsInfo.range"),
 						icon: "$v",
 					)
 				);
@@ -108,7 +108,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 						style: ResultIndicatorStyle.WithoutCount,
 						width: (MediaQuery.of(context).size.width / 100) * 85,
 						count: 23,
-						text: "Influence",
+						text: Localize.of(context).trans("buildingsInfo.influence"),
 						icon: "$v",
 						secondaryIcon: AssetImage("assets/icons/other/Influence.png"),
 					)
@@ -122,7 +122,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 						style: ResultIndicatorStyle.WithoutCount,
 						width: (MediaQuery.of(context).size.width / 100) * 85,
 						count: 23,
-						text: "Attractiveness",
+						text: Localize.of(context).trans("buildingsInfo.attractiveness"),
 						icon: "$v",
 						secondaryIcon: AssetImage("assets/icons/other/Attractiveness.png"),
 					)
@@ -137,7 +137,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 						ResultIndicator(
 							style: ResultIndicatorStyle.WithoutCount,
 							width: (MediaQuery.of(context).size.width / 100) * 85,
-							text: "Active workforce",
+							text: Localize.of(context).trans("buildingsInfo.workforce"),
 							secondaryIcon: AssetImage("assets/tiers/$key.png"),
 							icon: "$value",
 						)
@@ -152,7 +152,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 						style: ResultIndicatorStyle.WithoutCount,
 						width: (MediaQuery.of(context).size.width / 100) * 85,
 						count: 23,
-						text: "Unlock condition",
+						text: Localize.of(context).trans("buildingsInfo.unlockCondition"),
 						icon: "${v['desc']}",
 						secondaryIcon: AssetImage("assets/${v['img']}.png"),
 					)
@@ -170,7 +170,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 								style: ResultIndicatorStyle.WithoutCount,
 								width: (MediaQuery.of(context).size.width / 100) * 85,
 								count: 23,
-								text: "Modules",
+								text: Localize.of(context).trans("buildingsInfo.modules"),
 								icon: "$vv (${v['size'].width.toStringAsFixed(0)}x${v['size'].height.toStringAsFixed(0)})",
 								secondaryIcon: AssetImage("assets/icons/Tile.png")
 							)
@@ -184,7 +184,7 @@ class _BuildingInfoState extends State<BuildingInfo> with SingleTickerProviderSt
 								style: ResultIndicatorStyle.WithoutCount,
 								width: (MediaQuery.of(context).size.width / 100) * 85,
 								count: 23,
-								text: "Cost per module",
+								text: Localize.of(context).trans("buildingsInfo.cost"),
 								icon: "$vv",
 								secondaryIcon: AssetImage("assets/icons/credits.png"),
 							)

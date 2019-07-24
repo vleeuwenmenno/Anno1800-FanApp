@@ -75,7 +75,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 							ResultIndicator(
 								style: ResultIndicatorStyle.WithoutCount,
 								width: (MediaQuery.of(context).size.width / 100) * 85,
-								text: "Input",
+								text: Localize.of(context).trans("goodsInfo.input"),
 								secondaryIcon: AssetImage("assets/resources/$icon.png"),
 								icon: "${v}x",
 								onPressed: ()
@@ -98,7 +98,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 						ResultIndicator(
 							style: ResultIndicatorStyle.WithoutCount,
 							width: (MediaQuery.of(context).size.width / 100) * 85,
-							text: "Produces",
+							text: Localize.of(context).trans("goodsInfo.produces"),
 							icon: "${value}x",
 							secondaryIcon: AssetImage("assets/resources/$icon.png"),
 						)
@@ -125,7 +125,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 									style: ResultIndicatorStyle.WithoutCount,
 									width: (MediaQuery.of(context).size.width / 100) * 85,
 									count: 23,
-									text: "Requires",
+									text: Localize.of(context).trans("goodsInfo.requires"),
 									icon: "${v.replaceAll("image:[" + icon + "]", "")}",
 									secondaryIcon: icon != "" ? AssetImage(icon) : null,
 								)
@@ -139,7 +139,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 									style: ResultIndicatorStyle.WithoutCount,
 									width: (MediaQuery.of(context).size.width / 100) * 85,
 									count: 23,
-									text: "Size",
+									text: Localize.of(context).trans("goodsInfo.size"),
 									icon: "${v.width.toStringAsFixed(0)}x${v.height.toStringAsFixed(0)}",
 									secondaryIcon: AssetImage("assets/icons/Tile.png"),
 								)
@@ -153,7 +153,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 									style: ResultIndicatorStyle.WithoutCount,
 									width: (MediaQuery.of(context).size.width / 100) * 85,
 									count: 23,
-									text: "Unlock condition",
+									text: Localize.of(context).trans("goodsInfo.unlockCondition"),
 									icon: "${v['desc']}",
 									secondaryIcon: AssetImage("assets/${v['img']}.png"),
 								)
@@ -171,7 +171,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 											style: ResultIndicatorStyle.WithoutCount,
 											width: (MediaQuery.of(context).size.width / 100) * 85,
 											count: 23,
-											text: "Modules",
+											text: Localize.of(context).trans("goodsInfo.modules"),
 											icon: "$vv (${v['size'].width.toStringAsFixed(0)}x${v['size'].height.toStringAsFixed(0)})",
 											secondaryIcon: AssetImage("assets/icons/Tile.png")
 										)
@@ -185,7 +185,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 											style: ResultIndicatorStyle.WithoutCount,
 											width: (MediaQuery.of(context).size.width / 100) * 85,
 											count: 23,
-											text: "Cost per module",
+											text: Localize.of(context).trans("goodsInfo.cost"),
 											icon: "$vv",
 											secondaryIcon: AssetImage("assets/icons/credits.png"),
 										)
@@ -202,7 +202,7 @@ class _GoodsInfoState extends State<GoodsInfo> with SingleTickerProviderStateMix
 						ResultIndicator(
 							style: ResultIndicatorStyle.WithoutCount,
 							width: (MediaQuery.of(context).size.width / 100) * 85,
-							text: "${key.substring(0, 1).toUpperCase()}${key.substring(1)}",
+							text: Localize.of(context).trans("goodsInfo.attractiveness"),
 							icon: "$value",
 							secondaryIcon: AssetImage("assets/icons/other/Attractiveness.png"),
 						)

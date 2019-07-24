@@ -24,7 +24,7 @@ class LanguageState extends State<Languages>
 		{
 			langWidgets.add(
 				MenuEntryRow(
-					mainText: lang,
+					mainText: lang == "English" || lang == "Nederlands" ? lang : "$lang (WIP)",
 					onTap: () async
 					{
 						await FlutterSecureStorage().write(key: "lang", value: Globals.langNameFromCode("${locale.languageCode}_${locale.countryCode}"));

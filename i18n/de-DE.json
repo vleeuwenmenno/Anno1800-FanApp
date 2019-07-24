@@ -43,5 +43,22 @@
     "goodsInfo.headTitle": "Gebäudeinformationen",
     "goodsInfo.title": "Kosten",
     "goodsInfo.desc": "Erforderliche Ressourcen für den Erwerb der Ware",
-    "goodsInfo.additional": "Zusätzliche Information"
+    "goodsInfo.additional": "Zusätzliche Information",
+    "buildingsInfo.size": "Größe",
+    "buildingsInfo.requires": "Benötigt",
+    "buildingsInfo.range": "Angebot",
+    "buildingsInfo.influence": "Beeinflussen",
+    "buildingsInfo.attractiveness": "Attraktivität",
+    "buildingsInfo.workforce": "Aktive Belegschaft",
+    "buildingsInfo.modules": "Module",
+    "buildingsInfo.unlockCondition": "Zustand entsperren",
+    "buildingsInfo.cost": "Kosten pro Modul",
+    "goodsInfo.input": "Eingang",
+    "goodsInfo.attractiveness": "Attraktivität",
+    "goodsInfo.produces": "Produziert",
+    "goodsInfo.requires": "Benötigt",
+    "goodsInfo.size": "Größe",
+    "goodsInfo.unlockCondition": "Zustand entsperren",
+    "goodsInfo.modules": "Module",
+    "goodsInfo.cost": "Kosten pro Modul"
 }

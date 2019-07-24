@@ -43,5 +43,22 @@
     "goodsInfo.headTitle": "Goederen informatie",
     "goodsInfo.title": "Kosten",
     "goodsInfo.desc": "Vereiste middelen voor het verkrijgen van de goederen",
-    "goodsInfo.additional": "Extra informatie"
+    "goodsInfo.additional": "Extra informatie",
+    "buildingsInfo.size": "Grootte",
+    "buildingsInfo.requires": "vereist",
+    "buildingsInfo.range": "Actieradius",
+    "buildingsInfo.influence": "Invloed",
+    "buildingsInfo.attractiveness": "Aantrekkelijkheid",
+    "buildingsInfo.workforce": "Actief personeel",
+    "buildingsInfo.modules": "modules",
+    "buildingsInfo.unlockCondition": "Ontgrendel voorwaarden",
+    "buildingsInfo.cost": "Kosten per module",
+    "goodsInfo.input": "Invoer",
+    "goodsInfo.attractiveness": "Aantrekkelijkheid",
+    "goodsInfo.produces": "Produceert",
+    "goodsInfo.requires": "Vereist",
+    "goodsInfo.size": "Grootte",
+    "goodsInfo.unlockCondition": "Ontgrendel voorwaarden",
+    "goodsInfo.modules": "Modules",
+    "goodsInfo.cost": "Kosten per module"
 }

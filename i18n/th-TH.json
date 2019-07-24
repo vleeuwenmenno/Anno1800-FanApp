@@ -43,5 +43,22 @@
     "goodsInfo.headTitle": "ข้อมูลอาคาร",
     "goodsInfo.title": "ค่าใช้จ่าย",
     "goodsInfo.desc": "ทรัพยากรที่จำเป็นสำหรับการรับสินค้า",
-    "goodsInfo.additional": "ข้อมูลเพิ่มเติม"
+    "goodsInfo.additional": "ข้อมูลเพิ่มเติม",
+    "buildingsInfo.size": "ขนาด",
+    "buildingsInfo.requires": "ต้องใช้",
+    "buildingsInfo.range": "พิสัย",
+    "buildingsInfo.influence": "มีอิทธิพล",
+    "buildingsInfo.attractiveness": "ความน่าดึงดูดใจ",
+    "buildingsInfo.workforce": "แรงงานที่ใช้งาน",
+    "buildingsInfo.modules": "โมดูล",
+    "buildingsInfo.unlockCondition": "ปลดล็อกเงื่อนไข",
+    "buildingsInfo.cost": "ราคาต่อโมดูล",
+    "goodsInfo.input": "อินพุต",
+    "goodsInfo.attractiveness": "ความน่าดึงดูดใจ",
+    "goodsInfo.produces": "ผลิต",
+    "goodsInfo.requires": "ต้องใช้",
+    "goodsInfo.size": "ขนาด",
+    "goodsInfo.unlockCondition": "ปลดล็อกเงื่อนไข",
+    "goodsInfo.modules": "โมดูล",
+    "goodsInfo.cost": "ราคาต่อโมดูล"
 }
